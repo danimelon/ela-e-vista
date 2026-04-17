@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELA É VISTA — Between Phygital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ── TOKENS ── */
+    :root {
+      --red:       #D42B1F;
+      --black:     #0A0A0A;
+      --offwhite:  #F0EAE2;
+      --sand:      #E8E0D5;
+      --white:     #FFFFFF;
+      --gray:      #6B6560;
+
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body:    'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--offwhite);
+      color: var(--black);
+      font-family: var(--font-body);
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      mix-blend-mode: normal;
+      background: transparent;
+    }
+    nav.scrolled { background: var(--offwhite); border-bottom: 1px solid rgba(10,10,10,0.1); }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--red); }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-cta {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--red);
+      padding: 10px 22px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--black); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 60px 40px 60px 40px;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 32px;
+      display: flex;
+      gap: 24px;
+    }
+    .hero-eyebrow span::before { content: '—  '; }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(80px, 10vw, 140px);
+      line-height: 0.92;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--black);
+      margin-bottom: 40px;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--red);
+    }
+    .hero-sub {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--gray);
+      max-width: 400px;
+      margin-bottom: 48px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .btn-primary {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--red);
+      padding: 16px 32px;
+      text-decoration: none;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--black); }
+    .btn-ghost {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--red); border-color: var(--red); }
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-img-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 600px;
+      background: var(--sand);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-img-placeholder img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .hero-img-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      writing-mode: vertical-rl;
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .hero-img-tag {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--offwhite);
+      padding: 8px 14px;
+    }
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 40px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-scroll-hint::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gray);
+    }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--black);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-inner {
+      display: inline-flex;
+      animation: ticker 20s linear infinite;
+    }
+    .ticker-inner span {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--offwhite);
+      padding: 0 40px;
+    }
+    .ticker-inner span.red { color: var(--red); }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── MANIFESTO ── */
+    #manifesto {
+      background: var(--black);
+      padding: 120px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .manifesto-label {
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 56px;
+    }
+    .manifesto-text {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(36px, 5vw, 72px);
+      line-height: 1.05;
+      text-transform: uppercase;
+      color: var(--offwhite);
+      max-width: 900px;
+    }
+    .manifesto-text em {
+      color: var(--red);
+      font-style: italic;
+    }
+    .manifesto-aside {
+      position: absolute;
+      right: 40px;
+      bottom: 60px;
+      max-width: 280px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(240,234,226,0.45);
+      text-align: right;
+    }
+    .manifesto-number {
+      position: absolute;
+      right: 40px;
+      top: 60px;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 180px;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      user-select: none;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 64px;
+      padding: 0 40px;
+    }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(48px, 6vw, 88px);
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+    }
+    .section-link {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 2px;
+    }
+
+    /* ── PRODUTOS ── */
+    #solucoes {
+      padding: 120px 0;
+    }
+    .produtos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid rgba(10,10,10,0.12);
+    }
+    .produto-card {
+      padding: 48px 32px;
+      border-right: 1px solid rgba(10,10,10,0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: background 0.3s;
+      cursor: default;
+    }
+    .produto-card:last-child { border-right: none; }
+    .produto-card:hover { background: var(--sand); }
+    .produto-num {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--red);
+      font-weight: 500;
+    }
+    .produto-tier {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 32px;
+      text-transform: uppercase;
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+    .produto-desc {
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--gray);
+      flex: 1;
+    }
+    .produto-itens {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(10,10,10,0.1);
+    }
+    .produto-itens li {
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      color: var(--black);
+    }
+    .produto-itens li::before {
+      content: '→';
+      color: var(--red);
+      flex-shrink: 0;
+    }
+    .produto-cta {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+      margin-top: 8px;
+      align-self: flex-start;
+    }
+    .produto-cta:hover { color: var(--red); border-color: var(--red); }
+    .produto-card.destaque {
+      background: var(--red);
+    }
+    .produto-card.destaque .produto-num,
+    .produto-card.destaque .produto-tier,
+    .produto-card.destaque .produto-desc,
+    .produto-card.destaque .produto-itens li,
+    .produto-card.destaque .produto-cta { color: var(--white); }
+    .produto-card.destaque .produto-itens { border-top-color: rgba(255,255,255,0.3); }
+    .produto-card.destaque .produto-itens li::before { color: var(--white); }
+    .produto-card.destaque:hover { background: #be2419; }
+
+    /* ── PREMIUM BLOCK ── */
+    #premium {
+      background: var(--black);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+    }
+    .premium-left {
+      padding: 100px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .premium-label {
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 40px;
+    }
+    .premium-headline {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(56px, 7vw, 100px);
+      text-transform: uppercase;
+      line-height: 0.92;
+      color: var(--offwhite);
+      margin-bottom: 40px;
+    }
+    .premium-headline em { color: var(--red); font-style: italic; }
+    .premium-body {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(240,234,226,0.6);
+      max-width: 420px;
+      margin-bottom: 48px;
+    }
+    .premium-fases {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 48px;
+    }
+    .fase-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .fase-num {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 11px;
+      color: var(--red);
+      letter-spacing: 0.1em;
+      min-width: 32px;
+    }
+    .fase-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--offwhite);
+    }
+    .fase-desc {
+      font-size: 12px;
+      color: rgba(240,234,226,0.45);
+      line-height: 1.6;
+      margin-top: 4px;
+    }
+    .premium-right {
+      position: relative;
+      overflow: hidden;
+    }
+    .premium-img {
+      width: 100%;
+      height: 100%;
+      min-height: 500px;
+      background: #1a1a1a;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 40px;
+      position: relative;
+    }
+    .premium-img-grain {
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    }
+    .premium-tag {
+      background: var(--red);
+      padding: 14px 24px;
+      position: relative;
+    }
+    .premium-tag p {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .premium-tag span {
+      font-size: 11px;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.08em;
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* ── FUNDADORAS ── */
+    #fundadoras {
+      padding: 120px 40px;
+    }
+    .fundadoras-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 64px;
+    }
+    .fundadora-card {
+      background: var(--sand);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 420px;
+    }
+    .fundadora-img {
+      background: #d8d0c4;
+      position: relative;
+      overflow: hidden;
+    }
+    .fundadora-img-inner {
+      width: 100%;
+      height: 100%;
+      background: #c8c0b4;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 16px;
+    }
+    .fundadora-img-label {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(10,10,10,0.4);
+    }
+    .fundadora-info {
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .fundadora-role {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+    .fundadora-name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 48px;
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      margin-bottom: 24px;
+    }
+    .fundadora-bio {
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--gray);
+      flex: 1;
+    }
+    .fundadora-frente {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(10,10,10,0.1);
+    }
+    .fundadora-frente-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .fundadora-frente-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .frente-tag {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--offwhite);
+      padding: 6px 12px;
+      color: var(--black);
+    }
+
+    /* ── DEPOIMENTOS ── */
+    #depoimentos {
+      background: var(--black);
+      padding: 120px 40px;
+    }
+    .depoimentos-label {
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 60px;
+    }
+    .depoimentos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .depoimento-card {
+      background: var(--black);
+      padding: 48px 36px;
+    }
+    .depoimento-aspas {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 64px;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .depoimento-texto {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--offwhite);
+      margin-bottom: 32px;
+    }
+    .depoimento-autor {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .depoimento-autor strong {
+      display: block;
+      color: var(--offwhite);
+      margin-bottom: 4px;
+    }
+
+    /* ── CTA FINAL ── */
+    #cta {
+      padding: 160px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 28vw;
+      text-transform: uppercase;
+      color: rgba(10,10,10,0.04);
+      white-space: nowrap;
+      user-select: none;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+    .cta-label {
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .cta-headline {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(48px, 7vw, 96px);
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      max-width: 800px;
+      margin: 0 auto 48px;
+      position: relative;
+    }
+    .cta-sub {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--gray);
+      max-width: 440px;
+      margin: 0 auto 56px;
+      position: relative;
+    }
+    .cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .btn-large {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--red);
+      padding: 20px 48px;
+      text-decoration: none;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+    .btn-large:hover { background: var(--black); }
+    .btn-large-ghost {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 3px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-large-ghost:hover { color: var(--red); border-color: var(--red); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      padding: 60px 40px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-brand {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--offwhite);
+    }
+    .footer-brand span { color: var(--red); }
+    .footer-copy {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(240,234,226,0.3);
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: flex-end;
+    }
+    .footer-links a {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(240,234,226,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--red); }
+
+    /* ── PLACEHOLDER FOTO ── */
+    .foto-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--sand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(10,10,10,0.25);
+      min-height: 360px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      #hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 40px 20px; }
+      .hero-right { display: none; }
+      .section-header { padding: 0 20px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .produtos-grid { grid-template-columns: 1fr 1fr; }
+      #premium { grid-template-columns: 1fr; }
+      .premium-right { display: none; }
+      .fundadoras-grid { grid-template-columns: 1fr; }
+      .fundadora-card { grid-template-columns: 1fr; }
+      .fundadora-img { min-height: 240px; }
+      .depoimentos-grid { grid-template-columns: 1fr; }
+      footer { grid-template-columns: 1fr; gap: 24px; }
+      .footer-links { justify-content: flex-start; }
+      #manifesto, #solucoes, #fundadoras, #depoimentos, #cta { padding: 80px 20px; }
+      .premium-left { padding: 60px 20px; }
+    }
+    @media (max-width: 600px) {
+      .produtos-grid { grid-template-columns: 1fr; }
+      .hero-headline { font-size: 64px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">Ela <span>É</span> Vista</a>
+    <ul class="nav-links">
+      <li><a href="#solucoes">Soluções</a></li>
+      <li><a href="#premium">Consultoria</a></li>
+      <li><a href="#fundadoras">Quem somos</a></li>
+      <li><a href="#depoimentos">Resultados</a></li>
+    </ul>
+    <a href="#cta" class="nav-cta">Quero ser vista</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span>Between Phygital</span>
+        <span>Hub Premium</span>
+      </div>
+      <h1 class="hero-headline">
+        Quando o<br>
+        posiciona-<br>
+        mento está<br>
+        certo,<br>
+        <em>o mercado<br>
+        encontra<br>
+        você.</em>
+      </h1>
+      <p class="hero-sub">
+        A Between constrói a base que faz você vender o que quiser, independente de tendência, rede social ou formato.
+      </p>
+      <div class="hero-actions">
+        <a href="#solucoes" class="btn-primary">Ver soluções</a>
+        <a href="#premium" class="btn-ghost">Conhecer a consultoria</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-placeholder">
+        <img src="images/hero.jpeg" alt="Dani Mello e Fabiola Fuchs — Between Phygital" />
+        <span class="hero-img-label" style="position:relative;z-index:2;">Between Phygital — 2026</span>
+        <div class="hero-img-tag" style="position:relative;z-index:2;">Ela É Vista</div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">Scroll para explorar</div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-inner">
+      <span>Posicionamento</span><span class="red">—</span>
+      <span>Visibilidade</span><span class="red">—</span>
+      <span>Estratégia</span><span class="red">—</span>
+      <span>Ela É Vista</span><span class="red">—</span>
+      <span>Between Phygital</span><span class="red">—</span>
+      <span>Posicionamento</span><span class="red">—</span>
+      <span>Visibilidade</span><span class="red">—</span>
+      <span>Estratégia</span><span class="red">—</span>
+      <span>Ela É Vista</span><span class="red">—</span>
+      <span>Between Phygital</span><span class="red">—</span>
+    </div>
+  </div>
+
+  <!-- MANIFESTO -->
+  <section id="manifesto">
+    <div class="manifesto-number" aria-hidden="true">01</div>
+    <p class="manifesto-label">Manifesto</p>
+    <h2 class="manifesto-text">
+      Quem tem posicionamento construído não depende de algoritmo.
+      Não corre atrás de tendência.
+      Não reinventa a roda <em>a cada mudança</em> de plataforma.
+    </h2>
+    <p class="manifesto-aside">
+      A ELA É VISTA é o lugar onde a empreendedora encontra base, ferramentas e acompanhamento para construir uma presença sólida — independente de qual tendência está em alta no momento.
+    </p>
+  </section>
+
+  <!-- SOLUÇÕES -->
+  <section id="solucoes">
+    <div class="section-header">
+      <div>
+        <p class="section-label">02 — Soluções</p>
+        <h2 class="section-title">O hub.<br>Suas opções.</h2>
+      </div>
+      <a href="#cta" class="section-link">Começar agora</a>
+    </div>
+
+    <div class="produtos-grid">
+
+      <!-- CAMADA 1 -->
+      <div class="produto-card">
+        <span class="produto-num">01 — Self-serve</span>
+        <h3 class="produto-tier">Aprenda<br>no seu<br>tempo.</h3>
+        <p class="produto-desc">
+          Ferramentas prontas para usar. Compra direta, acesso imediato. Para quem quer resultado sem esperar.
+        </p>
+        <ul class="produto-itens">
+          <li>Aulas gravadas</li>
+          <li>Pack de templates de conteúdo</li>
+          <li>Frameworks estratégicos</li>
+          <li>Aula: IA aplicada ao negócio</li>
+          <li>Sócia.IA — robô personalizada</li>
+        </ul>
+        <a href="#" class="produto-cta">Ver produtos</a>
+      </div>
+
+      <!-- CAMADA 2 -->
+      <div class="produto-card">
+        <span class="produto-num">02 — Comunidade</span>
+        <h3 class="produto-tier">Troque.<br>Cresça.<br>Pertença.</h3>
+        <p class="produto-desc">
+          Canal de conexão real entre empreendedoras que estão construindo com intenção — não improvisando.
+        </p>
+        <ul class="produto-itens">
+          <li>WhatsApp Community Ela É Vista</li>
+          <li>Insights diários da Sócia.IA</li>
+          <li>Dani e Fabiola no canal</li>
+          <li>Troca entre membras</li>
+        </ul>
+        <a href="#" class="produto-cta">Entrar na comunidade</a>
+      </div>
+
+      <!-- CAMADA 3 -->
+      <div class="produto-card">
+        <span class="produto-num">03 — Ao vivo</span>
+        <h3 class="produto-tier">Workshops<br>que trans-<br>formam.</h3>
+        <p class="produto-desc">
+          Experiências ao vivo, online e presenciais. Conhecimento aplicado com acompanhamento em tempo real.
+        </p>
+        <ul class="produto-itens">
+          <li>Workshop Hands-On — 6h</li>
+          <li>IN FRAME Workshop — presencial</li>
+          <li>Workshop MCM — Mentalidade</li>
+          <li>Palestras — 3 temas</li>
+        </ul>
+        <a href="#" class="produto-cta">Ver datas</a>
+      </div>
+
+      <!-- CAMADA 4 — DESTAQUE -->
+      <div class="produto-card destaque">
+        <span class="produto-num">04 — Premium</span>
+        <h3 class="produto-tier">Consultoria<br>1:1.<br>Resultado<br>real.</h3>
+        <p class="produto-desc">
+          Diagnóstico, construção e execução acompanhada. 100% de entrega em todos os processos — já comprovado.
+        </p>
+        <ul class="produto-itens">
+          <li>Diagnóstico estratégico</li>
+          <li>Posicionamento construído</li>
+          <li>Execução acompanhada</li>
+          <li>3 meses (extensível a 6)</li>
+        </ul>
+        <a href="#premium" class="produto-cta">Conhecer a consultoria →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PREMIUM BLOCK -->
+  <section id="premium">
+    <div class="premium-left">
+      <p class="premium-label">03 — Consultoria Premium</p>
+      <h2 class="premium-headline">
+        Ela<br>
+        <em>É</em><br>
+        Vista.
+      </h2>
+      <p class="premium-body">
+        Consultoria estratégica 1:1 da Between. Não é curso. Não é mentoria solta. É processo com diagnóstico, construção e execução acompanhada — com entregáveis concretos e histórico de 100% de entrega.
+      </p>
+      <div class="premium-fases">
+        <div class="fase-item">
+          <span class="fase-num">F.00</span>
+          <div>
+            <div class="fase-title">Entrada</div>
+            <div class="fase-desc">Call de diagnóstico + proposta com escopo e objetivos</div>
+          </div>
+        </div>
+        <div class="fase-item">
+          <span class="fase-num">F.01</span>
+          <div>
+            <div class="fase-title">Diagnóstico</div>
+            <div class="fase-desc">Análise de posicionamento, comunicação e gaps — devolutiva ao vivo</div>
+          </div>
+        </div>
+        <div class="fase-item">
+          <span class="fase-num">F.02</span>
+          <div>
+            <div class="fase-title">Construção</div>
+            <div class="fase-desc">Posicionamento, oferta e estratégia de comunicação documentados</div>
+          </div>
+        </div>
+        <div class="fase-item">
+          <span class="fase-num">F.03</span>
+          <div>
+            <div class="fase-title">Execução Acompanhada</div>
+            <div class="fase-desc">Suporte contínuo + reunião mensal — meses 2 a 3, extensível a 6</div>
+          </div>
+        </div>
+      </div>
+      <a href="#cta" class="btn-primary">Quero minha consultoria</a>
+    </div>
+    <div class="premium-right">
+      <div class="premium-img">
+        <div class="premium-img-grain"></div>
+        <!-- FOTO: foto editorial das fundadoras ou foto de sessão -->
+        <img src="images/consultoria.jpeg" alt="Between Phygital — processo de consultoria" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;" />
+        <div class="premium-tag" style="position:relative;z-index:2;">
+          <p>3 meses de processo</p>
+          <span>Vagas limitadas — sob consulta</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNDADORAS -->
+  <section id="fundadoras">
+    <div class="section-header">
+      <div>
+        <p class="section-label">04 — As fundadoras</p>
+        <h2 class="section-title">A dupla<br>por trás.</h2>
+      </div>
+    </div>
+
+    <div class="fundadoras-grid">
+
+      <div class="fundadora-card">
+        <div class="fundadora-img">
+          <img src="images/dani1.jpeg" alt="Dani Mello — Co-fundadora Ela É Vista" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;min-height:420px;" />
+        </div>
+        <div class="fundadora-info">
+          <div>
+            <p class="fundadora-role">Co-fundadora — @elaevista</p>
+            <h3 class="fundadora-name">Dani<br>Mello</h3>
+            <p class="fundadora-bio">
+              Visibilidade não se improvisa. Se constrói. Dani pensa, nomeia e direciona — traduz intenção em estratégia e desejo em posicionamento real.
+            </p>
+          </div>
+          <div class="fundadora-frente">
+            <p class="fundadora-frente-label">Frentes</p>
+            <div class="fundadora-frente-tags">
+              <span class="frente-tag">Diagnóstico</span>
+              <span class="frente-tag">Posicionamento</span>
+              <span class="frente-tag">Narrativa</span>
+              <span class="frente-tag">Visão</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fundadora-card">
+        <div class="fundadora-img">
+          <img src="images/fabiola.jpeg" alt="Fabiola Fuchs — Co-fundadora Ela É Vista" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;min-height:420px;" />
+        </div>
+        <div class="fundadora-info">
+          <div>
+            <p class="fundadora-role">Co-fundadora — @elaevista</p>
+            <h3 class="fundadora-name">Fabiola<br>Fuchs</h3>
+            <p class="fundadora-bio">
+              Estratégia que não sai do papel não é estratégia. Fabiola vive, ancora e sustenta — é a presença que transforma decisão em resultado mensurável.
+            </p>
+          </div>
+          <div class="fundadora-frente">
+            <p class="fundadora-frente-label">Frentes</p>
+            <div class="fundadora-frente-tags">
+              <span class="frente-tag">Método</span>
+              <span class="frente-tag">Entrega</span>
+              <span class="frente-tag">Acompanhamento</span>
+              <span class="frente-tag">Clareza</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section id="depoimentos">
+    <p class="depoimentos-label">05 — Resultados reais</p>
+    <div class="depoimentos-grid">
+      <div class="depoimento-card">
+        <div class="depoimento-aspas">"</div>
+        <p class="depoimento-texto">
+          [Depoimento de cliente — resultado concreto do processo de reposicionamento]
+        </p>
+        <div class="depoimento-autor">
+          <strong>Nome da cliente</strong>
+          Negócio / Segmento
+        </div>
+      </div>
+      <div class="depoimento-card">
+        <div class="depoimento-aspas">"</div>
+        <p class="depoimento-texto">
+          [Depoimento de cliente — resultado concreto do processo de reposicionamento]
+        </p>
+        <div class="depoimento-autor">
+          <strong>Nome da cliente</strong>
+          Negócio / Segmento
+        </div>
+      </div>
+      <div class="depoimento-card">
+        <div class="depoimento-aspas">"</div>
+        <p class="depoimento-texto">
+          [Depoimento de cliente — resultado concreto do processo de reposicionamento]
+        </p>
+        <div class="depoimento-autor">
+          <strong>Nome da cliente</strong>
+          Negócio / Segmento
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section id="cta">
+    <div class="cta-bg-text" aria-hidden="true">Vista</div>
+    <p class="cta-label">Pronta para começar?</p>
+    <h2 class="cta-headline">
+      É hora de ser vista do jeito certo.
+    </h2>
+    <p class="cta-sub">
+      Escolha a solução que faz sentido pro seu momento agora. Não tem porta de entrada errada — tem o que você precisa hoje.
+    </p>
+    <div class="cta-actions">
+      <a href="#solucoes" class="btn-large">Ver todas as soluções</a>
+      <a href="#" class="btn-large-ghost">Falar com a Between</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">Ela <span>É</span> Vista<br><small style="font-weight:300;font-size:10px;letter-spacing:0.16em;color:rgba(240,234,226,0.4);">BETWEEN PHYGITAL</small></div>
+    <p class="footer-copy">© 2026 Between Phygital. Todos os direitos reservados.</p>
+    <div class="footer-links">
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+      <a href="mailto:dani@danimelon.com">Contato</a>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+  </script>
+
+</body>
+</html>
