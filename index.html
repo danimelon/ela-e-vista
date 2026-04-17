@@ -6,17 +6,16 @@
   <title>ELA É VISTA — Between Phygital</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@100;200;300&family=Caveat:wght@400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@100;200;300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
     :root {
       --red:   #E8202C;
-      --blue:  #C2D0DC;
+      --blue:  #79aaef;
       --black: #1C1C1C;
       --off:   #F5F4F2;
-      --sand:  #EDEBE8;
       --gray:  #7A7268;
       --white: #FFFFFF;
       --line:  rgba(28,28,28,.1);
@@ -38,20 +37,14 @@
       background-size: 180px;
     }
 
-    /* ── FOTO COM MOLDURA ── */
+    /* ── MOLDURA PRETA ── */
     .frame {
       display: block;
       border: 2px solid var(--black);
-      padding: 10px;
-      background: var(--white);
     }
     .frame img {
       display: block; width: 100%; height: 100%;
       object-fit: cover; object-position: center top;
-    }
-    .frame-wrap {
-      padding: 32px;
-      background: var(--white);
     }
 
     /* ── NAV ── */
@@ -83,65 +76,67 @@
     .nav-cta:hover { background: var(--black); color: var(--white); }
 
     /* ══════════════════════════════
-       HERO — vermelho, impacto máximo
+       1. HERO — fundo branco, fontes vermelhas
     ══════════════════════════════ */
     #hero {
-      background: var(--red);
+      background: var(--white);
       min-height: 100vh; padding-top: 76px;
       display: grid; grid-template-rows: 1fr auto;
     }
     .hero-main {
-      display: grid; grid-template-columns: 1fr 380px;
+      display: grid; grid-template-columns: 1fr 480px;
       align-items: end;
     }
-    .hero-type { padding: 60px 48px; }
+    .hero-type {
+      padding: 60px 48px;
+    }
     .hero-h1 {
       font-family: 'Barlow', sans-serif; font-weight: 900;
       font-size: clamp(100px, 16vw, 220px);
       line-height: .83; text-transform: uppercase;
-      color: var(--white); letter-spacing: -.03em;
+      color: var(--red); letter-spacing: -.03em;
     }
     .hero-h1 span { display: block; }
 
     .hero-right {
-      padding: 80px 40px 60px;
-      display: flex; flex-direction: column; gap: 24px; justify-content: flex-end;
+      padding: 80px 48px 60px;
+      display: flex; flex-direction: column; gap: 20px; justify-content: flex-end;
+      border-left: 1px solid var(--line);
     }
     .hero-img-wrap {
-      border: 2px solid rgba(255,255,255,.3);
-      padding: 10px;
+      width: 100%;
     }
-    .hero-img-wrap img {
-      display: block; width: 100%; aspect-ratio: 3/4;
-      object-fit: cover; object-position: center top;
+    .hero-img-wrap .frame {
+      width: 100%; aspect-ratio: 3/4;
     }
     .hero-img-caption {
-      font-family: 'Caveat', cursive; font-size: 14px;
-      color: rgba(255,255,255,.5); margin-top: 10px; padding-left: 2px;
+      font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100;
+      letter-spacing: .26em; text-transform: uppercase;
+      color: var(--gray); margin-top: 12px;
     }
 
     .hero-bottom {
-      border-top: 1px solid rgba(255,255,255,.2);
+      border-top: 1px solid var(--line);
       padding: 28px 48px;
       display: flex; justify-content: space-between; align-items: center; gap: 40px;
     }
     .hero-tag {
       font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
-      font-size: clamp(16px, 1.6vw, 24px); color: rgba(255,255,255,.8); line-height: 1.4;
+      font-size: clamp(16px, 1.6vw, 24px); color: var(--black); line-height: 1.4;
     }
     .hero-btns { display: flex; gap: 20px; align-items: center; flex-shrink: 0; }
-    .btn-white {
+    .btn-outline-black {
       font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200;
       letter-spacing: .22em; text-transform: uppercase;
-      background: var(--white); color: var(--red);
-      padding: 13px 30px; text-decoration: none; transition: background .2s; display: inline-block;
+      border: 1px solid var(--black); color: var(--black);
+      padding: 13px 30px; text-decoration: none; transition: all .2s; display: inline-block;
     }
-    .btn-white:hover { background: var(--black); color: var(--white); }
-    .btn-ghost-w {
+    .btn-outline-black:hover { background: var(--black); color: var(--white); }
+    .btn-ghost {
       font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100;
       letter-spacing: .2em; text-transform: uppercase;
-      color: rgba(255,255,255,.55); text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,.25); padding-bottom: 2px;
+      color: var(--gray); text-decoration: none;
+      border-bottom: 1px solid rgba(28,28,28,.2); padding-bottom: 2px;
     }
 
     /* ══════════════════════════════
@@ -162,198 +157,194 @@
     @keyframes roll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* ══════════════════════════════
-       MANIFESTO
+       2. MANIFESTO — fundo vermelho, fontes brancas
     ══════════════════════════════ */
-    #manifesto { background: var(--white); padding: 120px 48px 80px; overflow: hidden; }
+    #manifesto { background: var(--red); padding: 100px 48px 80px; overflow: hidden; }
+
     .section-label {
       font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100;
-      letter-spacing: .38em; text-transform: uppercase; color: var(--gray);
+      letter-spacing: .38em; text-transform: uppercase;
       margin-bottom: 72px; display: flex; align-items: center; gap: 16px;
     }
-    .section-label .num { color: var(--red); font-weight: 200; margin-right: 4px; }
-    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+    .section-label .num { font-weight: 200; margin-right: 4px; }
+    .section-label::after { content: ''; flex: 1; height: 1px; }
+
+    .on-red .section-label { color: rgba(255,255,255,.5); }
+    .on-red .section-label::after { background: rgba(255,255,255,.2); }
+    .on-white .section-label { color: var(--gray); }
+    .on-white .section-label::after { background: var(--line); }
+    .on-blue .section-label { color: var(--black); opacity: .5; }
+    .on-blue .section-label::after { background: rgba(28,28,28,.15); }
 
     .mf-row { display: block; line-height: .86; }
     .mf-bold {
       font-family: 'Barlow', sans-serif; font-weight: 900;
       font-size: clamp(68px, 11.5vw, 172px);
       text-transform: uppercase; letter-spacing: -.025em;
-      color: var(--black); white-space: nowrap; display: inline-block;
+      color: var(--white); white-space: nowrap; display: inline-block;
     }
     .mf-bold-it {
       font-family: 'Barlow', sans-serif; font-weight: 900; font-style: italic;
       font-size: clamp(68px, 11.5vw, 172px);
       text-transform: uppercase; letter-spacing: -.025em;
-      display: inline-block; white-space: nowrap;
+      color: var(--white); white-space: nowrap; display: inline-block;
     }
     .mf-serif {
       font-family: 'Cormorant Garamond', serif; font-weight: 300;
       font-size: clamp(52px, 9vw, 140px);
       text-transform: uppercase; letter-spacing: .06em;
-      color: var(--black); white-space: nowrap; display: inline-block; line-height: .86;
+      color: var(--white); white-space: nowrap; display: inline-block; line-height: .86;
     }
     .mf-hand {
-      font-family: 'Caveat', cursive; font-size: clamp(20px, 3.2vw, 50px);
-      color: var(--gray); display: inline-block;
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+      font-size: clamp(20px, 3.2vw, 50px);
+      color: rgba(255,255,255,.65); display: inline-block;
     }
     .mf-serif-it {
       font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
       font-size: clamp(24px, 3.8vw, 58px);
-      color: var(--gray); display: inline-block; line-height: 1.2;
+      color: rgba(255,255,255,.65); display: inline-block; line-height: 1.2;
     }
-    .c-red  { color: var(--red); }
-    .c-gray { color: var(--gray); }
-    .gap    { margin-top: clamp(4px,.7vw,12px); }
-    .gap-l  { margin-top: clamp(12px,2vw,36px); }
-    .ind1   { padding-left: 16vw; }
-    .ind2   { padding-left: 34vw; }
+    .gap   { margin-top: clamp(4px,.7vw,12px); }
+    .gap-l { margin-top: clamp(12px,2vw,36px); }
+    .ind1  { padding-left: 16vw; }
+    .ind2  { padding-left: 34vw; }
 
     .mf-stats {
-      margin-top: 100px; padding-top: 56px; border-top: 1px solid var(--line);
+      margin-top: 100px; padding-top: 56px; border-top: 1px solid rgba(255,255,255,.2);
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;
     }
     .stat-n {
       font-family: 'Barlow', sans-serif; font-weight: 900;
-      font-size: clamp(48px, 7vw, 96px); line-height: 1; letter-spacing: -.02em; color: var(--red);
+      font-size: clamp(48px, 7vw, 96px); line-height: 1; letter-spacing: -.02em; color: var(--white);
     }
     .stat-l {
       font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100;
-      letter-spacing: .24em; text-transform: uppercase; color: var(--gray); margin-top: 10px;
+      letter-spacing: .24em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-top: 10px;
     }
 
     /* ══════════════════════════════
-       GALERIA — fundo off, fotos com moldura
-    ══════════════════════════════ */
-    #gallery { background: var(--off); padding: 100px 48px; }
-    .gal-header {
-      display: flex; justify-content: space-between; align-items: flex-end;
-      margin-bottom: 80px;
-    }
-    .gal-title {
-      font-family: 'Cormorant Garamond', serif; font-weight: 300;
-      font-size: clamp(52px, 8vw, 110px); text-transform: uppercase;
-      letter-spacing: .06em; line-height: .88; color: var(--black);
-    }
-    .gal-title em { font-style: italic; }
-    .gal-note {
-      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
-      font-size: 20px; color: var(--gray); text-align: right; max-width: 220px; line-height: 1.5;
-    }
-    .gal-grid {
-      display: grid;
-      grid-template-columns: 1.2fr .85fr 1fr;
-      grid-template-rows: auto auto;
-      gap: 40px; align-items: start;
-    }
-    .ga { grid-column: 1; grid-row: 1/3; }
-    .gb { grid-column: 2; grid-row: 1; margin-top: 40px; }
-    .gc { grid-column: 3; grid-row: 1; }
-    .gd { grid-column: 2/4; grid-row: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-
-    .ga .frame-wrap .frame { aspect-ratio: 2/3; }
-    .gb .frame-wrap .frame { aspect-ratio: 3/4; }
-    .gc .frame-wrap .frame { aspect-ratio: 4/3; }
-    .gd .frame-wrap .frame { aspect-ratio: 3/2; }
-
-    .frame-caption {
-      font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100;
-      letter-spacing: .28em; text-transform: uppercase; color: var(--gray);
-      margin-top: 14px; padding-left: 2px;
-    }
-
-    /* ══════════════════════════════
-       SOLUÇÕES
+       4. SOLUÇÕES — fundo azul no intro
     ══════════════════════════════ */
     #solucoes { background: var(--white); }
     .sol-intro {
+      background: var(--blue);
       padding: 100px 48px 80px;
       display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(28,28,28,.1);
     }
     .sol-big {
       font-family: 'Barlow', sans-serif; font-weight: 900;
       font-size: clamp(72px, 11vw, 150px); line-height: .85;
-      text-transform: uppercase; letter-spacing: -.025em; color: var(--black);
+      text-transform: uppercase; letter-spacing: -.025em; color: var(--red);
     }
     .sol-big em { font-style: italic; }
     .sol-sub {
       font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
       font-size: 24px; line-height: 1.65; color: var(--black);
     }
-    .sol-hand { font-family: 'Caveat', cursive; font-size: 16px; color: var(--gray); margin-top: 8px; }
+    .sol-note {
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+      font-size: 16px; color: var(--black); opacity: .55; margin-top: 8px;
+    }
 
-    /* blocos alternados */
+    /* 5. bloco consultoria — fundo vermelho esquerda, foto direita */
     .sol-block {
       display: grid; grid-template-columns: 1fr 1fr;
       border-bottom: 1px solid var(--line);
     }
-    .sol-block-rev { }
-
     .sb-left {
       padding: 80px 56px;
       display: flex; flex-direction: column; justify-content: space-between; gap: 40px;
-      border-right: 1px solid var(--line);
     }
     .sb-right {
       padding: 80px 56px;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      background: var(--off);
     }
-    .sol-block-rev .sb-left { order: 2; border-right: none; border-left: 1px solid var(--line); }
-    .sol-block-rev .sb-right { order: 1; background: var(--white); }
+    .sb-left-red { background: var(--red); border-right: none; }
+    .sb-left-white { background: var(--white); border-right: 1px solid var(--line); }
+    .sb-right-white { background: var(--white); }
+    .sb-right-red   { background: var(--red); }
+    .sb-right-blue  { background: var(--blue); }
+    .sb-right-off   { background: var(--off); }
 
-    .sb-num {
+    .sb-num-white {
+      font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100;
+      letter-spacing: .32em; text-transform: uppercase; color: rgba(255,255,255,.5);
+    }
+    .sb-num-dark {
       font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100;
       letter-spacing: .32em; text-transform: uppercase; color: var(--gray);
     }
-    .sb-title {
+    .sb-title-black {
       font-family: 'Cormorant Garamond', serif; font-weight: 300;
       font-size: clamp(52px, 7vw, 96px); text-transform: uppercase;
       line-height: .88; letter-spacing: .04em; color: var(--black);
     }
-    .sb-title em { font-style: italic; }
-    .sb-title-red { color: var(--red); }
-    .sb-desc {
+    .sb-title-black em { font-style: italic; }
+    .sb-desc-white {
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+      font-size: 19px; line-height: 1.7; color: rgba(255,255,255,.75);
+    }
+    .sb-desc-dark {
       font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
       font-size: 19px; line-height: 1.7; color: var(--gray);
     }
-    .sb-items {
+    .sb-items-white {
+      list-style: none; display: flex; flex-direction: column; gap: 12px;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,.2);
+    }
+    .sb-items-white li {
+      font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 100;
+      letter-spacing: .06em; color: rgba(255,255,255,.8);
+      display: flex; gap: 14px; align-items: baseline;
+    }
+    .sb-items-white li::before { content: '—'; color: rgba(255,255,255,.35); flex-shrink: 0; }
+    .sb-items-dark {
       list-style: none; display: flex; flex-direction: column; gap: 12px;
       padding-top: 24px; border-top: 1px solid var(--line);
     }
-    .sb-items li {
+    .sb-items-dark li {
       font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 100;
       letter-spacing: .06em; color: var(--black);
       display: flex; gap: 14px; align-items: baseline;
     }
-    .sb-items li::before { content: '—'; color: var(--gray); flex-shrink: 0; }
-    .sb-cta {
+    .sb-items-dark li::before { content: '—'; color: var(--gray); flex-shrink: 0; }
+
+    .sb-cta-white {
+      font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200;
+      letter-spacing: .22em; text-transform: uppercase;
+      border: 1px solid var(--white); color: var(--white);
+      padding: 12px 28px; text-decoration: none; display: inline-block;
+      transition: all .2s; align-self: flex-start;
+    }
+    .sb-cta-white:hover { background: var(--white); color: var(--red); }
+    .sb-cta-black {
       font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200;
       letter-spacing: .22em; text-transform: uppercase;
       border: 1px solid var(--black); color: var(--black);
       padding: 12px 28px; text-decoration: none; display: inline-block;
       transition: all .2s; align-self: flex-start;
     }
-    .sb-cta:hover { background: var(--black); color: var(--white); }
-    .sb-cta-red {
-      font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200;
-      letter-spacing: .22em; text-transform: uppercase;
-      border: 1px solid var(--red); color: var(--red);
-      padding: 12px 28px; text-decoration: none; display: inline-block;
-      transition: all .2s; align-self: flex-start;
-    }
-    .sb-cta-red:hover { background: var(--red); color: var(--white); }
+    .sb-cta-black:hover { background: var(--black); color: var(--white); }
 
+    /* 6. bloco quote vermelho / 7. bloco quote azul */
     .sb-quote {
       font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
       font-size: clamp(28px, 3.5vw, 50px); line-height: 1.4;
-      color: var(--gray); text-align: center; max-width: 360px;
+      text-align: center; max-width: 380px;
     }
-    .sb-photo .frame-wrap { padding: 24px; }
-    .sb-photo .frame { width: 70%; aspect-ratio: 3/4; margin: 0 auto; }
+    .sb-quote-white { color: var(--white); }
+    .sb-quote-black { color: var(--black); }
+
+    /* foto no bloco */
+    .sb-photo-frame {
+      width: 80%; max-width: 420px;
+    }
+    .sb-photo-frame .frame { aspect-ratio: 3/4; width: 100%; }
 
     /* ══════════════════════════════
-       CONSULTORIA
+       CONSULTORIA SEÇÃO
     ══════════════════════════════ */
     #consultoria { background: var(--off); }
     .cons-top {
@@ -362,10 +353,11 @@
       border-bottom: 1px solid var(--line);
     }
     .cons-big {
-      font-family: 'Barlow', sans-serif; font-weight: 900;
-      font-size: clamp(90px, 14vw, 190px); text-transform: uppercase;
-      line-height: .83; letter-spacing: -.03em; color: var(--red);
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(72px, 11vw, 160px); text-transform: uppercase;
+      line-height: .88; letter-spacing: .04em; color: var(--red);
     }
+    .cons-big em { font-style: italic; }
     .cons-right { display: flex; flex-direction: column; gap: 24px; justify-content: flex-end; }
     .cons-sub {
       font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
@@ -411,13 +403,13 @@
     .btn-red:hover { background: var(--black); }
 
     /* ══════════════════════════════
-       FUNDADORAS — fundo azul claro
+       8. FUNDADORAS — fundo azul, sem branco em volta das fotos, fonte preta
     ══════════════════════════════ */
     #fundadoras { background: var(--blue); }
     .fund-intro {
       padding: 100px 48px 80px;
       display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end;
-      border-bottom: 1px solid rgba(28,28,28,.1);
+      border-bottom: 1px solid rgba(28,28,28,.12);
     }
     .fund-title {
       font-family: 'Cormorant Garamond', serif; font-weight: 300;
@@ -427,30 +419,31 @@
     .fund-title em { font-style: italic; }
     .fund-tagline {
       font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
-      font-size: 22px; color: var(--black); opacity: .55; line-height: 1.7;
+      font-size: 22px; color: var(--black); opacity: .6; line-height: 1.7;
     }
     .fund-grid {
       display: grid; grid-template-columns: 1fr 1fr;
-      border-top: 1px solid rgba(28,28,28,.1);
+      border-top: 1px solid rgba(28,28,28,.12);
     }
     .fund-card {
-      border-right: 1px solid rgba(28,28,28,.1);
+      border-right: 1px solid rgba(28,28,28,.12);
       display: grid; grid-template-columns: 1fr 1fr;
     }
     .fund-card:last-child { border-right: none; }
     .fund-photo-col {
-      padding: 48px 32px 48px 48px;
+      padding: 48px 24px 48px 48px;
       display: flex; align-items: flex-start; justify-content: center;
     }
-    .fund-photo-col .frame-wrap { padding: 12px; width: 100%; }
-    .fund-photo-col .frame { aspect-ratio: 3/4; width: 100%; }
+    .fund-photo-col .frame {
+      width: 100%; aspect-ratio: 3/4;
+    }
     .fund-text-col {
       padding: 60px 40px 60px 32px;
       display: flex; flex-direction: column; gap: 20px; justify-content: center;
     }
     .fund-role {
       font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100;
-      letter-spacing: .28em; text-transform: uppercase; color: var(--gray);
+      letter-spacing: .28em; text-transform: uppercase; color: var(--black); opacity: .5;
     }
     .fund-name {
       font-family: 'Cormorant Garamond', serif; font-weight: 300;
@@ -466,12 +459,12 @@
     .fund-tag {
       font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100;
       letter-spacing: .16em; text-transform: uppercase;
-      border: 1px solid rgba(28,28,28,.2); color: var(--gray);
+      border: 1px solid rgba(28,28,28,.25); color: var(--black); opacity: .6;
       padding: 6px 12px;
     }
 
     /* ══════════════════════════════
-       BETWEEN
+       9. BETWEEN — fonte toda preta
     ══════════════════════════════ */
     #between { background: var(--white); }
     .btwn-intro {
@@ -484,7 +477,7 @@
       font-size: clamp(52px, 8vw, 110px); text-transform: uppercase;
       line-height: .85; letter-spacing: .05em; color: var(--black);
     }
-    .btwn-title em { font-style: italic; color: var(--red); }
+    .btwn-title em { font-style: italic; }
     .btwn-sub {
       font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
       font-size: 22px; line-height: 1.75; color: var(--gray);
@@ -525,60 +518,56 @@
     }
 
     /* ══════════════════════════════
-       DEPOIMENTOS
+       10+11. DEPOIMENTOS + CTA — fundo vermelho, serif caps, foto grande
     ══════════════════════════════ */
-    #depoimentos { background: var(--sand); }
+    #depoimentos { background: var(--red); }
     .dep-intro {
       padding: 100px 48px 80px;
       display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(255,255,255,.2);
     }
     .dep-title {
       font-family: 'Cormorant Garamond', serif; font-weight: 300;
       font-size: clamp(52px, 7.5vw, 110px); text-transform: uppercase;
-      line-height: .88; letter-spacing: .05em; color: var(--black);
+      line-height: .88; letter-spacing: .05em; color: var(--white);
     }
     .dep-title em { font-style: italic; }
     .dep-sub {
       font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
-      font-size: 22px; line-height: 1.7; color: var(--gray);
+      font-size: 22px; line-height: 1.7; color: rgba(255,255,255,.65);
     }
     .dep-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
     }
     .dep-card {
-      padding: 56px 48px 72px; border-right: 1px solid var(--line);
+      padding: 56px 48px 72px; border-right: 1px solid rgba(255,255,255,.2);
       display: flex; flex-direction: column; gap: 24px;
     }
     .dep-card:last-child { border-right: none; }
     .dep-q {
       font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
-      font-size: 72px; line-height: .8; color: var(--red);
+      font-size: 72px; line-height: .8; color: var(--white);
     }
     .dep-text {
       font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
-      font-size: 20px; line-height: 1.7; color: var(--black); flex: 1;
+      font-size: 20px; line-height: 1.7; color: rgba(255,255,255,.85); flex: 1;
     }
-    .dep-author { padding-top: 20px; border-top: 1px solid var(--line); }
+    .dep-author { padding-top: 20px; border-top: 1px solid rgba(255,255,255,.2); }
     .dep-name {
-      font-family: 'Barlow', sans-serif; font-weight: 700;
-      font-size: 13px; text-transform: uppercase; letter-spacing: .1em; color: var(--black);
+      font-family: 'Cormorant Garamond', serif; font-weight: 400;
+      font-size: 16px; text-transform: uppercase; letter-spacing: .12em; color: var(--white);
     }
     .dep-role {
       font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100;
-      letter-spacing: .18em; text-transform: uppercase; color: var(--gray); margin-top: 4px;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(255,255,255,.5); margin-top: 4px;
     }
 
-    /* ══════════════════════════════
-       CTA FINAL
-    ══════════════════════════════ */
-    #cta {
-      background: var(--white);
-      border-top: 2px solid var(--red);
-    }
+    /* 11. CTA — fonte toda preta, serif caps, foto grande das duas */
+    #cta { background: var(--white); border-top: 1px solid var(--line); }
     .cta-main {
       padding: 120px 48px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
     }
     .cta-label {
       font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100;
@@ -586,46 +575,40 @@
       margin-bottom: 32px;
     }
     .cta-head {
-      font-family: 'Barlow', sans-serif; font-weight: 900;
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
       font-size: clamp(52px, 8vw, 112px); text-transform: uppercase;
-      line-height: .85; letter-spacing: -.025em; color: var(--black);
+      line-height: .88; letter-spacing: .04em; color: var(--black);
       margin-bottom: 48px;
     }
-    .cta-head em {
-      font-style: italic; color: var(--red); display: block;
-    }
+    .cta-head em { font-style: italic; display: block; }
     .cta-btns { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
     .btn-cta {
       font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200;
       letter-spacing: .22em; text-transform: uppercase;
-      background: var(--red); color: var(--white);
+      background: var(--black); color: var(--white);
       padding: 16px 36px; text-decoration: none; transition: background .2s; display: inline-block;
     }
-    .btn-cta:hover { background: var(--black); }
+    .btn-cta:hover { background: var(--red); }
     .btn-cta-ghost {
       font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100;
       letter-spacing: .2em; text-transform: uppercase;
       color: var(--gray); text-decoration: none;
       border-bottom: 1px solid rgba(28,28,28,.2); padding-bottom: 2px;
     }
-    .cta-right { display: flex; flex-direction: column; gap: 48px; }
-    .cta-photos {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end;
+    .cta-photo-big {
+      width: 100%;
     }
-    .cta-photos .frame-wrap { padding: 12px; }
-    .cta-photos .frame { aspect-ratio: 3/4; width: 100%; }
-    .cta-photos .frame-wrap:nth-child(2) { margin-top: 48px; }
-    .cta-serif {
-      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
-      font-size: clamp(20px, 2.2vw, 28px); line-height: 1.65; color: var(--gray);
+    .cta-photo-big .frame {
+      width: 100%; aspect-ratio: 4/5;
+    }
+    .cta-photo-caption {
+      font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100;
+      letter-spacing: .26em; text-transform: uppercase; color: var(--gray); margin-top: 12px;
     }
 
-    /* ══════════════════════════════
-       FOOTER
-    ══════════════════════════════ */
+    /* FOOTER */
     footer {
-      background: var(--white);
-      border-top: 1px solid var(--line);
+      background: var(--white); border-top: 1px solid var(--line);
       padding: 48px;
       display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
     }
@@ -635,13 +618,11 @@
     }
     .foot-sub {
       display: block; font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100;
-      letter-spacing: .22em; text-transform: uppercase;
-      color: var(--gray); margin-top: 6px;
+      letter-spacing: .22em; text-transform: uppercase; color: var(--gray); margin-top: 6px;
     }
     .foot-copy {
       font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100;
-      letter-spacing: .14em; text-transform: uppercase;
-      color: var(--gray); text-align: center;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--gray); text-align: center;
     }
     .foot-links { display: flex; gap: 28px; justify-content: flex-end; }
     .foot-links a {
@@ -651,36 +632,28 @@
     }
     .foot-links a:hover { color: var(--black); }
 
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 960px) {
       nav { padding: 16px 20px; }
       .nav-links { display: none; }
-      #hero { min-height: 100svh; }
       .hero-main { grid-template-columns: 1fr; }
       .hero-right { display: none; }
       .hero-type { padding: 60px 20px 40px; }
       .hero-bottom { padding: 24px 20px; flex-direction: column; align-items: flex-start; gap: 20px; }
-      .sol-intro, .cons-top, .btwn-intro, .dep-intro, .fund-intro { grid-template-columns: 1fr; gap: 32px; padding: 60px 20px; }
+      #manifesto, .sol-intro, .cons-top, .btwn-intro, .dep-intro, .fund-intro { padding: 60px 20px; }
+      .sol-intro, .cons-top, .btwn-intro, .dep-intro, .fund-intro { grid-template-columns: 1fr; gap: 32px; }
       .sol-block { grid-template-columns: 1fr; }
-      .sb-right { min-height: 200px; }
       .cons-fases { grid-template-columns: 1fr 1fr; }
       .fund-grid { grid-template-columns: 1fr; }
       .fund-card { grid-template-columns: 1fr 1fr; }
       .btwn-grid, .dep-grid { grid-template-columns: 1fr 1fr; }
       .cta-main { grid-template-columns: 1fr; padding: 80px 20px; gap: 48px; }
-      .cta-photos { display: none; }
       footer { grid-template-columns: 1fr; gap: 24px; padding: 32px 20px; }
       .foot-links { justify-content: flex-start; }
-      .gal-grid { grid-template-columns: 1fr 1fr; }
-      .ga { grid-column: 1/-1; grid-row: 1; }
-      .gb { grid-column: 1; grid-row: 2; margin-top: 0; }
-      .gc { grid-column: 2; grid-row: 2; }
-      .gd { grid-column: 1/-1; grid-row: 3; }
-      #gallery, #manifesto, #consultoria, #fundadoras, #between, #depoimentos { padding: 60px 20px; }
+      .mf-stats { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
       .cons-fases, .btwn-grid, .dep-grid, .fund-card { grid-template-columns: 1fr; }
-      .gd { grid-template-columns: 1fr; }
       .mf-stats { grid-template-columns: 1fr; }
     }
   </style>
@@ -700,19 +673,21 @@
   <a href="#cta" class="nav-cta">Quero ser vista</a>
 </nav>
 
-<!-- HERO -->
+<!-- 1. HERO — branco, fontes vermelhas, foto maior com moldura -->
 <section id="hero">
   <div class="hero-main">
     <div class="hero-type">
       <h1 class="hero-h1">
         <span>ELA</span>
         <span>É</span>
-        <span>Vista.</span>
+        <span>VISTA.</span>
       </h1>
     </div>
     <div class="hero-right">
       <div class="hero-img-wrap">
-        <img src="images/hero.jpeg" alt="Dani Mello e Fabiola Fuchs" />
+        <div class="frame" style="aspect-ratio:3/4;width:100%;">
+          <img src="images/hero.jpeg" alt="Dani Mello e Fabiola Fuchs" />
+        </div>
       </div>
       <p class="hero-img-caption">Dani + Fabiola — Between Phygital</p>
     </div>
@@ -720,8 +695,8 @@
   <div class="hero-bottom">
     <p class="hero-tag">Quando o posicionamento está certo, o mercado encontra você. Não o contrário.</p>
     <div class="hero-btns">
-      <a href="#solucoes" class="btn-white">Explorar soluções</a>
-      <a href="#consultoria" class="btn-ghost-w">Ver consultoria</a>
+      <a href="#solucoes" class="btn-outline-black">Explorar soluções</a>
+      <a href="#consultoria" class="btn-ghost">Ver consultoria</a>
     </div>
   </div>
 </section>
@@ -744,15 +719,15 @@
   </div>
 </div>
 
-<!-- MANIFESTO -->
-<section id="manifesto">
+<!-- 2. MANIFESTO — fundo vermelho, tudo branco -->
+<section id="manifesto" class="on-red">
   <p class="section-label"><span class="num">(01)</span> O Manifesto</p>
   <div class="mf-row"><span class="mf-bold">QUANDO O</span></div>
   <div class="mf-row gap"><span class="mf-serif">POSICIONAMENTO</span></div>
-  <div class="mf-row gap"><span class="mf-bold">ESTÁ&nbsp;</span><span class="mf-bold-it c-red">CERTO,</span></div>
+  <div class="mf-row gap"><span class="mf-bold">ESTÁ </span><span class="mf-bold-it">CERTO,</span></div>
   <div class="mf-row gap ind1"><span class="mf-hand">o mercado</span></div>
   <div class="mf-row gap"><span class="mf-bold">ENCONTRA</span></div>
-  <div class="mf-row gap"><span class="mf-bold-it c-gray">VOCÊ.</span></div>
+  <div class="mf-row gap"><span class="mf-bold-it">VOCÊ.</span></div>
   <div class="mf-row gap-l ind2"><span class="mf-serif-it">Não o contrário.</span></div>
   <div class="mf-stats">
     <div>
@@ -770,151 +745,102 @@
   </div>
 </section>
 
-<!-- GALERIA -->
-<section id="gallery">
-  <div class="gal-header">
-    <h2 class="gal-title">Por trás<br><em>de tudo.</em></h2>
-    <p class="gal-note">a dupla que construiu isso do zero</p>
-  </div>
-  <div class="gal-grid">
-    <div class="ga">
-      <div class="frame-wrap">
-        <div class="frame" style="aspect-ratio:2/3;">
-          <img src="images/dani1.jpeg" alt="Dani Mello" />
-        </div>
-      </div>
-      <p class="frame-caption">Dani Mello — co-fundadora</p>
-    </div>
-    <div class="gb">
-      <div class="frame-wrap">
-        <div class="frame" style="aspect-ratio:3/4;">
-          <img src="images/fabiola.jpeg" alt="Fabiola Fuchs" />
-        </div>
-      </div>
-      <p class="frame-caption">Fabiola Fuchs — co-fundadora</p>
-    </div>
-    <div class="gc">
-      <div class="frame-wrap">
-        <div class="frame" style="aspect-ratio:4/3;">
-          <img src="images/consultoria.jpeg" alt="Consultoria" />
-        </div>
-      </div>
-      <p class="frame-caption">processo de consultoria</p>
-    </div>
-    <div class="gd">
-      <div>
-        <div class="frame-wrap">
-          <div class="frame" style="aspect-ratio:3/2;">
-            <img src="images/04B5501A-26B2-4074-AE76-07B2D47AD8A1.jpeg" alt="" />
-          </div>
-        </div>
-        <p class="frame-caption">(003)</p>
-      </div>
-      <div>
-        <div class="frame-wrap">
-          <div class="frame" style="aspect-ratio:3/2;">
-            <img src="images/BA4BC872-7320-4DCD-BAE6-FA824128D1E7.jpeg" alt="" />
-          </div>
-        </div>
-        <p class="frame-caption">(004)</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SOLUÇÕES -->
+<!-- 4. SOLUÇÕES — intro azul, blocos alternados -->
 <section id="solucoes">
-  <div class="sol-intro">
+  <div class="sol-intro on-blue">
     <div>
       <p class="section-label"><span class="num">(02)</span> Soluções</p>
       <h2 class="sol-big">4 formas<br>de ser<br><em>vista.</em></h2>
     </div>
     <div>
       <p class="sol-sub">Cada mulher tem um ponto de partida. O destino é o mesmo.</p>
-      <p class="sol-hand">— Você escolhe onde começa. Nós garantimos onde você chega.</p>
+      <p class="sol-note">— Você escolhe onde começa. Nós garantimos onde você chega.</p>
     </div>
   </div>
 
+  <!-- 5. fundo vermelho esquerda / foto direita -->
   <div class="sol-block">
-    <div class="sb-left">
-      <span class="sb-num">(04) — Premium 1:1</span>
-      <h3 class="sb-title sb-title-red">Consulto-<br>ria<br>Ela É<br>Vista.</h3>
-      <p class="sb-desc">Processo completo. Diagnóstico, construção e execução acompanhada.</p>
-      <ul class="sb-items">
+    <div class="sb-left sb-left-red">
+      <span class="sb-num-white">(04) — Premium 1:1</span>
+      <h3 class="sb-title-black" style="color:var(--black);">Consulto-<br>ria<br>Ela É<br><em>Vista.</em></h3>
+      <p class="sb-desc-white">Processo completo. Diagnóstico, construção e execução acompanhada.</p>
+      <ul class="sb-items-white">
         <li>Diagnóstico estratégico</li>
         <li>Posicionamento construído</li>
         <li>Execução acompanhada</li>
         <li>Vagas limitadas</li>
       </ul>
-      <a href="consultoria.html" class="sb-cta-red">Conhecer →</a>
+      <a href="consultoria.html" class="sb-cta-white">Conhecer →</a>
     </div>
-    <div class="sb-right sb-photo">
-      <div class="frame-wrap" style="padding:32px;width:100%;">
-        <div class="frame" style="aspect-ratio:3/4;width:70%;margin:0 auto;">
+    <div class="sb-right sb-right-white" style="padding:60px;">
+      <div class="sb-photo-frame">
+        <div class="frame" style="aspect-ratio:3/4;width:100%;">
           <img src="images/consultoria.jpeg" alt="Consultoria" />
         </div>
       </div>
     </div>
   </div>
 
-  <div class="sol-block sol-block-rev">
-    <div class="sb-left">
-      <span class="sb-num">(01)</span>
-      <h3 class="sb-title">Self-<br><em>serve.</em></h3>
-      <p class="sb-desc">Ferramentas prontas. Acesso imediato. Resultado sem esperar.</p>
-      <ul class="sb-items">
+  <!-- 6. fundo vermelho direita (quote) -->
+  <div class="sol-block">
+    <div class="sb-left sb-left-white">
+      <span class="sb-num-dark">(01)</span>
+      <h3 class="sb-title-black">Self-<br><em>serve.</em></h3>
+      <p class="sb-desc-dark">Ferramentas prontas. Acesso imediato. Resultado sem esperar.</p>
+      <ul class="sb-items-dark">
         <li>Aulas gravadas</li>
         <li>Pack de templates</li>
         <li>Sócia.IA</li>
       </ul>
-      <a href="self-serve.html" class="sb-cta">Ver produtos →</a>
+      <a href="self-serve.html" class="sb-cta-black">Ver produtos →</a>
     </div>
-    <div class="sb-right" style="background:var(--white);display:flex;align-items:center;justify-content:center;padding:80px 56px;">
-      <p class="sb-quote">"Acesso imediato ao que você precisa agora."</p>
+    <div class="sb-right sb-right-red" style="display:flex;align-items:center;justify-content:center;padding:80px 56px;">
+      <p class="sb-quote sb-quote-white">"Acesso imediato ao que você precisa agora."</p>
     </div>
   </div>
 
+  <!-- 7. fundo azul direita (quote) -->
   <div class="sol-block">
-    <div class="sb-left">
-      <span class="sb-num">(02)</span>
-      <h3 class="sb-title">Comuni-<br><em>dade.</em></h3>
-      <p class="sb-desc">Canal real. Troca entre quem constrói com intenção.</p>
-      <ul class="sb-items">
+    <div class="sb-left sb-left-white">
+      <span class="sb-num-dark">(02)</span>
+      <h3 class="sb-title-black">Comuni-<br><em>dade.</em></h3>
+      <p class="sb-desc-dark">Canal real. Troca entre quem constrói com intenção.</p>
+      <ul class="sb-items-dark">
         <li>WhatsApp Community</li>
         <li>Insights diários</li>
         <li>Dani e Fabiola no canal</li>
       </ul>
-      <a href="comunidade.html" class="sb-cta">Conhecer →</a>
+      <a href="comunidade.html" class="sb-cta-black">Conhecer →</a>
     </div>
-    <div class="sb-right" style="display:flex;align-items:center;justify-content:center;padding:80px 56px;">
-      <p class="sb-quote">"Troca real entre quem constrói com intenção."</p>
+    <div class="sb-right sb-right-blue" style="display:flex;align-items:center;justify-content:center;padding:80px 56px;">
+      <p class="sb-quote sb-quote-black">"Troca real entre quem constrói com intenção."</p>
     </div>
   </div>
 
-  <div class="sol-block sol-block-rev">
-    <div class="sb-left">
-      <span class="sb-num">(03)</span>
-      <h3 class="sb-title">Works-<br><em>hops.</em></h3>
-      <p class="sb-desc">Ao vivo. Online e presencial. Conhecimento aplicado.</p>
-      <ul class="sb-items">
+  <div class="sol-block">
+    <div class="sb-left sb-left-white">
+      <span class="sb-num-dark">(03)</span>
+      <h3 class="sb-title-black">Works-<br><em>hops.</em></h3>
+      <p class="sb-desc-dark">Ao vivo. Online e presencial. Conhecimento aplicado.</p>
+      <ul class="sb-items-dark">
         <li>Hands-On — 6h</li>
         <li>IN FRAME — presencial</li>
         <li>MCM — Mentalidade</li>
       </ul>
-      <a href="workshops.html" class="sb-cta">Ver workshops →</a>
+      <a href="workshops.html" class="sb-cta-black">Ver workshops →</a>
     </div>
-    <div class="sb-right" style="background:var(--white);display:flex;align-items:center;justify-content:center;padding:80px 56px;">
-      <p class="sb-quote">"Conhecimento que sai do papel — ao vivo."</p>
+    <div class="sb-right sb-right-off" style="display:flex;align-items:center;justify-content:center;padding:80px 56px;">
+      <p class="sb-quote sb-quote-black">"Conhecimento que sai do papel — ao vivo."</p>
     </div>
   </div>
 </section>
 
 <!-- CONSULTORIA -->
 <section id="consultoria">
-  <div class="cons-top">
+  <div class="cons-top on-white">
     <div>
       <p class="section-label"><span class="num">(03)</span> Consultoria Premium</p>
-      <h2 class="cons-big">Ela É<br>Vista.</h2>
+      <h2 class="cons-big">Consulto-<br>ria<br><em>Ela É Vista.</em></h2>
     </div>
     <div class="cons-right">
       <p class="cons-sub">Não é curso. Não é mentoria solta. É processo — com diagnóstico, construção e execução acompanhada.</p>
@@ -948,9 +874,9 @@
   </div>
 </section>
 
-<!-- FUNDADORAS -->
+<!-- 8. FUNDADORAS — azul, sem branco em volta das fotos, fonte preta -->
 <section id="fundadoras">
-  <div class="fund-intro">
+  <div class="fund-intro on-blue">
     <div>
       <p class="section-label"><span class="num">(04)</span> A Dupla</p>
       <h2 class="fund-title">Por trás<br><em>de tudo.</em></h2>
@@ -960,10 +886,8 @@
   <div class="fund-grid">
     <div class="fund-card">
       <div class="fund-photo-col">
-        <div class="frame-wrap" style="width:100%;padding:12px;">
-          <div class="frame" style="aspect-ratio:3/4;">
-            <img src="images/dani1.jpeg" alt="Dani Mello" />
-          </div>
+        <div class="frame" style="aspect-ratio:3/4;width:100%;">
+          <img src="images/dani1.jpeg" alt="Dani Mello" />
         </div>
       </div>
       <div class="fund-text-col">
@@ -980,10 +904,8 @@
     </div>
     <div class="fund-card">
       <div class="fund-photo-col">
-        <div class="frame-wrap" style="width:100%;padding:12px;">
-          <div class="frame" style="aspect-ratio:3/4;">
-            <img src="images/fabiola.jpeg" alt="Fabiola Fuchs" />
-          </div>
+        <div class="frame" style="aspect-ratio:3/4;width:100%;">
+          <img src="images/fabiola.jpeg" alt="Fabiola Fuchs" />
         </div>
       </div>
       <div class="fund-text-col">
@@ -1001,9 +923,9 @@
   </div>
 </section>
 
-<!-- BETWEEN -->
+<!-- 9. BETWEEN — fonte toda preta -->
 <section id="between">
-  <div class="btwn-intro">
+  <div class="btwn-intro on-white">
     <div>
       <p class="section-label"><span class="num">(05)</span> Between Phygital</p>
       <h2 class="btwn-title">Between<br>Phygital<br><em>Creative.</em></h2>
@@ -1038,9 +960,9 @@
   </div>
 </section>
 
-<!-- DEPOIMENTOS -->
+<!-- 10. DEPOIMENTOS — fundo vermelho, fonte preta -->
 <section id="depoimentos">
-  <div class="dep-intro">
+  <div class="dep-intro on-red">
     <div>
       <p class="section-label"><span class="num">(06)</span> Resultados</p>
       <h2 class="dep-title">Quem já<br><em>é vista.</em></h2>
@@ -1075,34 +997,27 @@
   </div>
 </section>
 
-<!-- CTA FINAL -->
+<!-- 11. CTA — fonte toda preta, serif caps, foto grande das duas juntas -->
 <section id="cta">
   <div class="cta-main">
     <div>
       <p class="cta-label">Pronta para começar?</p>
       <h2 class="cta-head">
-        Visibili-<br>dade não<br>é sorte.
-        <em>É método.</em>
+        VISIBILI-<br>DADE NÃO<br>É SORTE.
+        <em>É MÉTODO.</em>
       </h2>
       <div class="cta-btns">
         <a href="#solucoes" class="btn-cta">Ver todas as soluções</a>
         <a href="mailto:dani@danimelon.com" class="btn-cta-ghost">Falar com a Between</a>
       </div>
     </div>
-    <div class="cta-right">
-      <div class="cta-photos">
-        <div class="frame-wrap">
-          <div class="frame" style="aspect-ratio:3/4;width:100%;">
-            <img src="images/04B5501A-26B2-4074-AE76-07B2D47AD8A1.jpeg" alt="" />
-          </div>
-        </div>
-        <div class="frame-wrap">
-          <div class="frame" style="aspect-ratio:3/4;width:100%;">
-            <img src="images/dani1.jpeg" alt="" />
-          </div>
+    <div>
+      <div class="cta-photo-big">
+        <div class="frame" style="aspect-ratio:4/5;width:100%;">
+          <img src="images/04B5501A-26B2-4074-AE76-07B2D47AD8A1.jpeg" alt="Dani e Fabiola" />
         </div>
       </div>
-      <p class="cta-serif">Escolha a solução que faz sentido pro seu momento agora. Não tem porta de entrada errada — tem o que você precisa hoje.</p>
+      <p class="cta-photo-caption">Dani Mello + Fabiola Fuchs</p>
     </div>
   </div>
 </section>
