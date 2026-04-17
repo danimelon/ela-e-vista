@@ -6,147 +6,133 @@
   <title>Workshops — Ela É Vista</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@100;200;300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     :root {
-      --red:      #E8202C;
-      --black:    #1C1C1C;
-      --charcoal: #3A3A3A;
-      --off:      #F5F4F2;
-      --sand:     #EDEBE8;
-      --gray:     #7A7268;
-      --line:     rgba(28,28,28,.1);
-      --white:    #FFFFFF;
-      --display:  Helvetica Neue, Helvetica, Arial, sans-serif;
-      --serif:    'EB Garamond', serif;
-      --thin:     'Inter', sans-serif;
+      --red:   #E8202C;
+      --blue:  #79aaef;
+      --black: #1C1C1C;
+      --gray:  #7A7268;
+      --white: #FFFFFF;
+      --line:  rgba(28,28,28,.1);
     }
-    body { background: var(--white); color: var(--black); font-family: var(--thin); font-weight: 300; overflow-x: hidden; }
+    body { background: var(--white); color: var(--black); font-family: 'Inter', sans-serif; font-weight: 100; overflow-x: hidden; }
+    body::after {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: .025;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px;
+    }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; background: var(--white); border-bottom: 1px solid var(--line); }
-    .nav-logo { font-family: var(--display); font-weight: 800; font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); text-decoration: none; }
-    .nav-logo em { color: var(--red); font-style: normal; }
-    .nav-back { font-family: var(--thin); font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; color: var(--black); text-decoration: none; opacity: .5; transition: opacity .2s; }
+    nav { position: fixed; inset: 0 0 auto 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; transition: background .3s; }
+    nav.solid { background: var(--white); border-bottom: 1px solid var(--line); }
+    .nav-logo { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+    .nav-back { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--black); text-decoration: none; opacity: .4; transition: opacity .2s; }
     .nav-back:hover { opacity: 1; }
-    .nav-btn { font-family: var(--thin); font-size: 10px; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; background: var(--red); color: var(--white); padding: 10px 24px; text-decoration: none; transition: background .2s; }
-    .nav-btn:hover { background: var(--black); }
+    .nav-cta { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; border: 1px solid var(--black); color: var(--black); padding: 10px 24px; text-decoration: none; transition: all .2s; }
+    .nav-cta:hover { background: var(--black); color: var(--white); }
 
-    .page-hero {
-      min-height: 60vh; padding-top: 76px;
-      background: var(--white);
-      display: grid; grid-template-columns: 1fr 1fr;
-      border-bottom: 1px solid var(--line);
-    }
-    .page-hero-left { padding: 80px 60px; display: flex; flex-direction: column; justify-content: flex-end; border-right: 1px solid var(--line); }
-    .page-label { font-family: var(--thin); font-size: 10px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--gray); margin-bottom: auto; }
-    .page-big { font-family: var(--display); font-weight: 800; font-size: clamp(72px, 11vw, 150px); text-transform: uppercase; line-height: .88; letter-spacing: -.02em; color: var(--black); margin-top: 40px; }
-    .page-big em { color: var(--red); font-style: oblique 10deg; }
-    .page-hero-right { padding: 80px 60px; background: var(--off); display: flex; flex-direction: column; justify-content: flex-end; }
-    .page-tagline { font-family: var(--serif); font-style: italic; font-size: 22px; font-weight: 400; line-height: 1.75; color: var(--gray); }
+    .section-label { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .38em; text-transform: uppercase; margin-bottom: 56px; display: flex; align-items: center; gap: 16px; color: var(--gray); }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--line); }
 
-    /* DIVISOR EDITORIAL */
-    .divider {
-      border-top: 2px solid var(--red);
-      background: var(--white);
-      display: flex; align-items: baseline; justify-content: space-between;
-      padding: 20px 40px; gap: 24px;
-    }
-    .div-num { font-family: var(--display); font-weight: 800; font-size: clamp(44px, 7vw, 100px); color: var(--red); line-height: 1; letter-spacing: -.01em; flex-shrink: 0; }
-    .div-title { font-family: var(--display); font-weight: 700; font-size: clamp(22px, 3.5vw, 54px); color: var(--black); letter-spacing: .06em; text-transform: uppercase; line-height: 1; }
-    .div-small { font-family: var(--thin); font-size: 10px; font-weight: 100; letter-spacing: .24em; text-transform: uppercase; color: rgba(28,28,28,.3); text-align: right; flex-shrink: 0; align-self: center; }
+    /* HERO — red bg, tudo branco */
+    .page-hero { min-height: 80vh; padding-top: 76px; background: var(--red); display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid rgba(255,255,255,.2); }
+    .hero-left { padding: 80px 56px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(255,255,255,.2); }
+    .hero-label { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .38em; text-transform: uppercase; color: rgba(255,255,255,.5); }
+    .page-h1 { font-family: 'Barlow', sans-serif; font-weight: 900; font-size: clamp(72px, 11vw, 150px); text-transform: uppercase; line-height: .85; letter-spacing: -.025em; color: var(--white); }
+    .page-h1 em { font-style: italic; }
+    .hero-right { padding: 80px 56px; display: flex; flex-direction: column; justify-content: flex-end; gap: 32px; }
+    .hero-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(22px, 2.5vw, 32px); line-height: 1.65; color: rgba(255,255,255,.85); }
+    .hero-note { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.5); }
 
-    /* WORKSHOPS GRID */
-    .ws-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
-    .ws-card {
-      padding: 64px 60px;
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      display: flex; flex-direction: column; gap: 24px;
-      background: var(--white);
-      transition: background .25s;
+    /* BLOCO DIVISOR DE CATEGORIA — azul */
+    .ws-cat {
+      background: var(--blue); padding: 60px 48px;
+      border-top: 1px solid rgba(28,28,28,.1); border-bottom: 1px solid rgba(28,28,28,.1);
+      display: grid; grid-template-columns: auto 1fr auto; gap: 40px; align-items: end;
     }
+    .ws-cat-num { font-family: 'Barlow', sans-serif; font-weight: 900; font-size: clamp(60px, 9vw, 110px); line-height: .85; letter-spacing: -.02em; color: var(--black); }
+    .ws-cat-name { font-family: 'Barlow', sans-serif; font-weight: 900; font-size: clamp(36px, 5vw, 68px); text-transform: uppercase; line-height: .9; color: var(--black); }
+    .ws-cat-name em { font-style: italic; }
+    .ws-cat-info { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 18px; color: var(--black); opacity: .6; text-align: right; }
+
+    /* WORKSHOP CARDS */
+    .ws-grid { display: grid; grid-template-columns: repeat(2, 1fr); background: var(--white); }
+    .ws-card { padding: 64px 56px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 20px; }
     .ws-card:nth-child(2n) { border-right: none; }
-    .ws-card:hover { background: var(--sand); }
-    .ws-card.featured {
-      border-top: 4px solid var(--red);
-      background: var(--white);
-    }
-    .ws-num { font-family: var(--thin); font-size: 10px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--red); }
-    .ws-format { font-family: var(--thin); font-size: 10px; font-weight: 200; letter-spacing: .2em; text-transform: uppercase; color: var(--gray); }
-    .ws-name { font-family: var(--display); font-weight: 800; font-size: clamp(40px, 5vw, 68px); text-transform: uppercase; line-height: .9; letter-spacing: -.01em; color: var(--black); }
+    .ws-card.featured { border-top: 3px solid var(--red); }
+    .ws-num { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--red); }
+    .ws-format { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .2em; text-transform: uppercase; color: var(--gray); }
+    .ws-name { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(38px, 4.5vw, 62px); text-transform: uppercase; line-height: .88; letter-spacing: .04em; color: var(--black); }
+    .ws-name em { font-style: italic; }
     .ws-card.featured .ws-name { color: var(--red); }
-    .ws-desc { font-family: var(--serif); font-style: italic; font-size: 18px; font-weight: 400; line-height: 1.75; color: var(--gray); }
+    .ws-desc { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 18px; line-height: 1.75; color: var(--gray); }
     .ws-temas { list-style: none; display: flex; flex-direction: column; gap: 10px; padding-top: 24px; border-top: 1px solid var(--line); margin-top: auto; }
-    .ws-temas li { font-family: var(--thin); font-size: 12px; font-weight: 300; display: flex; gap: 10px; line-height: 1.5; color: var(--black); }
-    .ws-temas li::before { content: '→'; color: var(--red); flex-shrink: 0; }
-    .ws-cta { display: inline-block; margin-top: 16px; font-family: var(--thin); font-size: 10px; font-weight: 300; letter-spacing: .22em; text-transform: uppercase; background: var(--red); color: var(--white); padding: 12px 24px; text-decoration: none; transition: background .2s; align-self: flex-start; }
-    .ws-cta:hover { background: var(--black); }
-    .ws-cta-ghost { display: inline-block; margin-top: 16px; font-family: var(--thin); font-size: 10px; font-weight: 200; letter-spacing: .20em; text-transform: uppercase; color: var(--black); text-decoration: none; border-bottom: 1px solid rgba(28,28,28,.3); padding-bottom: 2px; align-self: flex-start; transition: color .2s, border-color .2s; }
-    .ws-cta-ghost:hover { color: var(--red); border-color: var(--red); }
+    .ws-temas li { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 100; letter-spacing: .04em; display: flex; gap: 12px; line-height: 1.5; color: var(--black); }
+    .ws-temas li::before { content: '—'; color: var(--gray); flex-shrink: 0; }
+    .ws-cta { display: inline-block; margin-top: 8px; font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 12px 24px; text-decoration: none; transition: background .2s; align-self: flex-start; }
+    .ws-cta:hover { background: var(--red); }
+    .ws-cta-ghost { display: inline-block; margin-top: 8px; font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .2em; text-transform: uppercase; color: var(--gray); text-decoration: none; border-bottom: 1px solid rgba(28,28,28,.2); padding-bottom: 2px; align-self: flex-start; transition: color .2s; }
+    .ws-cta-ghost:hover { color: var(--black); }
 
     /* CTA */
-    #cta-page {
-      background: var(--white);
-      border-top: 2px solid var(--red);
-      padding: 120px 40px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-    }
-    .cta-label { font-family: var(--thin); font-size: 10px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--gray); margin-bottom: 32px; }
-    .cta-big { font-family: var(--display); font-weight: 800; font-size: clamp(60px, 9vw, 120px); text-transform: uppercase; line-height: .88; letter-spacing: -.02em; color: var(--black); }
-    .cta-big em { color: var(--red); font-style: oblique 10deg; }
-    .cta-page-right { display: flex; flex-direction: column; gap: 32px; }
-    .cta-page-text { font-family: var(--serif); font-style: italic; font-size: 22px; font-weight: 400; line-height: 1.7; color: var(--gray); }
-    .btn-red { font-family: var(--thin); font-size: 10px; font-weight: 300; letter-spacing: .22em; text-transform: uppercase; background: var(--red); color: var(--white); padding: 18px 40px; text-decoration: none; transition: background .2s; display: inline-block; align-self: flex-start; }
-    .btn-red:hover { background: var(--black); }
+    #cta-page { background: var(--white); border-top: 1px solid var(--line); padding: 120px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .cta-head { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(52px, 8vw, 110px); text-transform: uppercase; line-height: .88; letter-spacing: .04em; color: var(--black); margin-bottom: 48px; }
+    .cta-head em { font-style: italic; display: block; }
+    .cta-right { display: flex; flex-direction: column; gap: 28px; }
+    .cta-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.7; color: var(--gray); }
+    .btn-black { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 16px 36px; text-decoration: none; display: inline-block; transition: background .2s; align-self: flex-start; }
+    .btn-black:hover { background: var(--red); }
 
-    footer { background: var(--white); border-top: 1px solid var(--line); padding: 48px 40px; display: flex; justify-content: space-between; align-items: center; }
-    .foot-brand { font-family: var(--display); font-weight: 800; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--black); }
-    .foot-brand em { color: var(--red); font-style: normal; }
-    .foot-back { font-family: var(--thin); font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; color: rgba(28,28,28,.4); text-decoration: none; transition: color .2s; }
-    .foot-back:hover { color: var(--red); }
+    footer { background: var(--white); border-top: 1px solid var(--line); padding: 48px; display: flex; justify-content: space-between; align-items: center; }
+    .foot-brand { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--black); }
+    .foot-sub { display: block; font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--gray); margin-top: 6px; }
+    .foot-back { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--gray); text-decoration: none; transition: color .2s; }
+    .foot-back:hover { color: var(--black); }
 
     @media (max-width: 960px) {
       nav { padding: 16px 20px; }
-      .page-hero { grid-template-columns: 1fr; }
-      .page-hero-left, .page-hero-right { padding: 60px 20px; }
+      .page-hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left, .hero-right { padding: 60px 20px; }
+      .ws-cat { grid-template-columns: 1fr; gap: 16px; padding: 40px 20px; }
       .ws-grid { grid-template-columns: 1fr; }
-      .ws-card { border-right: none; }
+      .ws-card { border-right: none; padding: 48px 20px; }
       #cta-page { grid-template-columns: 1fr; gap: 40px; padding: 80px 20px; }
-      .divider { padding: 16px 20px; }
+      footer { padding: 32px 20px; flex-direction: column; gap: 20px; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">Ela <em>É</em> Vista</a>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Ela É Vista</a>
   <a href="index.html" class="nav-back">← Voltar</a>
-  <a href="#cta-page" class="nav-btn">Ver próximas datas</a>
+  <a href="#cta-page" class="nav-cta">Ver próximas datas</a>
 </nav>
 
 <section class="page-hero">
-  <div class="page-hero-left">
-    <p class="page-label">(03) — Workshops</p>
-    <h1 class="page-big">Works-<br><em>hops.</em></h1>
+  <div class="hero-left">
+    <p class="hero-label">(03) Workshops</p>
+    <h1 class="page-h1">Works-<br><em>hops.</em></h1>
   </div>
-  <div class="page-hero-right">
-    <p class="page-tagline">Ao vivo. Online e presencial. Conhecimento aplicado na prática — com método, sem enrolação. Cada workshop foi criado para gerar resultado antes de terminar.</p>
+  <div class="hero-right">
+    <p class="hero-tagline">Ao vivo. Online e presencial. Conhecimento aplicado na prática — com método, sem enrolação. Cada workshop foi criado para gerar resultado antes de terminar.</p>
+    <p class="hero-note">Turmas com vagas limitadas</p>
   </div>
 </section>
 
-<div class="divider">
-  <span class="div-num">(01)</span>
-  <span class="div-title">Hands-On</span>
-  <span class="div-small">6 horas · Online ao vivo</span>
+<div class="ws-cat">
+  <div class="ws-cat-num">(01)</div>
+  <div class="ws-cat-name">Hands-<br><em>On</em></div>
+  <div class="ws-cat-info">6 horas<br>Online ao vivo</div>
 </div>
 
 <div class="ws-grid">
   <div class="ws-card featured">
     <span class="ws-num">(01.A)</span>
     <span class="ws-format">6h · Online ao vivo · Grupo reduzido</span>
-    <div class="ws-name">Marca<br>Pessoal<br>Hands-On.</div>
+    <div class="ws-name">Marca<br>Pessoal<br><em>Hands-On.</em></div>
     <p class="ws-desc">Do diagnóstico ao posicionamento em um dia. Você sai com sua marca pessoal construída, não só com teoria.</p>
     <ul class="ws-temas">
       <li>Diagnóstico de posicionamento atual</li>
@@ -159,7 +145,7 @@
   <div class="ws-card">
     <span class="ws-num">(01.B)</span>
     <span class="ws-format">6h · Online ao vivo · Grupo reduzido</span>
-    <div class="ws-name">Posicio-<br>namento<br>Hands-On.</div>
+    <div class="ws-name">Posicio-<br>namento<br><em>Hands-On.</em></div>
     <p class="ws-desc">Estratégia de posicionamento do zero ao plano. Para quem quer sair do genérico e ser lembrada pelo que é única.</p>
     <ul class="ws-temas">
       <li>Análise de mercado e concorrência</li>
@@ -172,7 +158,7 @@
   <div class="ws-card">
     <span class="ws-num">(01.C)</span>
     <span class="ws-format">6h · Online ao vivo · Grupo reduzido</span>
-    <div class="ws-name">IA no<br>Negócio<br>Hands-On.</div>
+    <div class="ws-name">IA no<br>Negócio<br><em>Hands-On.</em></div>
     <p class="ws-desc">Como usar inteligência artificial de forma estratégica no seu negócio — sem perder a autenticidade.</p>
     <ul class="ws-temas">
       <li>Ferramentas de IA para produtividade</li>
@@ -185,7 +171,7 @@
   <div class="ws-card">
     <span class="ws-num">(01.D)</span>
     <span class="ws-format">6h · Online ao vivo · Grupo reduzido</span>
-    <div class="ws-name">Vendas<br>com<br>Estratégia.</div>
+    <div class="ws-name">Vendas<br>com<br><em>Estratégia.</em></div>
     <p class="ws-desc">Como vender sem parecer que está vendendo. Estratégia de vendas alinhada com o seu posicionamento.</p>
     <ul class="ws-temas">
       <li>Funil de vendas para serviços</li>
@@ -197,17 +183,17 @@
   </div>
 </div>
 
-<div class="divider">
-  <span class="div-num">(02)</span>
-  <span class="div-title">IN FRAME</span>
-  <span class="div-small">Presencial · Curitiba</span>
+<div class="ws-cat">
+  <div class="ws-cat-num">(02)</div>
+  <div class="ws-cat-name">IN<br><em>FRAME</em></div>
+  <div class="ws-cat-info">Presencial<br>Curitiba</div>
 </div>
 
 <div class="ws-grid">
   <div class="ws-card featured">
     <span class="ws-num">(02.A)</span>
     <span class="ws-format">Presencial · Curitiba · Turmas limitadas</span>
-    <div class="ws-name">IN<br>FRAME.</div>
+    <div class="ws-name"><em>IN<br>FRAME.</em></div>
     <p class="ws-desc">A experiência presencial de posicionamento e marca pessoal. Um dia imersivo que transforma como você se vê — e como o mercado te vê.</p>
     <ul class="ws-temas">
       <li>Imersão em posicionamento e narrativa</li>
@@ -220,7 +206,7 @@
   <div class="ws-card">
     <span class="ws-num">(02.B)</span>
     <span class="ws-format">Presencial · Curitiba · Grupos corporativos</span>
-    <div class="ws-name">Palestra<br>Corpo-<br>rativa.</div>
+    <div class="ws-name">Palestra<br><em>Corpo-<br>rativa.</em></div>
     <p class="ws-desc">Posicionamento, marca pessoal e IA para equipes. Conteúdo sob medida para a realidade da sua empresa.</p>
     <ul class="ws-temas">
       <li>Marca pessoal dentro da marca corporativa</li>
@@ -232,17 +218,17 @@
   </div>
 </div>
 
-<div class="divider">
-  <span class="div-num">(03)</span>
-  <span class="div-title">MCM</span>
-  <span class="div-small">Mentalidade · Comunicação · Marketing</span>
+<div class="ws-cat">
+  <div class="ws-cat-num">(03)</div>
+  <div class="ws-cat-name"><em>MCM</em></div>
+  <div class="ws-cat-info">Mentalidade<br>Comunicação · Marketing</div>
 </div>
 
 <div class="ws-grid">
   <div class="ws-card featured">
     <span class="ws-num">(03.A)</span>
     <span class="ws-format">Online ao vivo · Múltiplos módulos</span>
-    <div class="ws-name">MCM —<br>Mentali-<br>dade.</div>
+    <div class="ws-name">MCM —<br>Mentali-<br><em>dade.</em></div>
     <p class="ws-desc">O que está te travando não é falta de conhecimento — é mentalidade. Este workshop muda a base.</p>
     <ul class="ws-temas">
       <li>Síndrome do impostor e autossabotagem</li>
@@ -255,7 +241,7 @@
   <div class="ws-card">
     <span class="ws-num">(03.B)</span>
     <span class="ws-format">Online ao vivo · Múltiplos módulos</span>
-    <div class="ws-name">MCM —<br>Comuni-<br>cação.</div>
+    <div class="ws-name">MCM —<br>Comuni-<br><em>cação.</em></div>
     <p class="ws-desc">Comunicação que gera conexão, confiança e conversão. Para quem quer ser ouvida — não só vista.</p>
     <ul class="ws-temas">
       <li>Storytelling aplicado ao negócio</li>
@@ -269,18 +255,25 @@
 
 <section id="cta-page">
   <div>
-    <p class="cta-label">Próximas turmas</p>
-    <div class="cta-big">Tem uma<br>data em<br>mente?</div>
+    <h2 class="cta-head">Tem uma<br>data em<br><em>mente?</em></h2>
   </div>
-  <div class="cta-page-right">
-    <p class="cta-page-text">As turmas são limitadas. Entre na lista de espera ou fale diretamente com a gente para saber das próximas datas.</p>
-    <a href="mailto:dani@danimelon.com" class="btn-red">Entrar na lista →</a>
+  <div class="cta-right">
+    <p class="cta-text">As turmas são limitadas. Entre na lista de espera ou fale diretamente com a gente para saber das próximas datas.</p>
+    <a href="mailto:dani@danimelon.com" class="btn-black">Entrar na lista →</a>
   </div>
 </section>
 
 <footer>
-  <div class="foot-brand">Ela <em>É</em> Vista — <span style="font-weight:200;letter-spacing:.1em;font-size:10px;">Powered by Between Phygital</span></div>
+  <div class="foot-brand">
+    Ela É Vista
+    <span class="foot-sub">Powered by Between Phygital</span>
+  </div>
   <a href="index.html" class="foot-back">← Voltar para o site</a>
 </footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('solid', window.scrollY > 60); });
+</script>
 </body>
 </html>

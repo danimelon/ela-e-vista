@@ -6,264 +6,245 @@
   <title>Comunidade — Ela É Vista</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@100;200;300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     :root {
-      --red:      #E8202C;
-      --black:    #1C1C1C;
-      --charcoal: #3A3A3A;
-      --off:      #F5F4F2;
-      --sand:     #EDEBE8;
-      --gray:     #7A7268;
-      --line:     rgba(28,28,28,.1);
-      --white:    #FFFFFF;
-      --display:  Helvetica Neue, Helvetica, Arial, sans-serif;
-      --serif:    'EB Garamond', serif;
-      --thin:     'Inter', sans-serif;
+      --red:   #E8202C;
+      --blue:  #79aaef;
+      --black: #1C1C1C;
+      --gray:  #7A7268;
+      --white: #FFFFFF;
+      --line:  rgba(28,28,28,.1);
     }
-    body { background: var(--white); color: var(--black); font-family: var(--thin); font-weight: 300; overflow-x: hidden; }
+    body { background: var(--white); color: var(--black); font-family: 'Inter', sans-serif; font-weight: 100; overflow-x: hidden; }
+    body::after {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: .025;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px;
+    }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; background: var(--white); border-bottom: 1px solid var(--line); }
-    .nav-logo { font-family: var(--display); font-weight: 800; font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); text-decoration: none; }
-    .nav-logo em { color: var(--red); font-style: normal; }
-    .nav-back { font-family: var(--thin); font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; color: var(--black); text-decoration: none; opacity: .5; transition: opacity .2s; }
+    nav { position: fixed; inset: 0 0 auto 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; transition: background .3s; }
+    nav.solid { background: var(--white); border-bottom: 1px solid var(--line); }
+    .nav-logo { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+    .nav-back { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--black); text-decoration: none; opacity: .4; transition: opacity .2s; }
     .nav-back:hover { opacity: 1; }
-    .nav-btn { font-family: var(--thin); font-size: 10px; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; background: var(--red); color: var(--white); padding: 10px 24px; text-decoration: none; transition: background .2s; }
-    .nav-btn:hover { background: var(--black); }
+    .nav-cta { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; border: 1px solid var(--black); color: var(--black); padding: 10px 24px; text-decoration: none; transition: all .2s; }
+    .nav-cta:hover { background: var(--black); color: var(--white); }
 
-    /* HERO */
-    .page-hero {
-      min-height: 80vh; padding-top: 76px;
-      background: var(--white);
-      display: grid; grid-template-columns: 1fr 1fr;
-      border-bottom: 1px solid var(--line);
-    }
-    .page-hero-left {
-      padding: 80px 60px;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      border-right: 1px solid var(--line);
-    }
-    .page-label { font-family: var(--thin); font-size: 10px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--gray); margin-bottom: auto; }
-    .page-big { font-family: var(--display); font-weight: 800; font-size: clamp(72px, 11vw, 150px); text-transform: uppercase; line-height: .88; letter-spacing: -.02em; color: var(--black); margin-top: 40px; }
-    .page-big em { color: var(--red); font-style: oblique 10deg; }
-    .page-hero-right {
-      padding: 80px 60px; background: var(--off);
-      display: flex; flex-direction: column; justify-content: flex-end; gap: 48px;
-    }
-    .page-tagline { font-family: var(--serif); font-style: italic; font-size: 22px; font-weight: 400; line-height: 1.75; color: var(--gray); }
-    .hero-stat-row { display: flex; gap: 48px; align-items: flex-end; }
-    .hero-stat {}
-    .hero-stat-num { font-family: var(--display); font-weight: 800; font-size: 60px; line-height: 1; color: var(--red); }
-    .hero-stat-num span { color: var(--black); }
-    .hero-stat-label { font-family: var(--thin); font-size: 10px; font-weight: 200; letter-spacing: .2em; text-transform: uppercase; color: var(--gray); margin-top: 6px; }
+    .section-label { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .38em; text-transform: uppercase; margin-bottom: 56px; display: flex; align-items: center; gap: 16px; color: var(--gray); }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+    .on-blue .section-label { color: var(--black); opacity: .5; }
+    .on-blue .section-label::after { background: rgba(28,28,28,.15); }
+    .on-red .section-label { color: rgba(255,255,255,.5); }
+    .on-red .section-label::after { background: rgba(255,255,255,.2); }
 
-    /* SEÇÕES */
-    .section { padding: 100px 40px; }
-    .section-title { font-family: var(--display); font-weight: 800; font-size: clamp(48px, 7vw, 90px); text-transform: uppercase; line-height: .9; letter-spacing: -.01em; margin-bottom: 60px; }
-    .section-title em { color: var(--red); font-style: oblique 10deg; }
+    /* HERO — azul */
+    .page-hero { min-height: 85vh; padding-top: 76px; background: var(--blue); display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid rgba(28,28,28,.12); }
+    .hero-left { padding: 80px 56px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(28,28,28,.12); }
+    .hero-label { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .38em; text-transform: uppercase; color: var(--black); opacity: .5; }
+    .page-h1 { font-family: 'Barlow', sans-serif; font-weight: 900; font-size: clamp(68px, 10vw, 140px); text-transform: uppercase; line-height: .85; letter-spacing: -.025em; color: var(--black); }
+    .page-h1 em { font-style: italic; }
+    .hero-right { padding: 80px 56px; display: flex; flex-direction: column; justify-content: space-between; }
+    .hero-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(22px, 2.8vw, 36px); line-height: 1.6; color: var(--black); }
+    .hero-stats { display: flex; gap: 56px; align-items: flex-end; padding-top: 40px; border-top: 1px solid rgba(28,28,28,.12); }
+    .stat-n { font-family: 'Barlow', sans-serif; font-weight: 900; font-size: clamp(48px, 6vw, 80px); line-height: 1; letter-spacing: -.02em; color: var(--black); }
+    .stat-l { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .24em; text-transform: uppercase; color: var(--black); opacity: .5; margin-top: 8px; }
 
-    /* O QUE É */
-    #o-que-e { background: var(--off); }
-    .oque-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
-    .oque-card { padding: 48px 36px 60px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 16px; }
-    .oque-card:last-child { border-right: none; }
-    .oque-num { font-family: var(--thin); font-size: 10px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--red); }
-    .oque-title { font-family: var(--display); font-weight: 800; font-size: clamp(28px, 3vw, 42px); text-transform: uppercase; line-height: .92; letter-spacing: -.01em; }
-    .oque-text { font-family: var(--serif); font-style: italic; font-size: 17px; font-weight: 400; line-height: 1.75; color: var(--gray); margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line); }
+    /* O QUE É DIFERENTE — branco */
+    #diferente { background: var(--white); padding: 100px 48px 80px; }
+    .dif-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+    .dif-card { padding: 48px 36px 60px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 20px; }
+    .dif-card:last-child { border-right: none; }
+    .dif-num { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--red); }
+    .dif-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(26px, 2.8vw, 38px); text-transform: uppercase; line-height: .9; letter-spacing: .04em; color: var(--black); }
+    .dif-title em { font-style: italic; }
+    .dif-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 18px; line-height: 1.75; color: var(--gray); margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line); }
 
-    /* O QUE VOCÊ ENCONTRA */
-    #encontra { background: var(--white); padding: 100px 40px; }
-    .enc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-    .enc-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
-    .enc-item { display: flex; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--line); align-items: flex-start; }
-    .enc-item-num { font-family: var(--thin); font-size: 10px; font-weight: 100; letter-spacing: .2em; color: var(--red); flex-shrink: 0; padding-top: 4px; }
-    .enc-item-body {}
-    .enc-item-title { font-family: var(--display); font-weight: 700; font-size: 18px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; }
-    .enc-item-text { font-family: var(--thin); font-size: 13px; font-weight: 300; color: var(--gray); line-height: 1.65; }
-    .enc-side { display: flex; flex-direction: column; gap: 32px; }
-    .enc-quote { font-family: var(--serif); font-style: italic; font-size: 26px; font-weight: 400; line-height: 1.65; color: var(--black); padding: 48px; background: var(--off); border-top: 4px solid var(--red); }
-    .enc-quote em { color: var(--red); font-style: normal; }
+    /* O QUE VOCÊ ENCONTRA — vermelho */
+    #encontra { background: var(--red); padding: 100px 48px 80px; }
+    .enc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; border-top: 1px solid rgba(255,255,255,.2); padding-top: 0; }
+    .enc-list { list-style: none; display: flex; flex-direction: column; }
+    .enc-item { display: flex; gap: 24px; padding: 32px 0; border-bottom: 1px solid rgba(255,255,255,.2); align-items: flex-start; }
+    .enc-item:first-child { border-top: 1px solid rgba(255,255,255,.2); }
+    .enc-num { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .2em; color: rgba(255,255,255,.5); flex-shrink: 0; padding-top: 4px; }
+    .enc-body {}
+    .enc-title { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 16px; text-transform: uppercase; letter-spacing: .06em; color: var(--white); margin-bottom: 8px; }
+    .enc-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 17px; color: rgba(255,255,255,.7); line-height: 1.65; }
+    .enc-side { display: flex; flex-direction: column; justify-content: center; }
+    .enc-quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(32px, 4vw, 56px); line-height: 1.4; color: var(--white); }
 
-    /* QUEM FAZ PARTE */
-    #quem { background: var(--sand); padding: 100px 40px; }
-    .quem-title { font-family: var(--display); font-weight: 800; font-size: clamp(48px, 7vw, 90px); text-transform: uppercase; line-height: .9; letter-spacing: -.01em; color: var(--black); margin-bottom: 60px; }
-    .quem-title em { color: var(--red); font-style: oblique 10deg; }
-    .quem-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
-    .quem-card { padding: 40px 32px 48px; border-right: 1px solid var(--line); }
-    .quem-card:last-child { border-right: none; }
-    .quem-card-title { font-family: var(--display); font-weight: 800; font-size: 22px; text-transform: uppercase; letter-spacing: -.01em; color: var(--black); margin-bottom: 12px; line-height: .95; }
-    .quem-card-text { font-family: var(--thin); font-size: 12px; font-weight: 300; line-height: 1.7; color: var(--gray); }
+    /* PARA QUEM — branco */
+    #para-quem { background: var(--white); padding: 100px 48px 80px; }
+    .pq-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+    .pq-card { padding: 48px 32px 56px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px; }
+    .pq-card:last-child { border-right: none; }
+    .pq-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(20px, 2.2vw, 30px); text-transform: uppercase; line-height: .9; letter-spacing: .04em; color: var(--black); }
+    .pq-title em { font-style: italic; }
+    .pq-text { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 100; line-height: 1.75; color: var(--gray); margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line); }
 
     /* CTA */
-    #cta-page {
-      background: var(--white);
-      border-top: 2px solid var(--red);
-      padding: 120px 40px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-    }
-    .cta-label { font-family: var(--thin); font-size: 10px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--gray); margin-bottom: 32px; }
-    .cta-big { font-family: var(--display); font-weight: 800; font-size: clamp(60px, 9vw, 120px); text-transform: uppercase; line-height: .88; letter-spacing: -.02em; color: var(--black); }
-    .cta-big em { color: var(--red); font-style: oblique 10deg; }
-    .cta-page-right { display: flex; flex-direction: column; gap: 32px; }
-    .cta-page-text { font-family: var(--serif); font-style: italic; font-size: 22px; font-weight: 400; line-height: 1.7; color: var(--gray); }
-    .btn-red { font-family: var(--thin); font-size: 10px; font-weight: 300; letter-spacing: .22em; text-transform: uppercase; background: var(--red); color: var(--white); padding: 18px 40px; text-decoration: none; transition: background .2s; display: inline-block; align-self: flex-start; }
-    .btn-red:hover { background: var(--black); }
-    .cta-note { font-family: var(--thin); font-size: 10px; font-weight: 200; letter-spacing: .18em; text-transform: uppercase; color: rgba(28,28,28,.35); }
+    #cta-page { background: var(--white); border-top: 1px solid var(--line); padding: 120px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .cta-head { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(52px, 8vw, 110px); text-transform: uppercase; line-height: .88; letter-spacing: .04em; color: var(--black); margin-bottom: 48px; }
+    .cta-head em { font-style: italic; display: block; }
+    .cta-right { display: flex; flex-direction: column; gap: 28px; }
+    .cta-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.7; color: var(--gray); }
+    .btn-black { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 16px 36px; text-decoration: none; display: inline-block; transition: background .2s; align-self: flex-start; }
+    .btn-black:hover { background: var(--red); }
+    .cta-note { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .18em; text-transform: uppercase; color: var(--gray); }
 
-    footer { background: var(--white); border-top: 1px solid var(--line); padding: 48px 40px; display: flex; justify-content: space-between; align-items: center; }
-    .foot-brand { font-family: var(--display); font-weight: 800; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--black); }
-    .foot-brand em { color: var(--red); font-style: normal; }
-    .foot-back { font-family: var(--thin); font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; color: rgba(28,28,28,.4); text-decoration: none; transition: color .2s; }
-    .foot-back:hover { color: var(--red); }
+    footer { background: var(--white); border-top: 1px solid var(--line); padding: 48px; display: flex; justify-content: space-between; align-items: center; }
+    .foot-brand { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--black); }
+    .foot-sub { display: block; font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--gray); margin-top: 6px; }
+    .foot-back { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--gray); text-decoration: none; transition: color .2s; }
+    .foot-back:hover { color: var(--black); }
 
     @media (max-width: 960px) {
       nav { padding: 16px 20px; }
       .page-hero { grid-template-columns: 1fr; min-height: auto; }
-      .page-hero-left, .page-hero-right { padding: 60px 20px; }
-      .oque-grid, .quem-grid { grid-template-columns: 1fr; }
-      .oque-card, .quem-card { border-right: none; border-bottom: 1px solid var(--line); }
-      .enc-grid { grid-template-columns: 1fr; }
+      .hero-left, .hero-right { padding: 60px 20px; }
+      .dif-grid, .pq-grid { grid-template-columns: 1fr; }
+      .dif-card, .pq-card { border-right: none; border-bottom: 1px solid var(--line); }
+      .enc-grid { grid-template-columns: 1fr; gap: 40px; }
+      #diferente, #encontra, #para-quem { padding: 60px 20px; }
       #cta-page { grid-template-columns: 1fr; gap: 40px; padding: 80px 20px; }
-      #o-que-e, #encontra, #quem { padding: 60px 20px; }
+      footer { padding: 32px 20px; flex-direction: column; gap: 20px; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">Ela <em>É</em> Vista</a>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Ela É Vista</a>
   <a href="index.html" class="nav-back">← Voltar</a>
-  <a href="#cta-page" class="nav-btn">Quero entrar</a>
+  <a href="#cta-page" class="nav-cta">Quero entrar</a>
 </nav>
 
-<section class="page-hero">
-  <div class="page-hero-left">
-    <p class="page-label">(02) — Comunidade Between</p>
-    <h1 class="page-big">A comuni-<br>dade que<br>constrói<br><em>de verdade.</em></h1>
+<section class="page-hero on-blue">
+  <div class="hero-left">
+    <p class="hero-label">(02) Comunidade Between</p>
+    <h1 class="page-h1">A comuni-<br>dade que<br>constrói<br><em>de verdade.</em></h1>
   </div>
-  <div class="page-hero-right">
-    <p class="page-tagline">Não é grupo de motivação. É um canal de troca real entre mulheres que constroem com intenção — com Dani e Fabiola presentes, todos os dias.</p>
-    <div class="hero-stat-row">
-      <div class="hero-stat">
-        <div class="hero-stat-num">(<span>500</span>)</div>
-        <div class="hero-stat-label">membros ativas</div>
+  <div class="hero-right">
+    <p class="hero-tagline">Não é grupo de motivação. É um canal de troca real entre mulheres que constroem com intenção — com Dani e Fabiola presentes, todos os dias.</p>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-n">(500)</div>
+        <div class="stat-l">membros ativas</div>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num" style="color:var(--black);font-size:40px;font-style:oblique 10deg;">diário</div>
-        <div class="hero-stat-label">conteúdo e troca</div>
+      <div>
+        <div class="stat-n">Diário</div>
+        <div class="stat-l">conteúdo e troca</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="o-que-e" class="section">
-  <h2 class="section-title">O que é<br><em>diferente</em><br>aqui?</h2>
-  <div class="oque-grid">
-    <div class="oque-card">
-      <div class="oque-num">(01)</div>
-      <div class="oque-title">Dani e Fabiola estão lá</div>
-      <p class="oque-text">Não é um grupo entregue a um moderador. As fundadoras estão presentes — respondendo, questionando, compartilhando o que acontece nos bastidores do negócio delas.</p>
+<section id="diferente">
+  <p class="section-label">(01) O que é diferente aqui</p>
+  <div class="dif-grid">
+    <div class="dif-card">
+      <div class="dif-num">(01)</div>
+      <div class="dif-title">Dani e Fabiola<br><em>estão lá</em></div>
+      <p class="dif-text">Não é um grupo entregue a um moderador. As fundadoras estão presentes — respondendo, questionando, compartilhando o que acontece nos bastidores.</p>
     </div>
-    <div class="oque-card">
-      <div class="oque-num">(02)</div>
-      <div class="oque-title">Troca real, não performance</div>
-      <p class="oque-text">Aqui ninguém precisa fingir que está bem. A comunidade existe para compartilhar o que funciona, o que não funciona, e como ajustar o rumo — sem julgamento.</p>
+    <div class="dif-card">
+      <div class="dif-num">(02)</div>
+      <div class="dif-title">Troca real,<br><em>não performance</em></div>
+      <p class="dif-text">A comunidade existe para compartilhar o que funciona, o que não funciona, e como ajustar o rumo — sem julgamento.</p>
     </div>
-    <div class="oque-card">
-      <div class="oque-num">(03)</div>
-      <div class="oque-title">Método aplicado ao dia a dia</div>
-      <p class="oque-text">O que é ensinado nos workshops e consultoria também alimenta a comunidade. Você tem acesso ao método sendo aplicado em tempo real.</p>
+    <div class="dif-card">
+      <div class="dif-num">(03)</div>
+      <div class="dif-title">Método no<br><em>dia a dia</em></div>
+      <p class="dif-text">O que é ensinado nos workshops e consultoria também alimenta a comunidade. Você tem acesso ao método sendo aplicado em tempo real.</p>
     </div>
   </div>
 </section>
 
-<section id="encontra">
-  <h2 class="section-title">O que você<br><em>encontra</em></h2>
+<section id="encontra" class="on-red">
+  <p class="section-label">(02) O que você encontra</p>
   <div class="enc-grid">
     <ul class="enc-list">
       <li class="enc-item">
-        <span class="enc-item-num">(01)</span>
-        <div class="enc-item-body">
-          <div class="enc-item-title">Insights diários</div>
-          <div class="enc-item-text">Conteúdo prático sobre posicionamento, comunicação, vendas e negócios — publicado por Dani e Fabiola todos os dias.</div>
+        <span class="enc-num">(01)</span>
+        <div class="enc-body">
+          <div class="enc-title">Insights diários</div>
+          <div class="enc-text">Conteúdo prático sobre posicionamento, comunicação, vendas e negócios — publicado por Dani e Fabiola todos os dias.</div>
         </div>
       </li>
       <li class="enc-item">
-        <span class="enc-item-num">(02)</span>
-        <div class="enc-item-body">
-          <div class="enc-item-title">Bastidores da Between</div>
-          <div class="enc-item-text">Decisões de negócio, erros, acertos, estratégias em andamento. Transparência real sobre como construir algo que dura.</div>
+        <span class="enc-num">(02)</span>
+        <div class="enc-body">
+          <div class="enc-title">Bastidores da Between</div>
+          <div class="enc-text">Decisões de negócio, erros, acertos, estratégias em andamento. Transparência real sobre como construir algo que dura.</div>
         </div>
       </li>
       <li class="enc-item">
-        <span class="enc-item-num">(03)</span>
-        <div class="enc-item-body">
-          <div class="enc-item-title">Espaço para dúvidas reais</div>
-          <div class="enc-item-text">Aquelas dúvidas que você não pergunta em lugar nenhum porque parecem "básicas demais" — aqui têm resposta.</div>
+        <span class="enc-num">(03)</span>
+        <div class="enc-body">
+          <div class="enc-title">Espaço para dúvidas reais</div>
+          <div class="enc-text">Aquelas dúvidas que você não pergunta em lugar nenhum porque parecem "básicas demais" — aqui têm resposta.</div>
         </div>
       </li>
       <li class="enc-item">
-        <span class="enc-item-num">(04)</span>
-        <div class="enc-item-body">
-          <div class="enc-item-title">Acesso antecipado</div>
-          <div class="enc-item-text">Membros da comunidade têm acesso prioritário a workshops, novas soluções e vagas de consultoria antes do público geral.</div>
-        </div>
-      </li>
-      <li class="enc-item">
-        <span class="enc-item-num">(05)</span>
-        <div class="enc-item-body">
-          <div class="enc-item-title">Networking qualificado</div>
-          <div class="enc-item-text">Conexão com outras profissionais que estão construindo com método — não só mais seguidoras, mas parceiras de negócio.</div>
+        <span class="enc-num">(04)</span>
+        <div class="enc-body">
+          <div class="enc-title">Acesso antecipado</div>
+          <div class="enc-text">Membros têm acesso prioritário a workshops, novas soluções e vagas de consultoria antes do público geral.</div>
         </div>
       </li>
     </ul>
     <div class="enc-side">
-      <div class="enc-quote">
-        "Visibilidade não é sobre aparecer mais.<br>É sobre ser encontrada por quem <em>certo</em>,<br>na hora certa."
-      </div>
+      <p class="enc-quote">"Visibilidade não é sobre aparecer mais. É sobre ser encontrada por quem certo, na hora certa."</p>
     </div>
   </div>
 </section>
 
-<section id="quem">
-  <h2 class="quem-title">Para quem<br><em>é essa</em><br>comunidade?</h2>
-  <div class="quem-grid">
-    <div class="quem-card">
-      <div class="quem-card-title">A profissional em transição</div>
-      <div class="quem-card-text">Que está mudando de área, de cargo ou de modelo de negócio — e precisa de um lugar seguro para pensar em voz alta.</div>
+<section id="para-quem">
+  <p class="section-label">(03) Para quem é essa comunidade</p>
+  <div class="pq-grid">
+    <div class="pq-card">
+      <div class="pq-title">A profissional<br>em <em>transição</em></div>
+      <p class="pq-text">Que está mudando de área, de cargo ou de modelo de negócio — e precisa de um lugar seguro para pensar em voz alta.</p>
     </div>
-    <div class="quem-card">
-      <div class="quem-card-title">A empreendedora que quer crescer</div>
-      <div class="quem-card-text">Que tem um negócio funcionando mas sente que ainda não encontrou o posicionamento que gera atração consistente.</div>
+    <div class="pq-card">
+      <div class="pq-title">A empreendedora<br>que quer <em>crescer</em></div>
+      <p class="pq-text">Que tem um negócio funcionando mas sente que ainda não encontrou o posicionamento que gera atração consistente.</p>
     </div>
-    <div class="quem-card">
-      <div class="quem-card-title">A que está começando a aparecer</div>
-      <div class="quem-card-text">Que sabe que precisa de presença digital, mas não quer fazer qualquer coisa — quer fazer certo, com estratégia.</div>
+    <div class="pq-card">
+      <div class="pq-title">A que está<br>começando a <em>aparecer</em></div>
+      <p class="pq-text">Que sabe que precisa de presença digital, mas não quer fazer qualquer coisa — quer fazer certo, com estratégia.</p>
     </div>
-    <div class="quem-card">
-      <div class="quem-card-title">A que já sabe o que quer</div>
-      <div class="quem-card-text">Que tem clareza do objetivo mas quer estar em um ambiente que a mantenha em movimento — não só motivada.</div>
+    <div class="pq-card">
+      <div class="pq-title">A que já<br>sabe o que <em>quer</em></div>
+      <p class="pq-text">Que tem clareza do objetivo mas quer estar em um ambiente que a mantenha em movimento — não só motivada.</p>
     </div>
   </div>
 </section>
 
 <section id="cta-page">
   <div>
-    <p class="cta-label">Próximo passo</p>
-    <div class="cta-big">Pronta<br>para<br>entrar?</div>
+    <h2 class="cta-head">Pronta<br>para<br><em>entrar?</em></h2>
   </div>
-  <div class="cta-page-right">
-    <p class="cta-page-text">A comunidade Between é um espaço de troca real. Para entrar, clique abaixo e siga as instruções para acesso ao grupo.</p>
-    <a href="mailto:dani@danimelon.com" class="btn-red">Quero entrar na comunidade →</a>
+  <div class="cta-right">
+    <p class="cta-text">A comunidade Between é um espaço de troca real. Para entrar, clique abaixo e siga as instruções para acesso ao grupo.</p>
+    <a href="mailto:dani@danimelon.com" class="btn-black">Quero entrar na comunidade →</a>
     <p class="cta-note">Acesso via WhatsApp Community — curadoria de membros</p>
   </div>
 </section>
 
 <footer>
-  <div class="foot-brand">Ela <em>É</em> Vista — <span style="font-weight:200;letter-spacing:.1em;font-size:10px;">Powered by Between Phygital</span></div>
+  <div class="foot-brand">
+    Ela É Vista
+    <span class="foot-sub">Powered by Between Phygital</span>
+  </div>
   <a href="index.html" class="foot-back">← Voltar para o site</a>
 </footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('solid', window.scrollY > 60); });
+</script>
 </body>
 </html>

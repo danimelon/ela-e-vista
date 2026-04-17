@@ -6,214 +6,197 @@
   <title>Consultoria Ela É Vista — Between Phygital</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@100;200;300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     :root {
-      --red:      #E8202C;
-      --black:    #1C1C1C;
-      --charcoal: #3A3A3A;
-      --off:      #F5F4F2;
-      --sand:     #EDEBE8;
-      --gray:     #7A7268;
-      --line:     rgba(28,28,28,.1);
-      --white:    #FFFFFF;
-      --display:  Helvetica Neue, Helvetica, Arial, sans-serif;
-      --serif:    'EB Garamond', serif;
-      --thin:     'Inter', sans-serif;
+      --red:   #E8202C;
+      --blue:  #79aaef;
+      --black: #1C1C1C;
+      --gray:  #7A7268;
+      --white: #FFFFFF;
+      --line:  rgba(28,28,28,.1);
     }
-    body { background: var(--white); color: var(--black); font-family: var(--thin); font-weight: 300; overflow-x: hidden; }
+    body { background: var(--white); color: var(--black); font-family: 'Inter', sans-serif; font-weight: 100; overflow-x: hidden; }
+    body::after {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: .025;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px;
+    }
 
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 18px 40px; background: var(--white);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-logo { font-family: var(--display); font-weight: 800; font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); text-decoration: none; }
-    .nav-logo em { color: var(--red); font-style: normal; }
-    .nav-back { font-family: var(--thin); font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; color: var(--black); text-decoration: none; opacity: .5; transition: opacity .2s; }
+    /* NAV */
+    nav { position: fixed; inset: 0 0 auto 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; transition: background .3s; }
+    nav.solid { background: var(--white); border-bottom: 1px solid var(--line); }
+    .nav-logo { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+    .nav-back { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--black); text-decoration: none; opacity: .4; transition: opacity .2s; }
     .nav-back:hover { opacity: 1; }
-    .nav-btn { font-family: var(--thin); font-size: 10px; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; background: var(--red); color: var(--white); padding: 10px 24px; text-decoration: none; transition: background .2s; }
-    .nav-btn:hover { background: var(--black); }
+    .nav-cta { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; border: 1px solid var(--black); color: var(--black); padding: 10px 24px; text-decoration: none; transition: all .2s; }
+    .nav-cta:hover { background: var(--black); color: var(--white); }
+
+    /* SECTION LABEL */
+    .section-label { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .38em; text-transform: uppercase; margin-bottom: 56px; display: flex; align-items: center; gap: 16px; color: var(--gray); }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+    .section-label-white { color: rgba(255,255,255,.5); }
+    .section-label-white::after { background: rgba(255,255,255,.2) !important; }
+    .section-label-blue { color: var(--black); opacity: .5; }
+    .section-label-blue::after { background: rgba(28,28,28,.15) !important; }
 
     /* HERO */
     .page-hero {
-      min-height: 80vh; padding-top: 76px;
+      min-height: 90vh; padding-top: 76px; background: var(--white);
       display: grid; grid-template-columns: 1fr 1fr;
-      background: var(--white);
       border-bottom: 1px solid var(--line);
     }
-    .page-hero-left {
-      padding: 80px 60px;
-      display: flex; flex-direction: column; justify-content: space-between;
-      border-right: 1px solid var(--line);
+    .hero-left { padding: 80px 56px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid var(--line); }
+    .page-h1 {
+      font-family: 'Barlow', sans-serif; font-weight: 900;
+      font-size: clamp(72px, 11vw, 150px); text-transform: uppercase;
+      line-height: .85; letter-spacing: -.025em; color: var(--red);
     }
-    .page-label { font-family: var(--thin); font-size: 10px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--gray); }
-    .page-big { font-family: var(--display); font-weight: 800; font-size: clamp(80px, 11vw, 150px); text-transform: uppercase; line-height: .88; letter-spacing: -.02em; color: var(--black); }
-    .page-big em { color: var(--red); font-style: oblique 10deg; }
-    .page-tagline { font-family: var(--serif); font-style: italic; font-size: 22px; font-weight: 400; line-height: 1.7; color: var(--gray); max-width: 420px; }
-    .page-hero-right {
-      padding: 80px 60px; background: var(--off);
-      display: flex; flex-direction: column; justify-content: flex-end; gap: 40px;
-    }
-    .hero-detail-row { border-top: 1px solid var(--line); padding-top: 24px; }
-    .hero-detail-label { font-family: var(--thin); font-size: 10px; font-weight: 100; letter-spacing: .26em; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
-    .hero-detail-val { font-family: var(--display); font-weight: 700; font-size: 24px; text-transform: uppercase; color: var(--black); }
+    .page-h1 em { font-style: italic; }
+    .hero-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(18px, 2vw, 26px); line-height: 1.65; color: var(--black); max-width: 480px; }
+    .hero-right { padding: 80px 56px; display: flex; flex-direction: column; justify-content: flex-end; gap: 0; }
+    .detail-row { padding: 28px 0; border-bottom: 1px solid var(--line); }
+    .detail-row:first-child { border-top: 1px solid var(--line); }
+    .detail-lbl { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .32em; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+    .detail-val { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(22px, 2.5vw, 34px); text-transform: uppercase; letter-spacing: .04em; color: var(--black); }
 
-    /* DIVISOR EDITORIAL */
-    .divider {
-      border-top: 2px solid var(--red);
-      background: var(--white);
-      display: flex; align-items: baseline; justify-content: space-between;
-      padding: 20px 40px; gap: 24px;
-    }
-    .div-num { font-family: var(--display); font-weight: 800; font-size: clamp(44px, 7vw, 100px); color: var(--red); line-height: 1; letter-spacing: -.01em; flex-shrink: 0; }
-    .div-title { font-family: var(--display); font-weight: 700; font-size: clamp(22px, 3.5vw, 54px); color: var(--black); letter-spacing: .06em; text-transform: uppercase; line-height: 1; }
-    .div-small { font-family: var(--thin); font-size: 10px; font-weight: 100; letter-spacing: .24em; text-transform: uppercase; color: rgba(28,28,28,.3); text-align: right; flex-shrink: 0; align-self: center; }
-
-    /* SEÇÕES */
-    .section { padding: 100px 40px; }
-    .section-title { font-family: var(--display); font-weight: 800; font-size: clamp(48px, 7vw, 90px); text-transform: uppercase; line-height: .9; letter-spacing: -.01em; margin-bottom: 60px; }
-    .section-title em { color: var(--red); font-style: oblique 10deg; }
-
-    /* PARA QUEM */
-    #para-quem { background: var(--off); }
-    .pq-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); }
-    .pq-card { padding: 48px 36px 60px; border-right: 1px solid var(--line); }
+    /* PARA QUEM — branco */
+    #para-quem { background: var(--white); padding: 100px 48px 80px; }
+    .pq-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+    .pq-card { padding: 48px 36px 60px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 20px; }
     .pq-card:last-child { border-right: none; }
-    .pq-num { font-family: var(--thin); font-size: 10px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
-    .pq-title { font-family: var(--display); font-weight: 800; font-size: clamp(24px, 2.5vw, 36px); text-transform: uppercase; line-height: .92; letter-spacing: -.01em; margin-bottom: 20px; }
-    .pq-text { font-family: var(--serif); font-style: italic; font-size: 17px; font-weight: 400; line-height: 1.75; color: var(--gray); }
+    .pq-num { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--red); }
+    .pq-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(26px, 2.8vw, 38px); text-transform: uppercase; line-height: .9; letter-spacing: .04em; color: var(--black); }
+    .pq-title em { font-style: italic; }
+    .pq-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 18px; line-height: 1.75; color: var(--gray); margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line); }
 
-    /* PROCESSO */
-    #processo { background: var(--white); }
-    .processo-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
-    .fase { padding: 48px 36px 60px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 16px; }
+    /* PROCESSO — azul */
+    #processo { background: var(--blue); }
+    .proc-intro { padding: 80px 48px 60px; border-bottom: 1px solid rgba(28,28,28,.12); }
+    .proc-big { font-family: 'Barlow', sans-serif; font-weight: 900; font-size: clamp(60px, 9vw, 120px); text-transform: uppercase; line-height: .85; letter-spacing: -.025em; color: var(--black); }
+    .proc-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .fase { padding: 48px 36px 60px; border-right: 1px solid rgba(28,28,28,.12); display: flex; flex-direction: column; gap: 16px; }
     .fase:last-child { border-right: none; }
-    .fase-n { font-family: var(--thin); font-weight: 100; font-size: 11px; color: var(--red); letter-spacing: .14em; text-transform: uppercase; }
-    .fase-t { font-family: var(--display); font-weight: 800; font-size: clamp(28px, 3vw, 44px); text-transform: uppercase; letter-spacing: -.01em; color: var(--black); line-height: .92; }
-    .fase-items { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line); }
-    .fase-items li { font-family: var(--thin); font-size: 11px; font-weight: 300; color: var(--gray); display: flex; gap: 8px; line-height: 1.5; }
-    .fase-items li::before { content: '—'; color: var(--red); flex-shrink: 0; }
+    .fase-n { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--black); opacity: .5; }
+    .fase-t { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(28px, 3vw, 44px); text-transform: uppercase; letter-spacing: .04em; color: var(--black); line-height: .9; }
+    .fase-t em { font-style: italic; }
+    .fase-items { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(28,28,28,.15); }
+    .fase-items li { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 100; letter-spacing: .04em; color: var(--black); display: flex; gap: 12px; line-height: 1.5; }
+    .fase-items li::before { content: '—'; color: var(--black); opacity: .4; flex-shrink: 0; }
 
-    /* O QUE ESTÁ INCLUÍDO */
-    #incluso { background: var(--off); }
-    .incluso-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--line); }
-    .incluso-col { padding: 60px 40px; }
-    .incluso-col:first-child { border-right: 1px solid var(--line); }
-    .incluso-col h3 { font-family: var(--display); font-weight: 800; font-size: 28px; text-transform: uppercase; letter-spacing: -.01em; margin-bottom: 32px; }
-    .incluso-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
-    .incluso-list li { font-family: var(--thin); font-size: 14px; font-weight: 300; display: flex; gap: 16px; line-height: 1.55; color: var(--black); border-bottom: 1px solid var(--line); padding-bottom: 16px; }
-    .incluso-list li::before { content: '→'; color: var(--red); flex-shrink: 0; font-weight: 600; }
+    /* INCLUSO — branco */
+    #incluso { background: var(--white); padding: 100px 48px 80px; }
+    .inc-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+    .inc-col { padding: 60px 40px 60px 0; }
+    .inc-col:last-child { padding-left: 56px; border-left: 1px solid var(--line); padding-right: 0; }
+    .inc-col-title { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 14px; letter-spacing: .22em; text-transform: uppercase; color: var(--black); margin-bottom: 36px; }
+    .inc-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .inc-list li { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 18px; line-height: 1.6; color: var(--black); display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .inc-list li::before { content: '→'; color: var(--red); flex-shrink: 0; font-style: normal; font-family: 'Inter'; font-weight: 200; font-size: 13px; margin-top: 3px; }
 
-    /* RESULTADOS */
-    #resultados { background: var(--sand); padding: 100px 40px; }
-    .res-label-top { font-family: var(--thin); font-size: 10px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--gray); margin-bottom: 60px; }
-    .res-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); }
-    .res-item { padding: 48px 36px; border-right: 1px solid var(--line); }
+    /* RESULTADOS — vermelho */
+    #resultados { background: var(--red); padding: 100px 48px 80px; }
+    .res-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,.2); }
+    .res-item { padding: 48px 36px; border-right: 1px solid rgba(255,255,255,.2); }
     .res-item:last-child { border-right: none; }
-    .res-num { font-family: var(--display); font-weight: 800; font-size: clamp(60px, 8vw, 100px); line-height: 1; letter-spacing: -.01em; color: var(--red); }
-    .res-num span { color: var(--black); }
-    .res-label { font-family: var(--thin); font-size: 11px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; color: var(--gray); margin-top: 8px; }
+    .res-num { font-family: 'Barlow', sans-serif; font-weight: 900; font-size: clamp(60px, 8vw, 100px); line-height: 1; letter-spacing: -.02em; color: var(--white); }
+    .res-lbl { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-top: 10px; }
 
-    /* CTA */
-    #cta-page {
-      background: var(--white);
-      border-top: 2px solid var(--red);
-      padding: 120px 40px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-    }
-    .cta-label { font-family: var(--thin); font-size: 10px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--gray); margin-bottom: 32px; }
-    .cta-big { font-family: var(--display); font-weight: 800; font-size: clamp(60px, 9vw, 120px); text-transform: uppercase; line-height: .88; letter-spacing: -.02em; color: var(--black); }
-    .cta-big em { color: var(--red); font-style: oblique 10deg; }
-    .cta-page-right { display: flex; flex-direction: column; gap: 32px; }
-    .cta-page-text { font-family: var(--serif); font-style: italic; font-size: 22px; font-weight: 400; line-height: 1.7; color: var(--gray); }
-    .btn-red { font-family: var(--thin); font-size: 10px; font-weight: 300; letter-spacing: .22em; text-transform: uppercase; background: var(--red); color: var(--white); padding: 18px 40px; text-decoration: none; transition: background .2s; display: inline-block; align-self: flex-start; }
-    .btn-red:hover { background: var(--black); }
-    .cta-note { font-family: var(--thin); font-size: 10px; font-weight: 200; letter-spacing: .18em; text-transform: uppercase; color: rgba(28,28,28,.35); }
+    /* CTA — branco */
+    #cta-page { background: var(--white); border-top: 1px solid var(--line); padding: 120px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .cta-head { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(52px, 8vw, 110px); text-transform: uppercase; line-height: .88; letter-spacing: .04em; color: var(--black); margin-bottom: 48px; }
+    .cta-head em { font-style: italic; display: block; }
+    .cta-right { display: flex; flex-direction: column; gap: 28px; }
+    .cta-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.7; color: var(--gray); }
+    .btn-black { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 16px 36px; text-decoration: none; display: inline-block; transition: background .2s; align-self: flex-start; }
+    .btn-black:hover { background: var(--red); }
+    .cta-note { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .18em; text-transform: uppercase; color: var(--gray); }
 
-    footer { background: var(--white); border-top: 1px solid var(--line); padding: 48px 40px; display: flex; justify-content: space-between; align-items: center; }
-    .foot-brand { font-family: var(--display); font-weight: 800; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--black); }
-    .foot-brand em { color: var(--red); font-style: normal; }
-    .foot-back { font-family: var(--thin); font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; color: rgba(28,28,28,.4); text-decoration: none; transition: color .2s; }
-    .foot-back:hover { color: var(--red); }
+    /* FOOTER */
+    footer { background: var(--white); border-top: 1px solid var(--line); padding: 48px; display: flex; justify-content: space-between; align-items: center; }
+    .foot-brand { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--black); }
+    .foot-sub { display: block; font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--gray); margin-top: 6px; }
+    .foot-back { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--gray); text-decoration: none; transition: color .2s; }
+    .foot-back:hover { color: var(--black); }
 
     @media (max-width: 960px) {
       nav { padding: 16px 20px; }
       .page-hero { grid-template-columns: 1fr; min-height: auto; }
-      .page-hero-left, .page-hero-right { padding: 60px 20px; }
-      .pq-grid, .processo-grid, .incluso-grid, .res-row { grid-template-columns: 1fr; }
-      .pq-card, .fase, .incluso-col, .res-item { border-right: none; border-bottom: 1px solid var(--line); }
+      .hero-left, .hero-right { padding: 60px 20px; }
+      .pq-grid, .proc-grid, .inc-grid, .res-grid { grid-template-columns: 1fr; }
+      .pq-card, .fase { border-right: none; border-bottom: 1px solid var(--line); }
+      .inc-col, .inc-col:last-child { padding: 40px 0; border-left: none; border-bottom: 1px solid var(--line); }
+      #para-quem, #incluso, #resultados, #processo .proc-intro { padding: 60px 20px; }
       #cta-page { grid-template-columns: 1fr; gap: 40px; padding: 80px 20px; }
-      .section { padding: 60px 20px; }
+      footer { padding: 32px 20px; flex-direction: column; gap: 20px; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">Ela <em>É</em> Vista</a>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Ela É Vista</a>
   <a href="index.html" class="nav-back">← Voltar</a>
-  <a href="#cta-page" class="nav-btn">Quero minha consultoria</a>
+  <a href="#cta-page" class="nav-cta">Quero minha consultoria</a>
 </nav>
 
 <section class="page-hero">
-  <div class="page-hero-left">
-    <p class="page-label">(04) — Premium 1:1</p>
-    <h1 class="page-big">Consulto-<br>ria<br><em>Ela É</em><br>Vista.</h1>
-    <p class="page-tagline">Não é curso. Não é mentoria solta. É processo — com diagnóstico, construção e execução acompanhada.</p>
+  <div class="hero-left">
+    <div>
+      <p class="section-label">(04) Premium 1:1</p>
+      <h1 class="page-h1">Consulto-<br>ria<br>Ela É<br><em>Vista.</em></h1>
+    </div>
+    <p class="hero-tagline">Não é curso. Não é mentoria solta. É processo — com diagnóstico, construção e execução acompanhada.</p>
   </div>
-  <div class="page-hero-right">
-    <div class="hero-detail-row">
-      <div class="hero-detail-label">Formato</div>
-      <div class="hero-detail-val">1:1 Presencial ou Online</div>
+  <div class="hero-right">
+    <div class="detail-row">
+      <div class="detail-lbl">Formato</div>
+      <div class="detail-val">1:1 Presencial ou Online</div>
     </div>
-    <div class="hero-detail-row">
-      <div class="hero-detail-label">Duração</div>
-      <div class="hero-detail-val">Mínimo 3 meses</div>
+    <div class="detail-row">
+      <div class="detail-lbl">Duração</div>
+      <div class="detail-val">Mínimo 3 meses</div>
     </div>
-    <div class="hero-detail-row">
-      <div class="hero-detail-label">Vagas</div>
-      <div class="hero-detail-val">Limitadas — por processo</div>
+    <div class="detail-row">
+      <div class="detail-lbl">Vagas</div>
+      <div class="detail-val">Limitadas — por processo</div>
     </div>
-    <div class="hero-detail-row">
-      <div class="hero-detail-label">Entrega</div>
-      <div class="hero-detail-val">100% comprovada</div>
+    <div class="detail-row">
+      <div class="detail-lbl">Entrega</div>
+      <div class="detail-val">100% comprovada</div>
     </div>
   </div>
 </section>
 
-<section id="para-quem" class="section">
-  <h2 class="section-title">Para quem<br><em>é isso?</em></h2>
+<section id="para-quem">
+  <p class="section-label">(01) Para quem é isso</p>
   <div class="pq-grid">
     <div class="pq-card">
       <div class="pq-num">(01)</div>
-      <div class="pq-title">Você já sabe o que faz — mas o mercado não vê</div>
+      <div class="pq-title">Você já sabe o<br>que faz — mas o<br><em>mercado não vê</em></div>
       <p class="pq-text">Tem expertise, tem resultado, mas o posicionamento não comunica o valor real do que você entrega.</p>
     </div>
     <div class="pq-card">
       <div class="pq-num">(02)</div>
-      <div class="pq-title">Você está crescendo — mas sem estratégia</div>
-      <p class="pq-text">Os clientes chegam por indicação, mas você não sabe ao certo por que — e nem como replicar isso com consistência.</p>
+      <div class="pq-title">Você está crescendo<br>— mas sem<br><em>estratégia</em></div>
+      <p class="pq-text">Os clientes chegam por indicação, mas você não sabe ao certo por que — nem como replicar isso com consistência.</p>
     </div>
     <div class="pq-card">
       <div class="pq-num">(03)</div>
-      <div class="pq-title">Você quer dar o próximo salto — com segurança</div>
-      <p class="pq-text">Uma transição de carreira, um novo posicionamento, um rebranding. Você sabe que precisa de método — não de tentativa e erro.</p>
+      <div class="pq-title">Você quer dar o<br>próximo salto —<br><em>com segurança</em></div>
+      <p class="pq-text">Uma transição de carreira, um novo posicionamento. Você sabe que precisa de método — não de tentativa e erro.</p>
     </div>
   </div>
 </section>
 
-<div class="divider">
-  <span class="div-num">(F.00→F.03)</span>
-  <span class="div-title">O Processo</span>
-  <span class="div-small">4 fases · Método documentado</span>
-</div>
-
 <section id="processo">
-  <div class="processo-grid">
+  <div class="proc-intro">
+    <p class="section-label section-label-blue">(02) O processo</p>
+    <div class="proc-big">F.00 → F.03</div>
+  </div>
+  <div class="proc-grid">
     <div class="fase">
       <span class="fase-n">(F.00)</span>
       <div class="fase-t">Entrada</div>
@@ -226,7 +209,7 @@
     </div>
     <div class="fase">
       <span class="fase-n">(F.01)</span>
-      <div class="fase-t">Diagnós-<br>tico</div>
+      <div class="fase-t">Diagnós-<br><em>tico</em></div>
       <ul class="fase-items">
         <li>Análise de posicionamento atual</li>
         <li>Análise de comunicação e presença</li>
@@ -236,7 +219,7 @@
     </div>
     <div class="fase">
       <span class="fase-n">(F.02)</span>
-      <div class="fase-t">Constru-<br>ção</div>
+      <div class="fase-t">Constru-<br><em>ção</em></div>
       <ul class="fase-items">
         <li>Posicionamento documentado</li>
         <li>Proposta de valor definida</li>
@@ -246,7 +229,7 @@
     </div>
     <div class="fase">
       <span class="fase-n">(F.03)</span>
-      <div class="fase-t">Execução Acompa-<br>nhada</div>
+      <div class="fase-t">Execução<br><em>Acompa-<br>nhada</em></div>
       <ul class="fase-items">
         <li>Suporte contínuo via WhatsApp</li>
         <li>Reunião mensal de acompanhamento</li>
@@ -257,12 +240,12 @@
   </div>
 </section>
 
-<section id="incluso" class="section">
-  <h2 class="section-title">O que está<br><em>incluído</em></h2>
-  <div class="incluso-grid">
-    <div class="incluso-col">
-      <h3>Entregáveis</h3>
-      <ul class="incluso-list">
+<section id="incluso">
+  <p class="section-label">(03) O que está incluído</p>
+  <div class="inc-grid">
+    <div class="inc-col">
+      <div class="inc-col-title">Entregáveis</div>
+      <ul class="inc-list">
         <li>Diagnóstico de posicionamento (documento)</li>
         <li>Proposta de valor e diferencial competitivo</li>
         <li>Oferta estruturada com precificação</li>
@@ -271,12 +254,12 @@
         <li>Revisões e ajustes durante a execução</li>
       </ul>
     </div>
-    <div class="incluso-col">
-      <h3>Suporte</h3>
-      <ul class="incluso-list">
+    <div class="inc-col">
+      <div class="inc-col-title">Suporte</div>
+      <ul class="inc-list">
         <li>Acesso direto a Dani Mello e Fabiola Fuchs</li>
         <li>WhatsApp para dúvidas e validações</li>
-        <li>Reunião mensal de acompanhamento (ao vivo)</li>
+        <li>Reunião mensal de acompanhamento ao vivo</li>
         <li>Revisão de comunicação e conteúdo</li>
         <li>Feedback em tempo real para decisões</li>
         <li>Acesso à comunidade Between durante o processo</li>
@@ -286,39 +269,45 @@
 </section>
 
 <section id="resultados">
-  <div class="res-label-top">Resultado comprovado</div>
-  <div class="res-row">
+  <p class="section-label section-label-white">(04) Resultado comprovado</p>
+  <div class="res-grid">
     <div class="res-item">
       <div class="res-num">100%</div>
-      <div class="res-label">de entrega em todos os processos realizados</div>
+      <div class="res-lbl">de entrega em todos os processos realizados</div>
     </div>
     <div class="res-item">
-      <div class="res-num">(<span>500</span>)</div>
-      <div class="res-label">profissionais já passaram pelo método</div>
+      <div class="res-num">(500)</div>
+      <div class="res-lbl">profissionais já passaram pelo método</div>
     </div>
     <div class="res-item">
-      <div class="res-num">3<span>+</span></div>
-      <div class="res-label">anos desenvolvendo e refinando o método</div>
+      <div class="res-num">4×</div>
+      <div class="res-lbl">camadas de solução para cada momento</div>
     </div>
   </div>
 </section>
 
 <section id="cta-page">
   <div>
-    <p class="cta-label">Próximo passo</p>
-    <div class="cta-big">Pronta<br>para<br>começar?</div>
+    <h2 class="cta-head">Pronta<br>para<br><em>começar?</em></h2>
   </div>
-  <div class="cta-page-right">
-    <p class="cta-page-text">As vagas são limitadas e abertas por processo. Entre em contato para verificar disponibilidade e agendar sua call diagnóstico gratuita.</p>
-    <a href="mailto:dani@danimelon.com" class="btn-red">Agendar call gratuita →</a>
+  <div class="cta-right">
+    <p class="cta-text">As vagas são limitadas e abertas por processo. Entre em contato para verificar disponibilidade e agendar sua call diagnóstico gratuita.</p>
+    <a href="mailto:dani@danimelon.com" class="btn-black">Agendar call gratuita →</a>
     <p class="cta-note">Call diagnóstico — sem compromisso — 30 minutos</p>
   </div>
 </section>
 
 <footer>
-  <div class="foot-brand">Ela <em>É</em> Vista — <span style="font-weight:200;letter-spacing:.1em;font-size:10px;">Powered by Between Phygital</span></div>
+  <div class="foot-brand">
+    Ela É Vista
+    <span class="foot-sub">Powered by Between Phygital</span>
+  </div>
   <a href="index.html" class="foot-back">← Voltar para o site</a>
 </footer>
 
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('solid', window.scrollY > 60); });
+</script>
 </body>
 </html>
