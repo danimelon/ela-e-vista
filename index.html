@@ -266,7 +266,7 @@
     .sb-right-white { background: var(--white); }
     .sb-right-red   { background: var(--red); }
     .sb-right-blue  { background: var(--blue); }
-    .sb-right-off   { background: var(--off); }
+    .sb-right-off   { background: var(--white); }
 
     .sb-num-white {
       font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100;
@@ -346,7 +346,7 @@
     /* ══════════════════════════════
        CONSULTORIA SEÇÃO
     ══════════════════════════════ */
-    #consultoria { background: var(--off); }
+    #consultoria { background: var(--white); }
     .cons-top {
       padding: 100px 48px 80px;
       display: grid; grid-template-columns: 2fr 1fr; gap: 80px; align-items: end;
@@ -799,9 +799,12 @@
     </div>
   </div>
 
-  <!-- 7. fundo azul direita (quote) -->
+  <!-- 7. fundo azul esquerda (quote), conteúdo direita -->
   <div class="sol-block">
-    <div class="sb-left sb-left-white">
+    <div class="sb-left sb-right-blue" style="display:flex;align-items:center;justify-content:center;padding:80px 56px;">
+      <p class="sb-quote sb-quote-black" style="font-size:clamp(38px,4.5vw,68px);max-width:460px;">"Troca real entre quem constrói com intenção."</p>
+    </div>
+    <div class="sb-right sb-left-white" style="border-left:1px solid var(--line);flex-direction:column;gap:40px;justify-content:space-between;align-items:flex-start;">
       <span class="sb-num-dark">(02)</span>
       <h3 class="sb-title-black">Comuni-<br><em>dade.</em></h3>
       <p class="sb-desc-dark">Canal real. Troca entre quem constrói com intenção.</p>
@@ -811,9 +814,6 @@
         <li>Dani e Fabiola no canal</li>
       </ul>
       <a href="comunidade.html" class="sb-cta-black">Conhecer →</a>
-    </div>
-    <div class="sb-right sb-right-blue" style="display:flex;align-items:center;justify-content:center;padding:80px 56px;">
-      <p class="sb-quote sb-quote-black">"Troca real entre quem constrói com intenção."</p>
     </div>
   </div>
 
