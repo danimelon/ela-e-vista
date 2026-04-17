@@ -6,7 +6,7 @@
   <title>ELA É VISTA — Between Phygital</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,800;0,900;1,800;1,900&family=EB+Garamond:ital,wght@0,400;1,400&family=Inter:wght@200;300;400&family=Caveat:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@100;200;300&family=Caveat:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -26,7 +26,7 @@
       background: var(--white);
       color: var(--black);
       font-family: 'Inter', sans-serif;
-      font-weight: 300;
+      font-weight: 100;
       overflow-x: hidden;
     }
 
@@ -203,9 +203,9 @@
       color: var(--black); white-space: nowrap; display: inline-block;
     }
     .mf-serif {
-      font-family: 'EB Garamond', serif; font-weight: 400;
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
       font-size: clamp(52px, 9vw, 140px);
-      text-transform: uppercase; letter-spacing: .03em;
+      text-transform: uppercase; letter-spacing: .06em;
       color: var(--black); white-space: nowrap; display: inline-block; line-height: .86;
     }
     .mf-hand {
@@ -214,8 +214,8 @@
       color: var(--gray); display: inline-block;
     }
     .mf-serif-it {
-      font-family: 'EB Garamond', serif; font-style: italic;
-      font-size: clamp(24px, 3.6vw, 54px);
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+      font-size: clamp(24px, 3.8vw, 58px);
       color: var(--gray); display: inline-block; line-height: 1.2;
     }
     .c-red  { color: var(--red)  !important; }
@@ -251,11 +251,11 @@
       margin-bottom: 64px;
     }
     .gal-title {
-      font-family: 'Barlow', sans-serif; font-weight: 900;
-      font-size: clamp(52px, 8vw, 110px); text-transform: uppercase;
-      letter-spacing: -.02em; line-height: .88; color: var(--black);
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(52px, 8vw, 120px); text-transform: uppercase;
+      letter-spacing: .08em; line-height: .88; color: var(--black);
     }
-    .gal-title em { font-style: italic; color: var(--white); }
+    .gal-title em { font-style: italic; font-weight: 300; color: var(--white); }
     .gal-note {
       font-family: 'Caveat', cursive; font-size: 18px; color: var(--black);
       opacity: .55; text-align: right; max-width: 200px; line-height: 1.4;
@@ -346,9 +346,9 @@
     .on-light { color: var(--gray); }
 
     .sb-title {
-      font-family: 'Barlow', sans-serif; font-weight: 900;
-      font-size: clamp(52px, 7vw, 96px); text-transform: uppercase;
-      line-height: .88; letter-spacing: -.025em;
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(52px, 7vw, 104px); text-transform: uppercase;
+      line-height: .88; letter-spacing: .06em;
     }
     .on-dark-title  { color: var(--white); }
     .on-light-title { color: var(--black); }
@@ -367,8 +367,8 @@
     .sb-items.on-dark  { border-color: rgba(255,255,255,.15); }
     .sb-items.on-light { border-color: var(--line); }
     .sb-items li {
-      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 200;
-      letter-spacing: .04em; display: flex; gap: 12px;
+      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 100;
+      letter-spacing: .06em; display: flex; gap: 12px;
     }
     .sb-items.on-dark  li { color: rgba(255,255,255,.7); }
     .sb-items.on-light li { color: var(--black); }
@@ -456,8 +456,8 @@
       letter-spacing: -.02em; color: var(--black); line-height: .9;
     }
     .fase-d {
-      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 200;
-      color: var(--gray); line-height: 1.65;
+      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 100;
+      color: var(--gray); line-height: 1.65; letter-spacing: .02em;
       margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line);
     }
     .cons-cta {
@@ -493,11 +493,11 @@
     }
     .fund-label::before { content: '(04)'; color: var(--red); font-weight: 300; }
     .fund-title {
-      font-family: 'Barlow', sans-serif; font-weight: 900;
-      font-size: clamp(60px, 9vw, 120px); text-transform: uppercase;
-      line-height: .88; letter-spacing: -.025em; color: var(--white);
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(60px, 9vw, 130px); text-transform: uppercase;
+      line-height: .88; letter-spacing: .06em; color: var(--white);
     }
-    .fund-title em { font-style: italic; color: var(--red); }
+    .fund-title em { font-style: italic; font-weight: 300; color: var(--red); }
     .fund-tagline {
       font-family: 'EB Garamond', serif; font-style: italic;
       font-size: 22px; color: rgba(255,255,255,.4); line-height: 1.7;
@@ -527,9 +527,9 @@
       letter-spacing: .26em; text-transform: uppercase; color: var(--red);
     }
     .fund-name {
-      font-family: 'Barlow', sans-serif; font-weight: 900;
-      font-size: clamp(36px, 4vw, 58px); text-transform: uppercase;
-      line-height: .9; letter-spacing: -.02em; color: var(--white);
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(36px, 4vw, 64px); text-transform: uppercase;
+      line-height: .88; letter-spacing: .06em; color: var(--white);
     }
     .fund-bio {
       font-family: 'EB Garamond', serif; font-style: italic;
@@ -559,11 +559,11 @@
     }
     .btwn-label::before { content: '(05)'; color: var(--red); font-weight: 300; }
     .btwn-title {
-      font-family: 'Barlow', sans-serif; font-weight: 900;
-      font-size: clamp(52px, 8vw, 108px); text-transform: uppercase;
-      line-height: .85; letter-spacing: -.025em; color: var(--black);
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(52px, 8vw, 115px); text-transform: uppercase;
+      line-height: .85; letter-spacing: .06em; color: var(--black);
     }
-    .btwn-title em { color: var(--red); font-style: normal; }
+    .btwn-title em { color: var(--red); font-style: italic; }
     .btwn-sub {
       font-family: 'EB Garamond', serif; font-style: italic;
       font-size: 22px; line-height: 1.7; color: var(--gray);
@@ -619,9 +619,9 @@
     }
     .dep-label::before { content: '(06)'; color: var(--black); font-weight: 300; }
     .dep-title {
-      font-family: 'Barlow', sans-serif; font-weight: 900;
-      font-size: clamp(52px, 7.5vw, 100px); text-transform: uppercase;
-      line-height: .88; letter-spacing: -.025em; color: var(--black);
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(52px, 7.5vw, 110px); text-transform: uppercase;
+      line-height: .88; letter-spacing: .06em; color: var(--black);
     }
     .dep-sub {
       font-family: 'EB Garamond', serif; font-style: italic;
