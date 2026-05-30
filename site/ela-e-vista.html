@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ela É Vista — Mentoria de Marca Pessoal — Between Phygital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@100;200;300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root { --red: #740404; --blue: #79aaef; --black: #1C1C1C; --gray: #7A7268; --white: #FFFFFF; --off: #F5F4F2; --line: rgba(28,28,28,.1); }
+    body { background: var(--white); color: var(--black); font-family: 'Inter', sans-serif; font-weight: 100; overflow-x: hidden; }
+    body::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: .025; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 180px; }
+    .frame { display: block; border: 2px solid var(--black); }
+    .frame img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    nav { position: fixed; inset: 0 0 auto 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; transition: background .3s; }
+    nav.solid { background: var(--white); border-bottom: 1px solid var(--line); }
+    .nav-logo { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+    .nav-back { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--black); text-decoration: none; opacity: .4; transition: opacity .2s; }
+    .nav-back:hover { opacity: 1; }
+    .nav-cta { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; border: 1px solid var(--black); color: var(--black); padding: 10px 24px; text-decoration: none; transition: all .2s; }
+    .nav-cta:hover { background: var(--black); color: var(--white); }
+    .section-label { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .38em; text-transform: uppercase; margin-bottom: 56px; display: flex; align-items: center; gap: 16px; color: var(--gray); }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+    .section-label-white { color: rgba(255,255,255,.5); }
+    .section-label-white::after { background: rgba(255,255,255,.2) !important; }
+    .section-label-blue { color: var(--black); opacity: .5; }
+    .section-label-blue::after { background: rgba(28,28,28,.15) !important; }
+    .page-hero { min-height: 90vh; padding-top: 76px; background: var(--red); display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid rgba(255,255,255,.15); }
+    .hero-left { padding: 80px 56px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(255,255,255,.15); }
+    .page-h1 { font-family: 'Barlow', sans-serif; font-weight: 900; font-size: clamp(72px, 11vw, 150px); text-transform: uppercase; line-height: .85; letter-spacing: -.025em; color: var(--white); }
+    .page-h1 em { font-style: italic; }
+    .hero-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(18px, 2vw, 26px); line-height: 1.65; color: rgba(255,255,255,.8); max-width: 480px; }
+    .hero-right { padding: 80px 56px; display: flex; flex-direction: column; justify-content: flex-end; gap: 0; }
+    .detail-row { padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,.15); }
+    .detail-row:first-child { border-top: 1px solid rgba(255,255,255,.15); }
+    .detail-lbl { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .32em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 8px; }
+    .detail-val { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(22px, 2.5vw, 34px); text-transform: uppercase; letter-spacing: .04em; color: var(--white); }
+    #para-quem { background: var(--white); padding: 100px 48px 80px; }
+    .pq-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+    .pq-card { padding: 48px 36px 60px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 20px; }
+    .pq-card:last-child { border-right: none; }
+    .pq-num { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--red); }
+    .pq-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(26px, 2.8vw, 38px); text-transform: uppercase; line-height: .9; letter-spacing: .04em; color: var(--black); }
+    .pq-title em { font-style: italic; }
+    .pq-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 18px; line-height: 1.75; color: var(--gray); margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line); }
+    #processo { background: var(--blue); }
+    .proc-intro { padding: 80px 48px 60px; border-bottom: 1px solid rgba(28,28,28,.12); }
+    .proc-big { font-family: 'Barlow', sans-serif; font-weight: 900; font-size: clamp(60px, 9vw, 120px); text-transform: uppercase; line-height: .85; letter-spacing: -.025em; color: var(--black); }
+    .proc-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .fase { padding: 48px 36px 60px; border-right: 1px solid rgba(28,28,28,.12); display: flex; flex-direction: column; gap: 16px; }
+    .fase:last-child { border-right: none; }
+    .fase-n { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--black); opacity: .5; }
+    .fase-t { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(28px, 3vw, 44px); text-transform: uppercase; letter-spacing: .04em; color: var(--black); line-height: .9; }
+    .fase-t em { font-style: italic; }
+    .fase-items { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(28,28,28,.15); }
+    .fase-items li { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 100; letter-spacing: .04em; color: var(--black); display: flex; gap: 12px; line-height: 1.5; }
+    .fase-items li::before { content: '—'; color: var(--black); opacity: .4; flex-shrink: 0; }
+    #incluso { background: var(--white); padding: 100px 48px 80px; }
+    .inc-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+    .inc-col { padding: 60px 40px 60px 0; }
+    .inc-col:last-child { padding-left: 56px; border-left: 1px solid var(--line); padding-right: 0; }
+    .inc-col-title { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 14px; letter-spacing: .22em; text-transform: uppercase; color: var(--black); margin-bottom: 36px; }
+    .inc-list { list-style: none; display: flex; flex-direction: column; }
+    .inc-list li { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 18px; line-height: 1.6; color: var(--black); display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .inc-list li::before { content: '→'; color: var(--red); flex-shrink: 0; font-style: normal; font-family: 'Inter'; font-weight: 200; font-size: 13px; margin-top: 3px; }
+    #quote-strip { background: var(--red); padding: 80px 48px; }
+    .quote-big { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(32px, 4.5vw, 66px); line-height: 1.3; color: var(--white); max-width: 860px; }
+    #cta-page { background: var(--white); border-top: 1px solid var(--line); padding: 120px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .cta-head { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(52px, 8vw, 110px); text-transform: uppercase; line-height: .88; letter-spacing: .04em; color: var(--black); margin-bottom: 48px; }
+    .cta-head em { font-style: italic; display: block; }
+    .cta-right { display: flex; flex-direction: column; gap: 28px; }
+    .cta-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.7; color: var(--gray); }
+    .btn-black { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 16px 36px; text-decoration: none; display: inline-block; transition: background .2s; align-self: flex-start; }
+    .btn-black:hover { background: var(--red); }
+    .cta-note { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .18em; text-transform: uppercase; color: var(--gray); }
+    footer { background: var(--white); border-top: 1px solid var(--line); padding: 48px; display: flex; justify-content: space-between; align-items: center; }
+    .foot-brand { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--black); }
+    .foot-sub { display: block; font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--gray); margin-top: 6px; }
+    .foot-back { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--gray); text-decoration: none; transition: color .2s; }
+    .foot-back:hover { color: var(--black); }
+    @media (max-width: 960px) {
+      nav { padding: 16px 20px; }
+      .page-hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left, .hero-right { padding: 60px 20px; border-right: none; }
+      .pq-grid, .proc-grid, .inc-grid { grid-template-columns: 1fr; }
+      .pq-card, .fase { border-right: none; border-bottom: 1px solid var(--line); }
+      .inc-col, .inc-col:last-child { padding: 40px 0; border-left: none; border-bottom: 1px solid var(--line); }
+      #para-quem, #incluso, #quote-strip { padding: 60px 20px; }
+      .proc-intro { padding: 60px 20px; }
+      #cta-page { grid-template-columns: 1fr; gap: 40px; padding: 80px 20px; }
+      footer { padding: 32px 20px; flex-direction: column; gap: 20px; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <a href="../index.html" class="nav-logo">Between Phygital</a>
+  <a href="../index.html" class="nav-back">← Voltar</a>
+  <a href="#cta-page" class="nav-cta">Quero ser vista</a>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-left">
+    <div>
+      <p class="section-label" style="color:rgba(255,255,255,.5);"><!-- (02) Mentoria de Marca Pessoal --></p>
+      <h1 class="page-h1">Ela<br>É<br><em>Vista.</em></h1>
+    </div>
+    <p class="hero-tagline">Não é sobre postar mais. É sobre parar de deixar uma versão antiga comunicar por você.</p>
+  </div>
+  <div class="hero-right">
+    <div class="detail-row">
+      <div class="detail-lbl">Público</div>
+      <div class="detail-val">Criadoras e marcas pessoais</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-lbl">Formato</div>
+      <div class="detail-val">Presencial ou Online</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-lbl">Acompanhamento</div>
+      <div class="detail-val">Reunião mensal + WhatsApp</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-lbl">Resultado</div>
+      <div class="detail-val">Posicionamento com direção</div>
+    </div>
+  </div>
+</section>
+
+<section id="para-quem">
+  <p class="section-label">(01) Para quem é isso</p>
+  <div class="pq-grid">
+    <div class="pq-card">
+      <div class="pq-num">(01)</div>
+      <div class="pq-title">Criadora que<br>parou de<br><em>crescer</em></div>
+      <p class="pq-text">Você tem conteúdo, tem audiência. Mas algo travou. O algoritmo mudou ou o posicionamento ficou velho — e você não sabe bem qual dos dois.</p>
+    </div>
+    <div class="pq-card">
+      <div class="pq-num">(02)</div>
+      <div class="pq-title">Influenciadora<br>que quer virar<br><em>autoridade</em></div>
+      <p class="pq-text">Seguidores existem. Mas você quer construir percepção de especialista, atrair marcas melhores e monetizar com mais consistência.</p>
+    </div>
+    <div class="pq-card">
+      <div class="pq-num">(03)</div>
+      <div class="pq-title">Empreendedora<br>com trajetória<br><em>invisível</em></div>
+      <p class="pq-text">Você construiu muito. Mas o que aparece na sua presença digital ainda não comunica quem você se tornou. É hora de alinhar.</p>
+    </div>
+  </div>
+</section>
+
+<section id="processo">
+  <div class="proc-intro">
+    <p class="section-label section-label-blue">(02) Como funciona</p>
+    <div class="proc-big">F.01 → F.03</div>
+  </div>
+  <div class="proc-grid">
+    <div class="fase">
+      <span class="fase-n">(F.01)</span>
+      <div class="fase-t">Leitura e<br><em>Diagnóstico</em></div>
+      <ul class="fase-items">
+        <li>Presença digital e posicionamento atual</li>
+        <li>Audiência, narrativa e diferenciais</li>
+        <li>Percepção de valor e formatos</li>
+        <li>Marcas parceiras e concorrentes</li>
+        <li>Benchmarks e oportunidades</li>
+      </ul>
+    </div>
+    <div class="fase">
+      <span class="fase-n">(F.02)</span>
+      <div class="fase-t">Eixo<br><em>Estratégico</em></div>
+      <ul class="fase-items">
+        <li>Território de autoridade</li>
+        <li>Narrativa central e diferenciais pessoais</li>
+        <li>Códigos de desejo e direção estética</li>
+        <li>Pilares de conteúdo e tom de voz</li>
+        <li>Oportunidades de monetização</li>
+      </ul>
+    </div>
+    <div class="fase">
+      <span class="fase-n">(F.03)</span>
+      <div class="fase-t">Presença e<br><em>Crescimento</em></div>
+      <ul class="fase-items">
+        <li>Direção de conteúdo e campanhas</li>
+        <li>Relacionamento com marcas parceiras</li>
+        <li>Posicionamento em plataformas</li>
+        <li>Linguagem e comunidade</li>
+        <li>Plano de ação com prioridades</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="incluso">
+  <p class="section-label">(03) O que está incluído</p>
+  <div class="inc-grid">
+    <div class="inc-col">
+      <div class="inc-col-title">Entregáveis</div>
+      <ul class="inc-list">
+        <li>Diagnóstico completo de presença e posicionamento</li>
+        <li>Apresentação de diagnóstico e planejamento estratégico</li>
+        <li>Guia de posicionamento pessoal</li>
+        <li>Pilares de conteúdo</li>
+        <li>Calendário modelo</li>
+        <li>Diretrizes de comunicação e presença digital</li>
+        <li>Relatório mensal de insights</li>
+      </ul>
+    </div>
+    <div class="inc-col">
+      <div class="inc-col-title">Suporte</div>
+      <ul class="inc-list">
+        <li>Reunião mensal ao vivo ou online</li>
+        <li>Grupo de WhatsApp para alinhamentos e direcionamentos</li>
+        <li>Direcionamentos estratégicos conforme necessidade</li>
+        <li>Curadoria e aprovação de conteúdos significativos</li>
+        <li>Treinamentos ou palestras para equipe ou comunidade (quando aplicável)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div id="quote-strip">
+  <p class="quote-big">Desejo não nasce do excesso de conteúdo. Nasce de direção, repetição, estética, narrativa e intenção.</p>
+</div>
+
+<section id="cta-page">
+  <div>
+    <h2 class="cta-head">Pronta para<br>parar de<br><em>recomeçar?</em></h2>
+  </div>
+  <div class="cta-right">
+    <p class="cta-text">Você não precisa de mais conteúdo. Você precisa de uma direção clara para o que já tem. A Between pode construir isso com você.</p>
+    <a href="mailto:betweenphygital@gmail.com" class="btn-black">Quero ser vista →</a>
+    <p class="cta-note">Dani Mello — betweenphygital@gmail.com</p>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-brand">
+    Between Phygital
+    <span class="foot-sub">Creative Agency</span>
+  </div>
+  <a href="../index.html" class="foot-back">← Voltar para o site</a>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('solid', window.scrollY > 60); });
+</script>
+</body>
+</html>

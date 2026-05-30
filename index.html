@@ -3,714 +3,263 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ELA É VISTA — Between Phygital</title>
+  <title>Between Phygital — Creative Agency</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@100;200;300;400;500&family=Caveat:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@100;200;300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     :root {
-      --red:      #E8202C;
-      --pink:     #FF2770;
-      --blue:     #C4D0E8;
-      --black:    #1C1C1C;
-      --charcoal: #2A2A2A;
-      --off:      #F5F4F2;
-      --sand:     #EDEBE8;
-      --gray:     #7A7268;
-      --line:     rgba(28,28,28,.1);
-      --white:    #FFFFFF;
-      --display:  'Barlow', Helvetica Neue, Arial, sans-serif;
-      --serif:    'EB Garamond', serif;
-      --thin:     'Inter', sans-serif;
-      --script:   'Caveat', cursive;
+      --red:   #740404;
+      --blue:  #79aaef;
+      --black: #1C1C1C;
+      --off:   #F5F4F2;
+      --gray:  #7A7268;
+      --white: #FFFFFF;
+      --line:  rgba(28,28,28,.1);
     }
+    body { background: var(--white); color: var(--black); font-family: 'Inter', sans-serif; font-weight: 100; overflow-x: hidden; }
+    body::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: .025; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 180px; }
+    .frame { display: block; border: 2px solid var(--black); }
+    .frame img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 
-    body {
-      background: var(--white);
-      color: var(--black);
-      font-family: var(--thin);
-      font-weight: 300;
-      overflow-x: hidden;
-    }
-
-    /* paper grain overlay */
-    body::after {
-      content: '';
-      position: fixed; inset: 0;
-      pointer-events: none; z-index: 9999;
-      opacity: .03;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 200px;
-    }
-
-    /* ── POLAROID ── */
-    .polaroid {
-      background: var(--white);
-      padding: 10px 10px 38px;
-      box-shadow: 3px 6px 24px rgba(28,28,28,.16);
-      display: block;
-      position: relative;
-    }
-    .polaroid img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-    }
-    .polaroid-cap {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 38px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--script); font-size: 13px; color: var(--gray);
-    }
-    .tilt-l { transform: rotate(-2.4deg); }
-    .tilt-r { transform: rotate(1.6deg); }
-
-    /* paper clip */
-    .clip::before {
-      content: '';
-      position: absolute; top: -18px; left: 50%; transform: translateX(-50%);
-      width: 22px; height: 36px; z-index: 2;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 36'%3E%3Cpath d='M11 1C7.1 1 4 4.1 4 8v18c0 3.9 3.1 7 7 7s7-3.1 7-7V6c0-2.8-2.2-5-5-5S8 3.2 8 6v18c0 1.1.9 2 2 2s2-.9 2-2V8h2v16c0 2.2-1.8 4-4 4s-4-1.8-4-4V6c0-3.9 3.1-7 7-7s7 3.1 7 7v20h-2V6c0-2.8-2.2-5-5-5z' fill='%237A7268' opacity='.5'/%3E%3C/svg%3E") no-repeat center;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 18px 40px;
-      transition: background .3s, border-color .3s;
-    }
+    /* NAV */
+    nav { position: fixed; inset: 0 0 auto 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; transition: background .3s; }
     nav.solid { background: var(--white); border-bottom: 1px solid var(--line); }
-    .nav-logo {
-      font-family: var(--display); font-weight: 900; font-size: 13px;
-      letter-spacing: .18em; text-transform: uppercase; color: var(--black); text-decoration: none;
-    }
-    .nav-logo em { color: var(--red); font-style: normal; }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a {
-      font-family: var(--thin); font-size: 10px; font-weight: 200;
-      letter-spacing: .22em; text-transform: uppercase;
-      color: var(--black); text-decoration: none; opacity: .45; transition: opacity .2s;
-    }
+    .nav-logo { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--black); text-decoration: none; opacity: .35; transition: opacity .2s; }
     .nav-links a:hover { opacity: 1; }
-    .nav-btn {
-      font-family: var(--thin); font-size: 10px; font-weight: 300;
-      letter-spacing: .22em; text-transform: uppercase;
-      background: var(--red); color: var(--white);
-      padding: 10px 24px; text-decoration: none; transition: background .2s;
-    }
-    .nav-btn:hover { background: var(--black); }
+    .nav-cta { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; border: 1px solid var(--black); color: var(--black); padding: 10px 24px; text-decoration: none; transition: all .2s; }
+    .nav-cta:hover { background: var(--black); color: var(--white); }
 
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh; padding-top: 76px;
-      background: var(--white);
-      display: grid; grid-template-columns: 1fr 1fr;
-    }
-    .hero-left {
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 60px 48px 60px;
-      border-right: 1px solid var(--line);
-      position: relative;
-    }
-    .hero-catalog {
-      position: absolute; top: 96px; left: 48px;
-      font-family: var(--thin); font-size: 9px; font-weight: 100;
-      letter-spacing: .3em; text-transform: uppercase; color: rgba(28,28,28,.22);
-    }
-    .hero-big {
-      font-family: var(--display); font-weight: 900;
-      font-size: clamp(86px, 13vw, 196px);
-      line-height: .85; text-transform: uppercase; letter-spacing: -.02em;
-    }
-    .hero-big .outline {
-      display: block; color: transparent;
-      -webkit-text-stroke: 2.5px var(--black);
-    }
-    .hero-big .solid { display: block; color: var(--black); }
-    .hero-big .red   { display: block; color: var(--red);   }
-    .hero-annot {
-      font-family: var(--script); font-size: 19px; color: var(--gray);
-      margin-top: 28px; padding-left: 4px; line-height: 1.3;
-    }
+    /* HERO */
+    #hero { background: var(--white); min-height: 100vh; padding-top: 76px; display: grid; grid-template-rows: 1fr auto; }
+    .hero-main { display: grid; grid-template-columns: 1fr 640px; align-items: end; }
+    .hero-type { padding: 60px 48px; }
+    .hero-eyebrow { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .38em; text-transform: uppercase; color: var(--gray); margin-bottom: 28px; }
+    .hero-h1 { font-family: 'Barlow', sans-serif; font-weight: 900; font-size: clamp(72px, 12vw, 180px); line-height: .83; text-transform: uppercase; color: var(--red); letter-spacing: -.03em; }
+    .hero-h1 span { display: block; }
+    .hero-right { padding: 80px 48px 60px; display: flex; flex-direction: column; gap: 20px; justify-content: flex-end; border-left: 1px solid var(--line); }
+    .hero-img-wrap { width: 100%; }
+    .hero-img-wrap .frame { width: 100%; aspect-ratio: 3/4; }
+    .hero-img-caption { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .26em; text-transform: uppercase; color: var(--gray); margin-top: 12px; }
+    .hero-bottom { border-top: 1px solid var(--line); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+    .hero-tag { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(16px, 1.6vw, 24px); color: var(--black); line-height: 1.4; max-width: 600px; }
+    .hero-btns { display: flex; gap: 20px; align-items: center; flex-shrink: 0; }
+    .btn-outline-black { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; border: 1px solid var(--black); color: var(--black); padding: 13px 30px; text-decoration: none; transition: all .2s; display: inline-block; }
+    .btn-outline-black:hover { background: var(--black); color: var(--white); }
+    .btn-ghost { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .2em; text-transform: uppercase; color: var(--gray); text-decoration: none; border-bottom: 1px solid rgba(28,28,28,.2); padding-bottom: 2px; }
 
-    .hero-right {
-      display: flex; flex-direction: column;
-      padding: 80px 48px 60px; gap: 32px;
-      background: var(--off);
-    }
-    .hero-photo-wrap {
-      flex: 1; display: flex; align-items: center; justify-content: center;
-      position: relative;
-    }
-    .hero-photo-wrap .polaroid {
-      width: 72%; aspect-ratio: 3/4;
-    }
-    .hero-tagline-strip { padding-top: 28px; border-top: 1px solid var(--line); }
-    .hero-tagline {
-      font-family: var(--display); font-weight: 800;
-      font-size: clamp(12px, 1.2vw, 16px);
-      text-transform: uppercase; letter-spacing: .06em; color: var(--black); line-height: 1.55;
-    }
-    .hero-tagline .sub {
-      font-family: var(--script); font-size: 15px; color: var(--gray);
-      display: block; font-weight: 400; text-transform: none; letter-spacing: 0; margin-top: 6px;
-    }
-    .hero-ctas { display: flex; gap: 20px; align-items: center; margin-top: 18px; }
-    .btn-red {
-      font-family: var(--thin); font-size: 10px; font-weight: 300;
-      letter-spacing: .22em; text-transform: uppercase;
-      background: var(--red); color: var(--white);
-      padding: 14px 32px; text-decoration: none; transition: background .2s; display: inline-block;
-    }
-    .btn-red:hover { background: var(--black); }
-    .btn-line {
-      font-family: var(--thin); font-size: 10px; font-weight: 200;
-      letter-spacing: .2em; text-transform: uppercase;
-      color: rgba(28,28,28,.5); text-decoration: none;
-      border-bottom: 1px solid rgba(28,28,28,.2); padding-bottom: 2px;
-    }
-
-    /* ── DIVISORES ── */
-    .divider {
-      display: flex; align-items: baseline; justify-content: space-between;
-      padding: 20px 40px; gap: 24px;
-    }
-    .divider-white  { background: var(--white); border-top: 2px solid var(--red); }
-    .divider-pink   { background: var(--pink); }
-    .divider-black  { background: var(--black); }
-    .divider-blue   { background: var(--blue); }
-    .divider-red    { background: var(--red); }
-
-    .divider-white  .div-num  { color: var(--red); }
-    .divider-white  .div-title { color: var(--black); }
-    .divider-white  .div-small { color: rgba(28,28,28,.3); }
-
-    .divider-pink .div-num,
-    .divider-pink .div-title  { color: var(--white); }
-    .divider-pink .div-small  { color: rgba(255,255,255,.5); }
-
-    .divider-black .div-num,
-    .divider-black .div-title { color: var(--white); }
-    .divider-black .div-small { color: rgba(255,255,255,.3); }
-
-    .divider-blue .div-num,
-    .divider-blue .div-title  { color: var(--black); }
-    .divider-blue .div-small  { color: rgba(28,28,28,.4); }
-
-    .divider-red .div-num,
-    .divider-red .div-title   { color: var(--white); }
-    .divider-red .div-small   { color: rgba(255,255,255,.5); }
-
-    .div-num {
-      font-family: var(--display); font-weight: 900;
-      font-size: clamp(44px, 7vw, 100px);
-      line-height: 1; letter-spacing: -.01em; flex-shrink: 0;
-    }
-    .div-title {
-      font-family: var(--display); font-weight: 800;
-      font-size: clamp(22px, 3.5vw, 54px);
-      letter-spacing: .04em; text-transform: uppercase; line-height: 1;
-    }
-    .div-small {
-      font-family: var(--thin); font-size: 10px; font-weight: 100;
-      letter-spacing: .24em; text-transform: uppercase;
-      text-align: right; flex-shrink: 0; align-self: center;
-    }
-
-    /* ── MANIFESTO ── */
-    #manifesto { background: var(--white); padding: 100px 48px 80px; overflow: hidden; }
-    .stmt-row { display: block; line-height: .88; overflow: visible; }
-    .s-cond {
-      font-family: var(--display); font-weight: 900;
-      font-size: clamp(72px, 12.5vw, 190px);
-      text-transform: uppercase; letter-spacing: -.02em;
-      color: var(--black); white-space: nowrap; display: inline-block;
-    }
-    .s-cond-it {
-      font-family: var(--display); font-weight: 900; font-style: italic;
-      font-size: clamp(72px, 12.5vw, 190px);
-      text-transform: uppercase; letter-spacing: -.02em;
-      color: var(--black); white-space: nowrap; display: inline-block;
-    }
-    .s-serif {
-      font-family: var(--serif); font-weight: 400;
-      font-size: clamp(54px, 9.5vw, 148px);
-      text-transform: uppercase; letter-spacing: .04em;
-      color: var(--black); white-space: nowrap; display: inline-block; line-height: .88;
-    }
-    .s-serif-it {
-      font-family: var(--serif); font-weight: 400; font-style: italic;
-      font-size: clamp(26px, 3.8vw, 58px);
-      color: var(--gray); display: inline-block; line-height: 1.2;
-    }
-    .s-script {
-      font-family: var(--script); font-size: clamp(18px, 2.8vw, 44px);
-      color: var(--gray); display: inline-block;
-    }
-    .s-red   { color: var(--red)  !important; }
-    .s-pink  { color: var(--pink) !important; }
-    .s-indent  { padding-left: 18vw; }
-    .s-indent2 { padding-left: 36vw; }
-    .s-gap    { margin-top: clamp(4px, .8vw, 14px); }
-    .s-gap-lg { margin-top: clamp(14px, 2.2vw, 44px); }
-
-    .stmt-stat-strip {
-      margin-top: 80px; padding-top: 48px; border-top: 1px solid var(--line);
-      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px;
-    }
-    .stat-num {
-      font-family: var(--display); font-weight: 900;
-      font-size: clamp(48px, 7vw, 100px);
-      line-height: 1; letter-spacing: -.01em; color: var(--red);
-    }
-    .stat-num span { color: var(--black); }
-    .stat-label {
-      font-family: var(--thin); font-size: 11px; font-weight: 200;
-      letter-spacing: .22em; text-transform: uppercase; color: var(--gray); margin-top: 8px;
-    }
-
-    /* ── GALERIA ── */
-    #gallery { background: var(--off); padding: 80px 40px; }
-    .gallery-top {
-      display: flex; align-items: center; gap: 16px; margin-bottom: 52px;
-    }
-    .gallery-top-label {
-      font-family: var(--thin); font-size: 9px; font-weight: 100;
-      letter-spacing: .32em; text-transform: uppercase; color: var(--gray);
-      flex-shrink: 0;
-    }
-    .gallery-top-line { flex: 1; height: 1px; background: var(--line); }
-    .gallery-top-note {
-      font-family: var(--script); font-size: 15px; color: var(--gray); flex-shrink: 0;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 1.3fr .9fr 1fr;
-      grid-template-rows: auto auto;
-      gap: 28px;
-      align-items: start;
-    }
-    .gi-a { grid-column: 1; grid-row: 1 / 3; }
-    .gi-b { grid-column: 2; grid-row: 1; }
-    .gi-c { grid-column: 3; grid-row: 1; }
-    .gi-d {
-      grid-column: 2 / 4; grid-row: 2;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
-    }
-
-    .gi-a .polaroid { width: 100%; aspect-ratio: 2/3; }
-    .gi-b .polaroid { width: 100%; aspect-ratio: 3/4; }
-    .gi-c .polaroid { width: 100%; aspect-ratio: 4/3; }
-    .gi-d .polaroid { width: 100%; aspect-ratio: 4/3; }
-
-    .gallery-note {
-      font-family: var(--script); font-size: 15px; color: var(--gray);
-      margin-top: 14px; padding-left: 10px;
-    }
-
-    /* ── TICKER ── */
-    .ticker {
-      background: var(--red); padding: 14px 0; overflow: hidden; white-space: nowrap;
-    }
-    .ticker-track { display: inline-flex; animation: roll 28s linear infinite; }
-    .ticker-track span {
-      font-family: var(--display); font-weight: 800; font-size: 11px;
-      letter-spacing: .28em; text-transform: uppercase; color: var(--white); padding: 0 32px;
-    }
-    .ticker-track span.dot { color: rgba(255,255,255,.35); padding: 0 8px; }
+    /* TICKER */
+    .ticker { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 13px 0; overflow: hidden; white-space: nowrap; }
+    .ticker-track { display: inline-flex; animation: roll 36s linear infinite; }
+    .ticker-track span { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--black); padding: 0 28px; }
+    .ticker-track .dot { color: var(--red); padding: 0 6px; }
     @keyframes roll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ── SOLUÇÕES ── */
-    #solucoes { padding: 0; background: var(--white); }
-    .sol-header {
-      padding: 100px 40px 60px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end;
-    }
-    .sol-title {
-      font-family: var(--display); font-weight: 900;
-      font-size: clamp(68px, 11vw, 150px); line-height: .85;
-      text-transform: uppercase; letter-spacing: -.02em; color: var(--black);
-    }
-    .sol-title em { font-style: italic; color: var(--red); }
-    .sol-right { display: flex; flex-direction: column; justify-content: flex-end; gap: 20px; }
-    .sol-sub {
-      font-family: var(--serif); font-style: italic; font-size: 22px;
-      font-weight: 400; line-height: 1.65; color: var(--black); max-width: 380px;
-    }
-    .sol-note { font-family: var(--script); font-size: 17px; color: var(--gray); }
-    .sol-grid {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-      border-top: 1px solid var(--line);
-    }
-    .sol-card {
-      padding: 48px 36px 60px; border-right: 1px solid var(--line);
-      display: flex; flex-direction: column; gap: 20px;
-      background: var(--white); transition: background .25s;
-    }
-    .sol-card:last-child { border-right: none; }
-    .sol-card:hover { background: var(--sand); }
-    .sol-card-featured { border-top: 4px solid var(--red); }
-    .sol-num {
-      font-family: var(--thin); font-size: 10px; font-weight: 100;
-      letter-spacing: .28em; text-transform: uppercase; color: var(--red);
-    }
-    .sol-name {
-      font-family: var(--display); font-weight: 900;
-      font-size: clamp(30px, 3.2vw, 50px); text-transform: uppercase;
-      line-height: .9; letter-spacing: -.02em; color: var(--black);
-    }
-    .sol-card-featured .sol-name { color: var(--red); }
-    .sol-serif {
-      font-family: var(--serif); font-style: italic; font-size: 16px;
-      font-weight: 400; color: var(--gray); line-height: 1.65;
-    }
-    .sol-items {
-      list-style: none; display: flex; flex-direction: column; gap: 10px;
-      flex: 1; padding-top: 20px; border-top: 1px solid var(--line); margin-top: auto;
-    }
-    .sol-items li {
-      font-family: var(--thin); font-size: 11px; font-weight: 300;
-      display: flex; gap: 10px; line-height: 1.5; color: var(--black);
-    }
-    .sol-items li::before { content: '→'; color: var(--red); flex-shrink: 0; }
-    .sol-cta {
-      display: inline-block; margin-top: 16px;
-      font-family: var(--thin); font-size: 10px; font-weight: 300;
-      letter-spacing: .22em; text-transform: uppercase;
-      background: var(--red); color: var(--white);
-      padding: 12px 24px; text-decoration: none; transition: background .2s; align-self: flex-start;
-    }
-    .sol-cta:hover { background: var(--black); }
-    .sol-cta-ghost {
-      display: inline-block; margin-top: 16px;
-      font-family: var(--thin); font-size: 10px; font-weight: 200;
-      letter-spacing: .2em; text-transform: uppercase;
-      color: var(--black); text-decoration: none;
-      border-bottom: 1px solid rgba(28,28,28,.3); padding-bottom: 2px;
-      align-self: flex-start; transition: color .2s, border-color .2s;
-    }
-    .sol-cta-ghost:hover { color: var(--red); border-color: var(--red); }
+    /* SECTION LABEL */
+    .section-label { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .38em; text-transform: uppercase; margin-bottom: 72px; display: flex; align-items: center; gap: 16px; }
+    .section-label .num { font-weight: 200; margin-right: 4px; }
+    .section-label::after { content: ''; flex: 1; height: 1px; }
+    .on-red .section-label { color: rgba(255,255,255,.5); }
+    .on-red .section-label::after { background: rgba(255,255,255,.2); }
+    .on-white .section-label { color: var(--gray); }
+    .on-white .section-label::after { background: var(--line); }
+    .on-blue .section-label { color: var(--black); opacity: .5; }
+    .on-blue .section-label::after { background: rgba(28,28,28,.15); }
 
-    /* ── PREMIUM ── */
-    #premium { background: var(--off); }
-    .prem-hero {
-      display: grid; grid-template-columns: 1fr 1fr;
-      min-height: 70vh; border-bottom: 1px solid var(--line);
-    }
-    .prem-hero-text {
-      padding: 80px 60px;
-      display: flex; flex-direction: column; justify-content: space-between;
-      border-right: 1px solid var(--line);
-    }
-    .prem-label {
-      font-family: var(--thin); font-size: 10px; font-weight: 100;
-      letter-spacing: .28em; text-transform: uppercase; color: var(--gray);
-    }
-    .prem-big {
-      font-family: var(--display); font-weight: 900;
-      font-size: clamp(90px, 13vw, 170px);
-      text-transform: uppercase; line-height: .85; letter-spacing: -.02em; color: var(--red);
-    }
-    .prem-serif {
-      font-family: var(--serif); font-style: italic; font-size: 21px;
-      font-weight: 400; line-height: 1.7; color: var(--black); max-width: 400px;
-    }
-    .prem-hero-photo {
-      display: flex; align-items: center; justify-content: center;
-      padding: 60px; background: var(--sand); position: relative;
-    }
-    .prem-hero-photo .polaroid { width: 70%; aspect-ratio: 3/4; }
+    /* MANIFESTO */
+    #manifesto { background: var(--red); padding: 100px 48px 80px; overflow: hidden; }
+    .mf-row { display: block; line-height: .86; }
+    .mf-bold { font-family: 'Barlow', sans-serif; font-weight: 900; font-size: clamp(68px, 11.5vw, 172px); text-transform: uppercase; letter-spacing: -.025em; color: var(--white); white-space: nowrap; display: inline-block; }
+    .mf-bold-it { font-family: 'Barlow', sans-serif; font-weight: 900; font-style: italic; font-size: clamp(68px, 11.5vw, 172px); text-transform: uppercase; letter-spacing: -.025em; color: var(--white); white-space: nowrap; display: inline-block; }
+    .mf-serif { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(52px, 9vw, 140px); text-transform: uppercase; letter-spacing: .06em; color: var(--white); white-space: nowrap; display: inline-block; line-height: .86; }
+    .mf-hand { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 3.2vw, 50px); color: rgba(255,255,255,.65); display: inline-block; }
+    .mf-serif-it { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(24px, 3.8vw, 58px); color: rgba(255,255,255,.65); display: inline-block; line-height: 1.2; }
+    .gap   { margin-top: clamp(4px,.7vw,12px); }
+    .gap-l { margin-top: clamp(12px,2vw,36px); }
+    .ind1  { padding-left: 16vw; }
+    .ind2  { padding-left: 34vw; }
+    .mf-stats { margin-top: 100px; padding-top: 56px; border-top: 1px solid rgba(255,255,255,.2); display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+    .stat-n { font-family: 'Barlow', sans-serif; font-weight: 900; font-size: clamp(48px, 7vw, 96px); line-height: 1; letter-spacing: -.02em; color: var(--white); }
+    .stat-l { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .24em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-top: 10px; }
 
-    .prem-fases-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--line); background: var(--off);
-    }
-    .fase {
-      padding: 48px 36px 60px; border-right: 1px solid var(--line);
-      display: flex; flex-direction: column; gap: 16px;
-    }
-    .fase:last-child { border-right: none; }
-    .fase-n {
-      font-family: var(--thin); font-weight: 100; font-size: 11px;
-      color: var(--red); letter-spacing: .14em; text-transform: uppercase;
-    }
-    .fase-t {
-      font-family: var(--display); font-weight: 900;
-      font-size: clamp(26px, 2.8vw, 42px);
-      text-transform: uppercase; letter-spacing: -.01em; color: var(--black); line-height: .9;
-    }
-    .fase-d {
-      font-family: var(--thin); font-size: 12px; font-weight: 300;
-      color: var(--gray); line-height: 1.65; margin-top: auto; padding-top: 20px;
-      border-top: 1px solid var(--line);
-    }
-    .prem-cta-strip {
-      padding: 60px 40px;
-      display: flex; justify-content: space-between; align-items: center;
-      border-top: 1px solid var(--line); background: var(--off);
-    }
-    .prem-cta-copy {
-      font-family: var(--serif); font-style: italic; font-size: 20px;
-      font-weight: 400; color: var(--gray); max-width: 480px; line-height: 1.65;
-    }
+    /* INSTITUCIONAL */
+    #institucional { background: var(--white); }
+    .inst-intro { padding: 100px 48px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; border-bottom: 1px solid var(--line); }
+    .inst-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(52px, 8vw, 110px); text-transform: uppercase; line-height: .85; letter-spacing: .05em; color: var(--black); }
+    .inst-title em { font-style: italic; }
+    .inst-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.75; color: var(--gray); }
+    .inst-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+    .inst-card { padding: 48px 36px 60px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 16px; transition: background .25s; }
+    .inst-card:last-child { border-right: none; }
+    .inst-card:hover { background: var(--off); }
+    .inst-n { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--gray); }
+    .inst-t { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(22px, 2.2vw, 32px); text-transform: uppercase; line-height: .92; letter-spacing: .03em; color: var(--black); }
+    .inst-d { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 100; line-height: 1.75; color: var(--gray); letter-spacing: .02em; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line); }
 
-    /* ── FUNDADORAS ── */
-    #fundadoras { background: var(--charcoal); padding: 0; }
-    .fund-header {
-      padding: 80px 40px 60px;
-      display: flex; justify-content: space-between; align-items: flex-end;
-    }
-    .fund-title {
-      font-family: var(--display); font-weight: 900;
-      font-size: clamp(60px, 9vw, 116px); text-transform: uppercase;
-      line-height: .88; color: var(--off); letter-spacing: -.02em;
-    }
-    .fund-title em { font-style: italic; color: var(--red); }
-    .fund-tagline {
-      font-family: var(--serif); font-style: italic; font-size: 18px;
-      font-weight: 400; color: rgba(245,244,242,.4);
-      max-width: 260px; text-align: right; line-height: 1.7;
-    }
-    .fund-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      border-top: 1px solid rgba(245,244,242,.08);
-    }
-    .fund-card {
-      border-right: 1px solid rgba(245,244,242,.08);
-      display: flex; flex-direction: column;
-    }
+    /* IMPACT STRIP */
+    .impact-strip { padding: 80px 48px; }
+    .impact-strip-blue { background: var(--blue); border-top: 1px solid rgba(28,28,28,.1); }
+    .impact-strip-white { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .impact-strip-red { background: var(--red); }
+    .impact-q { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(28px, 3.8vw, 58px); line-height: 1.3; max-width: 860px; }
+    .impact-q-black { color: var(--black); }
+    .impact-q-white { color: var(--white); }
+    .impact-sub-text { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; margin-top: 28px; }
+    .impact-sub-text-gray { color: var(--gray); }
+
+    /* SERVIÇOS */
+    #servicos { background: var(--white); }
+    .serv-header { padding: 100px 48px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; border-bottom: 1px solid var(--line); }
+    .serv-big { font-family: 'Barlow', sans-serif; font-weight: 900; font-size: clamp(72px, 11vw, 150px); line-height: .85; text-transform: uppercase; letter-spacing: -.025em; color: var(--red); }
+    .serv-big em { font-style: italic; }
+    .serv-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(24px, 2.8vw, 38px); line-height: 1.5; color: var(--black); }
+    .serv-note { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(16px, 1.8vw, 24px); color: var(--black); opacity: .5; margin-top: 12px; }
+
+    /* BLOCOS SERVIÇOS */
+    .sol-block { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--line); }
+    .sb-left { padding: 80px 56px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; }
+    .sb-right { padding: 80px 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .sb-left-red { background: var(--red); }
+    .sb-left-white { background: var(--white); border-right: 1px solid var(--line); }
+    .sb-right-white { background: var(--white); }
+    .sb-right-blue { background: var(--blue); }
+    .sb-num-white { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .32em; text-transform: uppercase; color: rgba(255,255,255,.5); }
+    .sb-num-dark { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .32em; text-transform: uppercase; color: var(--gray); }
+    .sb-title-black { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(52px, 7vw, 96px); text-transform: uppercase; line-height: .88; letter-spacing: .04em; color: var(--black); }
+    .sb-title-black em { font-style: italic; }
+    .sb-desc-white { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 19px; line-height: 1.7; color: rgba(255,255,255,.75); }
+    .sb-desc-dark { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 19px; line-height: 1.7; color: var(--gray); }
+    .sb-items-white { list-style: none; display: flex; flex-direction: column; gap: 12px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.2); }
+    .sb-items-white li { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 100; letter-spacing: .06em; color: rgba(255,255,255,.8); display: flex; gap: 14px; align-items: baseline; }
+    .sb-items-white li::before { content: '—'; color: rgba(255,255,255,.35); flex-shrink: 0; }
+    .sb-items-dark { list-style: none; display: flex; flex-direction: column; gap: 12px; padding-top: 24px; border-top: 1px solid var(--line); }
+    .sb-items-dark li { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 100; letter-spacing: .06em; color: var(--black); display: flex; gap: 14px; align-items: baseline; }
+    .sb-items-dark li::before { content: '—'; color: var(--gray); flex-shrink: 0; }
+    .sb-cta-white { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; border: 1px solid var(--white); color: var(--white); padding: 12px 28px; text-decoration: none; display: inline-block; transition: all .2s; align-self: flex-start; }
+    .sb-cta-white:hover { background: var(--white); color: var(--red); }
+    .sb-cta-black { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; border: 1px solid var(--black); color: var(--black); padding: 12px 28px; text-decoration: none; display: inline-block; transition: all .2s; align-self: flex-start; }
+    .sb-cta-black:hover { background: var(--black); color: var(--white); }
+    .sb-quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(28px, 3.5vw, 50px); line-height: 1.4; text-align: center; max-width: 400px; }
+    .sb-quote-black { color: var(--black); }
+    .sb-photo-frame { width: 80%; max-width: 420px; }
+    .sb-photo-frame .frame { aspect-ratio: 3/4; width: 100%; }
+
+    /* SERVIÇOS MENORES */
+    .serv-mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+    .serv-mini-card { padding: 56px 40px 72px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 20px; background: var(--white); transition: background .25s; }
+    .serv-mini-card:last-child { border-right: none; }
+    .serv-mini-card:hover { background: var(--off); }
+    .serv-mini-num { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .32em; text-transform: uppercase; color: var(--gray); }
+    .serv-mini-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(32px, 3.5vw, 52px); text-transform: uppercase; line-height: .88; letter-spacing: .04em; color: var(--black); }
+    .serv-mini-title em { font-style: italic; color: var(--red); }
+    .serv-mini-desc { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 17px; line-height: 1.7; color: var(--gray); }
+    .serv-mini-items { list-style: none; display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 1px solid var(--line); margin-top: auto; }
+    .serv-mini-items li { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 100; letter-spacing: .04em; color: var(--black); display: flex; gap: 12px; align-items: baseline; }
+    .serv-mini-items li::before { content: '—'; color: var(--gray); flex-shrink: 0; }
+    .serv-mini-cta { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .2em; text-transform: uppercase; color: var(--gray); text-decoration: none; border-bottom: 1px solid rgba(28,28,28,.2); padding-bottom: 2px; align-self: flex-start; transition: color .2s, border-color .2s; }
+    .serv-mini-cta:hover { color: var(--red); border-color: var(--red); }
+
+    /* PARA QUEM */
+    #para-quem { background: var(--off); }
+    .pq-intro { padding: 100px 48px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; border-bottom: 1px solid var(--line); }
+    .pq-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(52px, 7.5vw, 110px); text-transform: uppercase; line-height: .88; letter-spacing: .05em; color: var(--black); }
+    .pq-title em { font-style: italic; }
+    .pq-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.7; color: var(--gray); }
+    .pq-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .pq-item { padding: 48px 40px 60px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--off); transition: background .25s; }
+    .pq-item:nth-child(3n) { border-right: none; }
+    .pq-item:hover { background: var(--white); }
+    .pq-num { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--red); margin-bottom: 20px; }
+    .pq-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(18px, 2vw, 26px); line-height: 1.45; color: var(--black); }
+
+    /* FUNDADORAS */
+    #fundadoras { background: var(--blue); }
+    .fund-intro { padding: 100px 48px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; border-bottom: 1px solid rgba(28,28,28,.12); }
+    .fund-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(60px, 9vw, 120px); text-transform: uppercase; line-height: .88; letter-spacing: .05em; color: var(--black); }
+    .fund-title em { font-style: italic; }
+    .fund-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 22px; color: var(--black); opacity: .6; line-height: 1.7; }
+    .fund-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(28,28,28,.12); }
+    .fund-card { border-right: 1px solid rgba(28,28,28,.12); display: grid; grid-template-columns: 1fr 1fr; }
     .fund-card:last-child { border-right: none; }
-    .fund-photo {
-      padding: 48px 48px 0;
-      display: flex; justify-content: center; align-items: flex-end;
-    }
-    .fund-photo .polaroid { width: 68%; aspect-ratio: 3/4; }
-    .fund-info { padding: 40px 48px 60px; display: flex; flex-direction: column; gap: 20px; }
-    .fund-role {
-      font-family: var(--thin); font-size: 10px; font-weight: 100;
-      letter-spacing: .26em; text-transform: uppercase; color: var(--red);
-    }
-    .fund-name {
-      font-family: var(--display); font-weight: 900;
-      font-size: clamp(46px, 6vw, 78px); text-transform: uppercase;
-      line-height: .88; letter-spacing: -.02em; color: var(--off);
-    }
-    .fund-serif {
-      font-family: var(--serif); font-style: italic; font-size: 17px;
-      font-weight: 400; color: rgba(245,244,242,.4); line-height: 1.75;
-    }
-    .fund-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-    .fund-tag {
-      font-family: var(--thin); font-size: 9px; font-weight: 200;
-      letter-spacing: .18em; text-transform: uppercase;
-      border: 1px solid rgba(245,244,242,.2); color: rgba(245,244,242,.4);
-      padding: 6px 14px;
-    }
+    .fund-photo-col { padding: 48px 24px 48px 48px; display: flex; align-items: flex-start; justify-content: center; }
+    .fund-photo-col .frame { width: 100%; aspect-ratio: 3/4; }
+    .fund-text-col { padding: 60px 40px 60px 32px; display: flex; flex-direction: column; gap: 20px; justify-content: center; }
+    .fund-role { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--black); opacity: .5; }
+    .fund-name { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(36px, 4vw, 58px); text-transform: uppercase; line-height: .9; letter-spacing: .05em; color: var(--black); }
+    .fund-name em { font-style: italic; }
+    .fund-bio { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 17px; color: var(--black); opacity: .6; line-height: 1.75; }
+    .fund-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .fund-tag { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .16em; text-transform: uppercase; border: 1px solid rgba(28,28,28,.25); color: var(--black); opacity: .6; padding: 6px 12px; }
 
-    /* ── BETWEEN PHYGITAL ── */
-    #between { background: var(--white); }
-    .btwn-header {
-      padding: 100px 40px 60px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end;
-    }
-    .btwn-title {
-      font-family: var(--display); font-weight: 900;
-      font-size: clamp(52px, 8vw, 108px); text-transform: uppercase;
-      line-height: .85; letter-spacing: -.02em; color: var(--black);
-    }
-    .btwn-title em { color: var(--red); font-style: normal; }
-    .btwn-intro {
-      font-family: var(--serif); font-style: italic; font-size: 20px;
-      font-weight: 400; line-height: 1.75; color: var(--gray);
-    }
-    .btwn-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--line);
-    }
-    .btwn-card {
-      padding: 48px 36px 60px; border-right: 1px solid var(--line);
-      display: flex; flex-direction: column; gap: 16px; transition: background .25s;
-    }
-    .btwn-card:last-child { border-right: none; }
-    .btwn-card:hover { background: var(--sand); }
-    .btwn-card-num {
-      font-family: var(--thin); font-size: 10px; font-weight: 100;
-      letter-spacing: .28em; text-transform: uppercase; color: var(--red);
-    }
-    .btwn-card-title {
-      font-family: var(--display); font-weight: 800;
-      font-size: clamp(20px, 2.2vw, 32px); text-transform: uppercase;
-      line-height: .9; letter-spacing: -.01em; color: var(--black);
-    }
-    .btwn-card-text {
-      font-family: var(--thin); font-size: 12px; font-weight: 300;
-      line-height: 1.7; color: var(--gray);
-      margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line);
-    }
-    .btwn-cta-row {
-      padding: 60px 40px;
-      display: flex; justify-content: space-between; align-items: center;
-      border-top: 1px solid var(--line);
-    }
-    .btwn-cta-text {
-      font-family: var(--thin); font-size: 11px; font-weight: 200;
-      letter-spacing: .2em; text-transform: uppercase; color: var(--gray);
-    }
-
-    /* ── DEPOIMENTOS ── */
-    #depoimentos { background: var(--off); padding: 0; }
-    .dep-header {
-      padding: 80px 40px 0;
-      display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 40px;
-    }
-    .dep-title {
-      font-family: var(--display); font-weight: 900;
-      font-size: clamp(52px, 7vw, 90px); text-transform: uppercase;
-      line-height: .88; letter-spacing: -.02em; color: var(--black);
-    }
-    .dep-intro {
-      font-family: var(--serif); font-style: italic; font-size: 19px;
-      font-weight: 400; line-height: 1.7; color: var(--gray);
-    }
-    .dep-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      margin-top: 60px; border-top: 1px solid var(--line);
-    }
-    .dep-card {
-      padding: 48px 40px 60px; border-right: 1px solid var(--line);
-      display: flex; flex-direction: column; gap: 24px; background: var(--off);
-    }
+    /* DEPOIMENTOS */
+    #depoimentos { background: var(--red); }
+    .dep-intro { padding: 100px 48px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; border-bottom: 1px solid rgba(255,255,255,.2); }
+    .dep-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(52px, 7.5vw, 110px); text-transform: uppercase; line-height: .88; letter-spacing: .05em; color: var(--white); }
+    .dep-title em { font-style: italic; }
+    .dep-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.7; color: rgba(255,255,255,.65); }
+    .dep-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .dep-card { padding: 56px 48px 72px; border-right: 1px solid rgba(255,255,255,.2); display: flex; flex-direction: column; gap: 24px; }
     .dep-card:last-child { border-right: none; }
-    .dep-card:nth-child(2) { background: var(--sand); }
-    .dep-q {
-      font-family: var(--serif); font-style: italic; font-weight: 400;
-      font-size: 80px; line-height: .8; color: var(--red);
-    }
-    .dep-text {
-      font-family: var(--serif); font-style: italic; font-size: 19px;
-      font-weight: 400; line-height: 1.7; color: var(--black); flex: 1;
-    }
-    .dep-autor { border-top: 1px solid var(--line); padding-top: 20px; }
-    .dep-nome {
-      font-family: var(--display); font-weight: 700; font-size: 14px;
-      text-transform: uppercase; letter-spacing: .1em;
-    }
-    .dep-neg {
-      font-family: var(--thin); font-size: 10px; font-weight: 200;
-      letter-spacing: .18em; text-transform: uppercase; color: var(--gray); margin-top: 4px;
-    }
+    .dep-q { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 72px; line-height: .8; color: var(--white); }
+    .dep-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 20px; line-height: 1.7; color: rgba(255,255,255,.85); flex: 1; }
+    .dep-author { padding-top: 20px; border-top: 1px solid rgba(255,255,255,.2); }
+    .dep-name { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 16px; text-transform: uppercase; letter-spacing: .12em; color: var(--white); }
+    .dep-role-text { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-top: 4px; }
 
-    /* ── CTA FINAL ── */
-    #cta {
-      background: var(--pink);
-      padding: 120px 40px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-    }
-    .cta-label {
-      font-family: var(--thin); font-size: 10px; font-weight: 100;
-      letter-spacing: .28em; text-transform: uppercase; color: rgba(255,255,255,.55);
-      margin-bottom: 32px;
-    }
-    .cta-head {
-      font-family: var(--display); font-weight: 900;
-      font-size: clamp(52px, 8vw, 112px); text-transform: uppercase;
-      line-height: .85; color: var(--white); letter-spacing: -.02em;
-      margin-bottom: 48px;
-    }
-    .cta-head em {
-      -webkit-text-stroke: 2px var(--white); color: transparent; font-style: normal; display: block;
-    }
-    .cta-btns { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
-    .cta-btn-main {
-      font-family: var(--thin); font-size: 10px; font-weight: 300;
-      letter-spacing: .22em; text-transform: uppercase;
-      background: var(--white); color: var(--pink);
-      padding: 18px 40px; text-decoration: none; transition: all .2s; display: inline-block;
-    }
-    .cta-btn-main:hover { background: var(--black); color: var(--white); }
-    .cta-btn-ghost {
-      font-family: var(--thin); font-size: 10px; font-weight: 200;
-      letter-spacing: .2em; text-transform: uppercase;
-      color: rgba(255,255,255,.7); text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,.35); padding-bottom: 2px;
-    }
-    .cta-right { display: flex; flex-direction: column; gap: 32px; }
-    .cta-photo-pair {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: end;
-    }
-    .cta-photo-pair .polaroid { width: 100%; aspect-ratio: 3/4; }
-    .cta-serif {
-      font-family: var(--serif); font-style: italic;
-      font-size: clamp(20px, 2.2vw, 28px); font-weight: 400;
-      line-height: 1.65; color: rgba(255,255,255,.85);
-    }
+    /* CTA */
+    #cta { background: var(--white); border-top: 1px solid var(--line); }
+    .cta-main { padding: 120px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .cta-label { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .36em; text-transform: uppercase; color: var(--gray); margin-bottom: 32px; }
+    .cta-head { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(52px, 8vw, 112px); text-transform: uppercase; line-height: .88; letter-spacing: .04em; color: var(--black); margin-bottom: 20px; }
+    .cta-head em { font-style: italic; display: block; }
+    .cta-body { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 20px; line-height: 1.7; color: var(--gray); margin-bottom: 40px; max-width: 440px; }
+    .cta-btns { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .btn-cta { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 16px 36px; text-decoration: none; transition: background .2s; display: inline-block; }
+    .btn-cta:hover { background: var(--red); }
+    .btn-cta-ghost { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .2em; text-transform: uppercase; color: var(--gray); text-decoration: none; border-bottom: 1px solid rgba(28,28,28,.2); padding-bottom: 2px; }
+    .cta-photo-big { width: 100%; }
+    .cta-photo-big .frame { width: 100%; aspect-ratio: 4/5; }
+    .cta-photo-caption { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .26em; text-transform: uppercase; color: var(--gray); margin-top: 12px; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--black);
-      border-top: none;
-      padding: 48px 40px;
-      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
-    }
-    .foot-brand {
-      font-family: var(--display); font-weight: 900; font-size: 12px;
-      letter-spacing: .18em; text-transform: uppercase; color: var(--white);
-    }
-    .foot-brand em { color: var(--red); font-style: normal; }
-    .foot-sub {
-      display: block; font-family: var(--thin); font-size: 9px; font-weight: 100;
-      letter-spacing: .22em; text-transform: uppercase;
-      color: rgba(255,255,255,.22); margin-top: 4px;
-    }
-    .foot-copy {
-      font-family: var(--thin); font-size: 9px; font-weight: 200;
-      letter-spacing: .16em; text-transform: uppercase;
-      color: rgba(255,255,255,.18); text-align: center;
-    }
+    /* FOOTER */
+    footer { background: var(--white); border-top: 1px solid var(--line); padding: 48px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+    .foot-brand { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--black); }
+    .foot-sub { display: block; font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--gray); margin-top: 6px; }
+    .foot-copy { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .14em; text-transform: uppercase; color: var(--gray); text-align: center; }
     .foot-links { display: flex; gap: 28px; justify-content: flex-end; }
-    .foot-links a {
-      font-family: var(--thin); font-size: 9px; font-weight: 200;
-      letter-spacing: .22em; text-transform: uppercase;
-      color: rgba(255,255,255,.28); text-decoration: none; transition: color .2s;
-    }
-    .foot-links a:hover { color: var(--red); }
+    .foot-links a { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--gray); text-decoration: none; transition: color .2s; }
+    .foot-links a:hover { color: var(--black); }
 
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 960px) {
       nav { padding: 16px 20px; }
       .nav-links { display: none; }
-      #hero { grid-template-columns: 1fr; min-height: 100svh; }
-      .hero-left { padding: 100px 20px 40px; border-right: none; border-bottom: 1px solid var(--line); }
-      .hero-right { padding: 40px 20px; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; }
-      .gi-a { grid-column: 1 / -1; grid-row: 1; }
-      .gi-b { grid-column: 1; grid-row: 2; }
-      .gi-c { grid-column: 2; grid-row: 2; }
-      .gi-d { grid-column: 1 / -1; grid-row: 3; }
-      .sol-header { grid-template-columns: 1fr; }
-      .sol-grid { grid-template-columns: 1fr 1fr; }
-      .prem-hero { grid-template-columns: 1fr; }
-      .prem-fases-grid { grid-template-columns: 1fr 1fr; }
-      .fund-grid, .btwn-grid { grid-template-columns: 1fr; }
-      .dep-header { grid-template-columns: 1fr; }
-      .dep-grid { grid-template-columns: 1fr; }
-      #cta { grid-template-columns: 1fr; padding: 80px 20px; gap: 40px; }
-      footer { grid-template-columns: 1fr; gap: 24px; }
+      .hero-main { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero-type { padding: 60px 20px 40px; }
+      .hero-bottom { padding: 24px 20px; flex-direction: column; align-items: flex-start; gap: 20px; }
+      #manifesto { padding: 60px 20px; }
+      .inst-intro, .serv-header, .pq-intro, .fund-intro, .dep-intro { padding: 60px 20px; grid-template-columns: 1fr; gap: 32px; }
+      .inst-grid, .serv-mini-grid { grid-template-columns: 1fr 1fr; }
+      .sol-block { grid-template-columns: 1fr; }
+      .pq-grid { grid-template-columns: 1fr 1fr; }
+      .fund-grid { grid-template-columns: 1fr; }
+      .fund-card { grid-template-columns: 1fr 1fr; }
+      .dep-grid { grid-template-columns: 1fr 1fr; }
+      .cta-main { grid-template-columns: 1fr; padding: 80px 20px; gap: 48px; }
+      footer { grid-template-columns: 1fr; gap: 24px; padding: 32px 20px; }
       .foot-links { justify-content: flex-start; }
-      .sol-header, .fund-header, .dep-header, .prem-hero-text,
-      .prem-cta-strip, .btwn-header, .btwn-cta-row { padding-left: 20px; padding-right: 20px; }
-      .fund-info { padding: 32px 24px 48px; }
-      .btwn-card, .fund-card { border-right: none; border-bottom: 1px solid var(--line); }
-      .fund-card { border-bottom-color: rgba(245,244,242,.08); }
-      .divider { padding: 16px 20px; }
+      .mf-stats { grid-template-columns: 1fr 1fr; }
+      .impact-strip { padding: 60px 20px; }
+      .sb-left, .sb-right { padding: 60px 32px; }
     }
     @media (max-width: 600px) {
-      .sol-grid, .prem-fases-grid { grid-template-columns: 1fr; }
-      .gi-d { grid-template-columns: 1fr; }
-      .cta-photo-pair { grid-template-columns: 1fr; }
+      .inst-grid, .serv-mini-grid, .pq-grid, .dep-grid, .fund-card { grid-template-columns: 1fr; }
+      .mf-stats { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -718,131 +267,43 @@
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-logo">Ela <em>É</em> Vista</a>
+  <a href="#" class="nav-logo">Between Phygital</a>
   <ul class="nav-links">
-    <li><a href="#solucoes">Soluções</a></li>
-    <li><a href="#premium">Consultoria</a></li>
-    <li><a href="#fundadoras">A dupla</a></li>
-    <li><a href="#between">Agência</a></li>
-    <li><a href="#depoimentos">Resultados</a></li>
+    <li><a href="#consultoria-marca">Consultoria de Marca</a></li>
+    <li><a href="#ela-e-vista">Ela É Vista</a></li>
+    <li><a href="#palestras">Palestras</a></li>
+    <li><a href="#in-frame">In Frame</a></li>
+    <li><a href="#socia-ia">Sócia.IA</a></li>
+    <li><a href="#treinamentos">Treinamentos</a></li>
   </ul>
-  <a href="#cta" class="nav-btn">Quero ser vista</a>
+  <a href="#cta" class="nav-cta">Fale com a Between</a>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-left">
-    <span class="hero-catalog">(001) — Ela É Vista</span>
-    <h1 class="hero-big">
-      <span class="outline">ELA</span>
-      <span class="solid">É</span>
-      <span class="red">Vista.</span>
-    </h1>
-    <p class="hero-annot">posicionamento é método, não sorte.</p>
-  </div>
-  <div class="hero-right">
-    <div class="hero-photo-wrap">
-      <div class="polaroid tilt-r clip" style="width:72%;aspect-ratio:3/4;position:relative;">
-        <img src="images/hero.jpeg" alt="Dani Mello e Fabiola Fuchs" />
-        <span class="polaroid-cap">Dani + Fabiola — Between</span>
+  <div class="hero-main">
+    <div class="hero-type">
+      <p class="hero-eyebrow">(001) — Between Phygital Creative Agency</p>
+      <h1 class="hero-h1">
+        <span>BETWEEN</span>
+        <span>PHYGITAL</span>
+        <span>CREATIVE.</span>
+      </h1>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-wrap">
+        <div class="frame" style="aspect-ratio:3/4;width:100%;">
+          <img src="images/hero.jpeg" alt="Dani Mello e Fabiola Fuchs — Between Phygital" />
+        </div>
       </div>
-    </div>
-    <div class="hero-tagline-strip">
-      <p class="hero-tagline">
-        QUANDO O POSICIONAMENTO ESTÁ CERTO,<br>O MERCADO ENCONTRA VOCÊ.
-        <span class="sub">Não o contrário.</span>
-      </p>
-      <div class="hero-ctas">
-        <a href="#solucoes" class="btn-red">Explorar soluções</a>
-        <a href="#premium" class="btn-line">Ver consultoria</a>
-      </div>
+      <p class="hero-img-caption">Dani Mello + Fabiola Fuchs — Between Phygital</p>
     </div>
   </div>
-</section>
-
-<!-- DIVISOR (01) — PINK -->
-<div class="divider divider-pink">
-  <span class="div-num">(01)</span>
-  <span class="div-title">O Manifesto</span>
-  <span class="div-small">Powered by Between Phygital</span>
-</div>
-
-<!-- MANIFESTO -->
-<section id="manifesto">
-  <div class="stmt-row">
-    <span class="s-cond">QUANDO O</span>
-  </div>
-  <div class="stmt-row s-gap">
-    <span class="s-serif">POSICIONAMENTO</span>
-  </div>
-  <div class="stmt-row s-gap">
-    <span class="s-cond">ESTÁ&nbsp;</span><span class="s-cond-it s-red">CERTO,</span>
-  </div>
-  <div class="stmt-row s-gap s-indent">
-    <span class="s-script">o mercado</span>
-  </div>
-  <div class="stmt-row s-gap">
-    <span class="s-cond">ENCONTRA</span>
-  </div>
-  <div class="stmt-row s-gap">
-    <span class="s-cond-it">VOCÊ.</span>
-  </div>
-  <div class="stmt-row s-gap-lg s-indent2">
-    <span class="s-serif-it">Não o contrário.</span>
-  </div>
-
-  <div class="stmt-stat-strip">
-    <div class="stat-item">
-      <div class="stat-num">100<span>%</span></div>
-      <div class="stat-label">de entrega em todos os processos</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">4<span>×</span></div>
-      <div class="stat-label">camadas de solução — uma porta para cada momento</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">(500)</div>
-      <div class="stat-label">mais de 500 mentoradas</div>
-    </div>
-  </div>
-</section>
-
-<!-- GALERIA -->
-<section id="gallery">
-  <div class="gallery-top">
-    <span class="gallery-top-label">(002) — Imagens</span>
-    <span class="gallery-top-line"></span>
-    <span class="gallery-top-note">a dupla por trás de tudo</span>
-  </div>
-  <div class="gallery-grid">
-    <div class="gi-a">
-      <div class="polaroid tilt-l" style="width:100%;aspect-ratio:2/3;">
-        <img src="images/dani1.jpeg" alt="Dani Mello" />
-        <span class="polaroid-cap">Dani Mello</span>
-      </div>
-    </div>
-    <div class="gi-b">
-      <div class="polaroid tilt-r clip" style="width:100%;aspect-ratio:3/4;position:relative;">
-        <img src="images/fabiola.jpeg" alt="Fabiola Fuchs" />
-        <span class="polaroid-cap">Fabiola Fuchs</span>
-      </div>
-      <p class="gallery-note">co-fundadoras Between</p>
-    </div>
-    <div class="gi-c">
-      <div class="polaroid" style="width:100%;aspect-ratio:4/3;">
-        <img src="images/consultoria.jpeg" alt="Consultoria" />
-        <span class="polaroid-cap">processo de consultoria</span>
-      </div>
-    </div>
-    <div class="gi-d">
-      <div class="polaroid tilt-l" style="width:100%;aspect-ratio:4/3;">
-        <img src="images/04B5501A-26B2-4074-AE76-07B2D47AD8A1.jpeg" alt="" />
-        <span class="polaroid-cap">(003)</span>
-      </div>
-      <div class="polaroid tilt-r" style="width:100%;aspect-ratio:4/3;">
-        <img src="images/BA4BC872-7320-4DCD-BAE6-FA824128D1E7.jpeg" alt="" />
-        <span class="polaroid-cap">(004)</span>
-      </div>
+  <div class="hero-bottom">
+    <p class="hero-tag">Unimos posicionamento, narrativa, estética refinada, conteúdo e IA aplicada para transformar presença em desejo, direção e resultado.</p>
+    <div class="hero-btns">
+      <a href="#servicos" class="btn-outline-black">Conhecer os serviços</a>
+      <a href="#cta" class="btn-ghost">Falar com a Between</a>
     </div>
   </div>
 </section>
@@ -851,164 +312,276 @@
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     <span>Posicionamento</span><span class="dot">×</span>
-    <span>Visibilidade</span><span class="dot">×</span>
+    <span>Narrativa</span><span class="dot">×</span>
     <span>Estratégia</span><span class="dot">×</span>
-    <span>Ela É Vista</span><span class="dot">×</span>
     <span>Between Phygital</span><span class="dot">×</span>
+    <span>Presença</span><span class="dot">×</span>
+    <span>Desejo</span><span class="dot">×</span>
     <span>Resultado Real</span><span class="dot">×</span>
     <span>Posicionamento</span><span class="dot">×</span>
-    <span>Visibilidade</span><span class="dot">×</span>
+    <span>Narrativa</span><span class="dot">×</span>
     <span>Estratégia</span><span class="dot">×</span>
-    <span>Ela É Vista</span><span class="dot">×</span>
     <span>Between Phygital</span><span class="dot">×</span>
+    <span>Presença</span><span class="dot">×</span>
+    <span>Desejo</span><span class="dot">×</span>
     <span>Resultado Real</span><span class="dot">×</span>
   </div>
 </div>
 
-<!-- DIVISOR (02) — BLACK -->
-<div class="divider divider-black">
-  <span class="div-num">(02)</span>
-  <span class="div-title">Soluções</span>
-  <span class="div-small">4 caminhos — uma direção</span>
-</div>
-
-<!-- SOLUÇÕES -->
-<section id="solucoes">
-  <div class="sol-header">
-    <h2 class="sol-title">4 formas<br>de ser<br><em>vista.</em></h2>
-    <div class="sol-right">
-      <p class="sol-sub">Cada mulher tem um ponto de partida. O destino é o mesmo.</p>
-      <p class="sol-note">— Você escolhe onde começa. Nós garantimos onde você chega.</p>
+<!-- MANIFESTO -->
+<section id="manifesto" class="on-red">
+  <p class="section-label"><span class="num">(01)</span> O Manifesto</p>
+  <div class="mf-row"><span class="mf-bold">PRESENÇA</span></div>
+  <div class="mf-row gap"><span class="mf-serif">BONITA</span></div>
+  <div class="mf-row gap"><span class="mf-bold">CHAMA </span><span class="mf-bold-it">ATENÇÃO.</span></div>
+  <div class="mf-row gap ind1"><span class="mf-hand">presença com estratégia</span></div>
+  <div class="mf-row gap"><span class="mf-bold">CONSTRÓI</span></div>
+  <div class="mf-row gap"><span class="mf-bold-it">DESEJO.</span></div>
+  <div class="mf-row gap-l ind2"><span class="mf-serif-it">Não o contrário.</span></div>
+  <div class="mf-stats">
+    <div>
+      <div class="stat-n">6</div>
+      <div class="stat-l">serviços — para diferentes momentos e objetivos</div>
     </div>
-  </div>
-  <div class="sol-grid">
-    <div class="sol-card sol-card-featured">
-      <span class="sol-num">(04) — Premium 1:1</span>
-      <h3 class="sol-name">Consulto-<br>ria<br>Ela É<br>Vista.</h3>
-      <p class="sol-serif">Processo completo. Diagnóstico, construção e execução acompanhada. 100% de entrega comprovada.</p>
-      <ul class="sol-items">
-        <li>Diagnóstico estratégico</li>
-        <li>Posicionamento construído</li>
-        <li>Execução acompanhada</li>
-        <li>Vagas limitadas</li>
-      </ul>
-      <a href="consultoria.html" class="sol-cta">Conhecer →</a>
+    <div>
+      <div class="stat-n">2</div>
+      <div class="stat-l">fundadoras que construíram antes de ensinar</div>
     </div>
-    <div class="sol-card">
-      <span class="sol-num">(01)</span>
-      <h3 class="sol-name">Self-<br>serve.</h3>
-      <p class="sol-serif">Ferramentas prontas. Acesso imediato. Resultado sem esperar.</p>
-      <ul class="sol-items">
-        <li>Aulas gravadas</li>
-        <li>Pack de templates</li>
-        <li>Sócia.IA</li>
-      </ul>
-      <a href="self-serve.html" class="sol-cta-ghost">Ver produtos →</a>
-    </div>
-    <div class="sol-card">
-      <span class="sol-num">(02)</span>
-      <h3 class="sol-name">Comuni-<br>dade.</h3>
-      <p class="sol-serif">Canal real. Troca entre quem constrói com intenção.</p>
-      <ul class="sol-items">
-        <li>WhatsApp Community</li>
-        <li>Insights diários</li>
-        <li>Dani e Fabiola no canal</li>
-      </ul>
-      <a href="comunidade.html" class="sol-cta-ghost">Conhecer →</a>
-    </div>
-    <div class="sol-card">
-      <span class="sol-num">(03)</span>
-      <h3 class="sol-name">Works-<br>hops.</h3>
-      <p class="sol-serif">Ao vivo. Online e presencial. Conhecimento aplicado.</p>
-      <ul class="sol-items">
-        <li>Hands-On — 6h</li>
-        <li>IN FRAME — presencial</li>
-        <li>MCM — Mentalidade</li>
-      </ul>
-      <a href="workshops.html" class="sol-cta-ghost">Ver workshops →</a>
+    <div>
+      <div class="stat-n">(1)</div>
+      <div class="stat-l">direção — posicionamento, narrativa, presença e resultado</div>
     </div>
   </div>
 </section>
 
-<!-- DIVISOR (03) — BLUE -->
-<div class="divider divider-blue">
-  <span class="div-num">(03)</span>
-  <span class="div-title">Consultoria</span>
-  <span class="div-small">Premium 1:1 — vagas limitadas</span>
+<!-- INSTITUCIONAL -->
+<section id="institucional">
+  <div class="inst-intro on-white">
+    <div>
+      <p class="section-label"><span class="num">(02)</span> Between Phygital Creative</p>
+      <h2 class="inst-title">Between<br>Phygital<br><em>Creative.</em></h2>
+    </div>
+    <p class="inst-sub">Agência de marketing criativo, estratégia e soluções de IA para marcas, empreendedoras e criadoras que querem comunicar melhor, vender com mais direção e crescer com intenção.</p>
+  </div>
+  <div class="inst-grid">
+    <div class="inst-card">
+      <span class="inst-n">(01)</span>
+      <div class="inst-t">Marketing<br>Criativo &<br>Estratégico</div>
+      <div class="inst-d">Estratégia de marca, comunicação, direção criativa, campanhas e presença digital para transformar percepção em resultado.</div>
+    </div>
+    <div class="inst-card">
+      <span class="inst-n">(02)</span>
+      <div class="inst-t">Branding &<br>Posicio-<br>namento</div>
+      <div class="inst-d">Identidade, narrativa, tom de voz e diferencial competitivo construídos com método, repertório e direção.</div>
+    </div>
+    <div class="inst-card">
+      <span class="inst-n">(03)</span>
+      <div class="inst-t">Soluções<br>de IA</div>
+      <div class="inst-d">Ferramentas, automações e apoio estratégico para ganhar tempo, organizar execução e transformar ideias em ação.</div>
+    </div>
+    <div class="inst-card">
+      <span class="inst-n">(04)</span>
+      <div class="inst-t">Conteúdo<br>& Presença<br>Phygital</div>
+      <div class="inst-d">Estratégia de conteúdo e experiências que conectam físico e digital com intenção, estética e venda.</div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT: O QUE A BETWEEN FAZ -->
+<div class="impact-strip impact-strip-blue">
+  <p class="impact-q impact-q-black">A gente não entra para "dar ideias". A gente entra para ler o que está desalinhado, organizar o pensamento, construir direção e entregar uma estratégia pronta para virar presença, conteúdo, campanha, venda e percepção de valor.</p>
+  <p class="impact-sub-text impact-sub-text-gray">Você não paga para tentar fazer sozinha. Você paga para receber um projeto pensado, estruturado e possível de executar.</p>
 </div>
 
-<!-- PREMIUM -->
-<section id="premium">
-  <div class="prem-hero">
-    <div class="prem-hero-text">
-      <p class="prem-label">(04) — Oferta Premium</p>
-      <h2 class="prem-big">Ela<br>É<br>Vista.</h2>
-      <p class="prem-serif">
-        Não é curso. Não é mentoria solta.<br>
-        É processo — com diagnóstico,<br>
-        construção e execução acompanhada.
-      </p>
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="serv-header on-white">
+    <div>
+      <p class="section-label"><span class="num">(03)</span> Nossos Serviços</p>
+      <h2 class="serv-big">6 formas<br>de construir<br><em>direção.</em></h2>
     </div>
-    <div class="prem-hero-photo">
-      <div class="polaroid tilt-l clip" style="width:70%;aspect-ratio:3/4;position:relative;">
-        <img src="images/consultoria.jpeg" alt="Processo de consultoria Between" />
-        <span class="polaroid-cap">consultoria 1:1</span>
+    <div>
+      <p class="serv-sub">Cada marca tem um ponto de partida. O destino é o mesmo.</p>
+      <p class="serv-note">— Você escolhe onde começa. Nós garantimos onde você chega.</p>
+    </div>
+  </div>
+
+  <!-- 1. CONSULTORIA DE MARCA -->
+  <div class="sol-block" id="consultoria-marca">
+    <div class="sb-left sb-left-red">
+      <span class="sb-num-white">(01) — Consultoria de Marca</span>
+      <h3 class="sb-title-black" style="color:var(--white);">Consulto-<br>ria<br>Estraté-<br>gica.</h3>
+      <p class="sb-desc-white">Para marcas com produto, história e potencial comercial cuja percepção ainda não acompanha o valor real.</p>
+      <ul class="sb-items-white">
+        <li>Diagnóstico completo da marca</li>
+        <li>Eixo estratégico e narrativa central</li>
+        <li>Direção de conteúdo e campanhas</li>
+        <li>Reunião mensal + grupo WhatsApp</li>
+        <li>Guia de marca e calendário</li>
+      </ul>
+      <a class="sb-cta-white" href="site/consultoria-marca.html">Conhecer →</a>
+    </div>
+    <div class="sb-right sb-right-white" style="padding:60px;">
+      <div class="sb-photo-frame">
+        <div class="frame" style="aspect-ratio:3/4;width:100%;">
+          <img src="images/consultoria.jpeg" alt="Consultoria Estratégica Between" />
+        </div>
       </div>
     </div>
   </div>
-  <div class="prem-fases-grid">
-    <div class="fase">
-      <span class="fase-n">(F.00)</span>
-      <div class="fase-t">Entrada</div>
-      <div class="fase-d">Call diagnóstico + proposta com escopo e objetivos</div>
+
+  <!-- IMPACT QUOTE -->
+  <div class="impact-strip impact-strip-white">
+    <p class="impact-q impact-q-black">Marca que não se posiciona vira escolha por preço. E quando a disputa é por preço, quase sempre alguém aceita ganhar menos que você.</p>
+  </div>
+
+  <!-- 2. ELA É VISTA -->
+  <div class="sol-block" id="ela-e-vista">
+    <div class="sb-left sb-left-white">
+      <span class="sb-num-dark">(02) — Mentoria de Marca Pessoal</span>
+      <h3 class="sb-title-black">Ela<br>É<br><em>Vista.</em></h3>
+      <p class="sb-desc-dark">Para criadoras, influenciadoras e marcas pessoais que querem reposicionar sua presença digital com estratégia, desejo e valor comercial.</p>
+      <ul class="sb-items-dark">
+        <li>Diagnóstico de presença e posicionamento</li>
+        <li>Território de autoridade e narrativa pessoal</li>
+        <li>Pilares de conteúdo e direção estética</li>
+        <li>Oportunidades de monetização</li>
+        <li>Guia de posicionamento pessoal</li>
+      </ul>
+      <a class="sb-cta-black" href="site/ela-e-vista.html">Conhecer →</a>
     </div>
-    <div class="fase">
-      <span class="fase-n">(F.01)</span>
-      <div class="fase-t">Diagnós-<br>tico</div>
-      <div class="fase-d">Análise de posicionamento e comunicação — devolutiva ao vivo</div>
-    </div>
-    <div class="fase">
-      <span class="fase-n">(F.02)</span>
-      <div class="fase-t">Constru-<br>ção</div>
-      <div class="fase-d">Posicionamento, oferta e estratégia documentados</div>
-    </div>
-    <div class="fase">
-      <span class="fase-n">(F.03)</span>
-      <div class="fase-t">Execução Acompa-<br>nhada</div>
-      <div class="fase-d">Suporte contínuo + reunião mensal — até 6 meses</div>
+    <div class="sb-right sb-right-blue" style="display:flex;align-items:center;justify-content:center;padding:80px 56px;">
+      <p class="sb-quote sb-quote-black" style="font-size:clamp(28px,3.8vw,54px);max-width:440px;">"Não é sobre postar mais. É sobre parar de deixar uma versão antiga comunicar por você."</p>
     </div>
   </div>
-  <div class="prem-cta-strip">
-    <p class="prem-cta-copy">Com entregáveis reais. Com resultado comprovado. Com quem já fez isso (500) vezes.</p>
-    <a href="consultoria.html" class="btn-red" style="flex-shrink:0;">Quero minha consultoria</a>
+
+  <!-- IMPACT QUOTE -->
+  <div class="impact-strip impact-strip-red">
+    <p class="impact-q impact-q-white">Desejo não nasce do excesso de conteúdo. Nasce de direção, repetição, estética, narrativa e intenção.</p>
+  </div>
+
+  <!-- 3. PALESTRAS -->
+  <div class="sol-block" id="palestras">
+    <div class="sb-left sb-right-blue" style="display:flex;align-items:center;justify-content:center;padding:80px 56px;">
+      <p class="sb-quote sb-quote-black" style="font-size:clamp(24px,3vw,46px);max-width:400px;">"A Between fala da prática, não da teoria. Duas fundadoras que construíram antes de ensinar."</p>
+    </div>
+    <div class="sb-right sb-right-white" style="border-left:1px solid var(--line);flex-direction:column;gap:40px;justify-content:space-between;align-items:flex-start;">
+      <span class="sb-num-dark">(03) — Palestras e Talks</span>
+      <h3 class="sb-title-black">Pales-<br><em>tras.</em></h3>
+      <p class="sb-desc-dark">Dani Mello e Fabiola Fuchs. Para empresas, eventos corporativos, feiras e grupos de empreendedoras.</p>
+      <ul class="sb-items-dark">
+        <li>Você Comunica Quem Realmente É?</li>
+        <li>IA Que Trabalha Por Você</li>
+        <li>Criatividade e Estratégia em Tempos de IA</li>
+        <li>Sua Marca Ainda Representa o Que Você Vende?</li>
+        <li>Talk 20–30min / Keynote 40–60min / Workshop 90–120min</li>
+      </ul>
+      <a class="sb-cta-black" href="site/palestras.html">Ver palestras →</a>
+    </div>
+  </div>
+
+  <!-- SERVIÇOS MENORES: In Frame / Sócia.IA / Treinamentos -->
+  <div class="serv-mini-grid">
+    <div class="serv-mini-card" id="in-frame">
+      <span class="serv-mini-num">(04) — Workshop Presencial</span>
+      <div class="serv-mini-title">In<br><em>Frame.</em></div>
+      <p class="serv-mini-desc">Workshop prático de criação de conteúdo com celular. Para empreendedoras que travam na hora de gravar, fotografar ou aparecer.</p>
+      <ul class="serv-mini-items">
+        <li>Luz e cenografia</li>
+        <li>Poses e presença na câmera</li>
+        <li>Foto e vídeo com celular</li>
+        <li>IA para roteiros e ideias</li>
+        <li>Acesso à Sócia.IA incluso</li>
+      </ul>
+      <a class="serv-mini-cta" href="site/in-frame.html">Ver workshop →</a>
+    </div>
+    <div class="serv-mini-card" id="socia-ia">
+      <span class="serv-mini-num">(05) — Agente de IA</span>
+      <div class="serv-mini-title">Sócia<em>.IA</em></div>
+      <p class="serv-mini-desc">Nossa agente de IA treinada com a metodologia estratégica da Between. A estratégia nasce com a Between. A execução ganha ritmo com a Sócia.IA.</p>
+      <ul class="serv-mini-items">
+        <li>Conteúdos e campanhas</li>
+        <li>Legendas e roteiros</li>
+        <li>Organização de perfil</li>
+        <li>Constância sem respostas genéricas</li>
+      </ul>
+      <a class="serv-mini-cta" href="site/socia-ia.html">Conhecer →</a>
+    </div>
+    <div class="serv-mini-card" id="treinamentos">
+      <span class="serv-mini-num">(06) — Corporativo</span>
+      <div class="serv-mini-title">Treina-<br><em>mentos.</em></div>
+      <p class="serv-mini-desc">Treinamentos personalizados para empresas e equipes sobre branding, IA, conteúdo, cultura digital e posicionamento. Formato sob medida.</p>
+      <ul class="serv-mini-items">
+        <li>Branding e posicionamento</li>
+        <li>IA aplicada ao negócio</li>
+        <li>Conteúdo e cultura digital</li>
+        <li>Criatividade e estratégia</li>
+      </ul>
+      <a class="serv-mini-cta" href="mailto:betweenphygital@gmail.com">Solicitar proposta →</a>
+    </div>
   </div>
 </section>
 
-<!-- DIVISOR (04) — RED -->
-<div class="divider divider-red">
-  <span class="div-num">(04)</span>
-  <span class="div-title">A Dupla</span>
-  <span class="div-small">Dani Mello — Fabiola Fuchs</span>
-</div>
+<!-- PARA QUEM -->
+<section id="para-quem">
+  <div class="pq-intro on-white">
+    <div>
+      <p class="section-label"><span class="num">(04)</span> Para Quem</p>
+      <h2 class="pq-title">A Between<br>é para<br><em>você.</em></h2>
+    </div>
+    <p class="pq-sub">Ninguém paga mais caro por algo confuso, genérico e igual ao resto. A Between transforma excesso de ideias em direção, percepção em desejo e presença em resultado.</p>
+  </div>
+  <div class="pq-grid">
+    <div class="pq-item">
+      <p class="pq-num">(01)</p>
+      <p class="pq-text">Marcas que cresceram, mas ainda comunicam pequeno</p>
+    </div>
+    <div class="pq-item">
+      <p class="pq-num">(02)</p>
+      <p class="pq-text">Empresas que precisam reposicionar sua percepção de valor</p>
+    </div>
+    <div class="pq-item">
+      <p class="pq-num">(03)</p>
+      <p class="pq-text">Criadoras que querem ser vistas com mais estratégia e intenção</p>
+    </div>
+    <div class="pq-item">
+      <p class="pq-num">(04)</p>
+      <p class="pq-text">Influenciadoras que desejam transformar audiência em autoridade</p>
+    </div>
+    <div class="pq-item">
+      <p class="pq-num">(05)</p>
+      <p class="pq-text">Eventos que buscam palestras atuais, práticas e provocativas</p>
+    </div>
+    <div class="pq-item">
+      <p class="pq-num">(06)</p>
+      <p class="pq-text">Empresas que querem usar IA sem perder identidade e pensamento estratégico</p>
+    </div>
+  </div>
+</section>
 
 <!-- FUNDADORAS -->
 <section id="fundadoras">
-  <div class="fund-header">
-    <h2 class="fund-title">Por trás<br><em>de tudo.</em></h2>
-    <p class="fund-tagline">A força não está em fazer as duas parecerem iguais — está em transformar a diferença em ativo.</p>
+  <div class="fund-intro on-blue">
+    <div>
+      <p class="section-label"><span class="num">(05)</span> Quem Somos</p>
+      <h2 class="fund-title">Quem<br><em>Somos.</em></h2>
+    </div>
+    <div>
+      <p class="fund-tagline">A Between nasce da união entre duas fundadoras que construíram antes de ensinar. Não somos uma agência de ideias soltas, nem uma consultoria distante da prática.</p>
+      <p class="fund-tagline" style="margin-top:24px;">Somos uma direção estratégica para marcas que precisam alinhar o que são, o que vendem e como são percebidas. A gente lê o cenário, organiza a marca, define a narrativa e entrega um caminho para presença, conteúdo, campanhas e venda.</p>
+    </div>
   </div>
   <div class="fund-grid">
     <div class="fund-card">
-      <div class="fund-photo">
-        <div class="polaroid tilt-r" style="width:68%;aspect-ratio:3/4;">
+      <div class="fund-photo-col">
+        <div class="frame" style="aspect-ratio:3/4;width:100%;">
           <img src="images/dani1.jpeg" alt="Dani Mello" />
-          <span class="polaroid-cap">Dani Mello</span>
         </div>
       </div>
-      <div class="fund-info">
+      <div class="fund-text-col">
         <p class="fund-role">Visão — Posicionamento — Narrativa</p>
-        <h3 class="fund-name">Dani<br>Mello</h3>
-        <p class="fund-serif">Visibilidade não se improvisa. Se constrói. Dani pensa, nomeia e direciona — traduz intenção em estratégia.</p>
+        <h3 class="fund-name">Dani<br><em>Mello</em></h3>
+        <p class="fund-bio">Visibilidade não se improvisa. Se constrói. Dani pensa, nomeia e direciona — traduz intenção em estratégia.</p>
         <div class="fund-tags">
           <span class="fund-tag">Diagnóstico</span>
           <span class="fund-tag">Posicionamento</span>
@@ -1018,16 +591,15 @@
       </div>
     </div>
     <div class="fund-card">
-      <div class="fund-photo">
-        <div class="polaroid tilt-l" style="width:68%;aspect-ratio:3/4;">
+      <div class="fund-photo-col">
+        <div class="frame" style="aspect-ratio:3/4;width:100%;">
           <img src="images/fabiola.jpeg" alt="Fabiola Fuchs" />
-          <span class="polaroid-cap">Fabiola Fuchs</span>
         </div>
       </div>
-      <div class="fund-info">
-        <p class="fund-role">Método — Entrega — Acompanhamento</p>
-        <h3 class="fund-name">Fabiola<br>Fuchs</h3>
-        <p class="fund-serif">Estratégia que não sai do papel não é estratégia. Fabiola ancora, sustenta e transforma decisão em resultado.</p>
+      <div class="fund-text-col">
+        <p class="fund-role">Método — Estratégia — Acompanhamento</p>
+        <h3 class="fund-name">Fabiola<br><em>Fuchs</em></h3>
+        <p class="fund-bio">Estratégia que não sai do papel não é estratégia. Fabiola ancora, sustenta e transforma decisão em resultado.</p>
         <div class="fund-tags">
           <span class="fund-tag">Método</span>
           <span class="fund-tag">Entrega</span>
@@ -1039,129 +611,78 @@
   </div>
 </section>
 
-<!-- DIVISOR (05) — WHITE -->
-<div class="divider divider-white">
-  <span class="div-num">(05)</span>
-  <span class="div-title">Between Phygital</span>
-  <span class="div-small">Agência — Marketing & IA</span>
-</div>
-
-<!-- BETWEEN PHYGITAL -->
-<section id="between">
-  <div class="btwn-header">
-    <h2 class="btwn-title">Between<br>Phygital<br><em>Creative.</em></h2>
-    <p class="btwn-intro">A agência de Marketing Criativo, Estratégico e Soluções de IA que cria a estratégia, a comunicação e a tecnologia por trás dos resultados.</p>
-  </div>
-  <div class="btwn-grid">
-    <div class="btwn-card">
-      <span class="btwn-card-num">(01)</span>
-      <div class="btwn-card-title">Marketing<br>Criativo &<br>Estratégico</div>
-      <div class="btwn-card-text">Estratégia de marca, posicionamento, narrativa e comunicação que gera resultado mensurável.</div>
-    </div>
-    <div class="btwn-card">
-      <span class="btwn-card-num">(02)</span>
-      <div class="btwn-card-title">Branding &<br>Posicio-<br>namento</div>
-      <div class="btwn-card-text">Identidade visual, tom de voz e diferencial competitivo construídos com método — não com achismo.</div>
-    </div>
-    <div class="btwn-card">
-      <span class="btwn-card-num">(03)</span>
-      <div class="btwn-card-title">Soluções<br>de IA</div>
-      <div class="btwn-card-text">Implementação de IA no negócio: automações, ferramentas e fluxos que economizam tempo e escalam resultado.</div>
-    </div>
-    <div class="btwn-card">
-      <span class="btwn-card-num">(04)</span>
-      <div class="btwn-card-title">Conteúdo<br>& Presença<br>Phygital</div>
-      <div class="btwn-card-text">Estratégia de conteúdo e experiências que conectam o físico e o digital com intenção.</div>
-    </div>
-  </div>
-  <div class="btwn-cta-row">
-    <span class="btwn-cta-text">betweenphygital.com</span>
-    <a href="#" class="btn-red">Conhecer a agência</a>
-  </div>
-</section>
-
-<!-- DIVISOR (06) — PINK -->
-<div class="divider divider-pink">
-  <span class="div-num">(06)</span>
-  <span class="div-title">Resultados</span>
-  <span class="div-small">Clientes reais — entregas reais</span>
-</div>
-
 <!-- DEPOIMENTOS -->
 <section id="depoimentos">
-  <div class="dep-header">
-    <h2 class="dep-title">Quem já<br>é vista.</h2>
-    <p class="dep-intro">Resultados reais de mulheres que construíram base — e pararam de recomeçar do zero a cada mudança.</p>
+  <div class="dep-intro on-red">
+    <div>
+      <p class="section-label"><span class="num">(06)</span> Resultados</p>
+      <h2 class="dep-title">Quem já<br><em>chegou lá.</em></h2>
+    </div>
+    <p class="dep-sub">Resultados reais de marcas e criadoras que construíram direção — e pararam de recomeçar do zero a cada mudança.</p>
   </div>
   <div class="dep-grid">
     <div class="dep-card">
       <div class="dep-q">"</div>
-      <p class="dep-text">[Depoimento da cliente — resultado concreto, em primeira pessoa, específico]</p>
-      <div class="dep-autor">
-        <div class="dep-nome">Nome da Cliente</div>
-        <div class="dep-neg">Segmento / Negócio</div>
+      <p class="dep-text">Vocês me tiraram da minha zona de conforto surrealmente. Tenho exercitado demais todas as áreas do meu conhecimento e ainda aprendendo dia a dia mais e mais! É uma mentoria de aquisição de muitas habilidades. E o mais legal é que a gente põe a mão na massa real — fica muito mais intuitivo e empoderado.</p>
+      <div class="dep-author">
+        <div class="dep-name">Mentorada Between</div>
+        <div class="dep-role-text">Processo de mentoria</div>
       </div>
     </div>
     <div class="dep-card">
       <div class="dep-q">"</div>
-      <p class="dep-text">[Depoimento da cliente — resultado concreto, em primeira pessoa, específico]</p>
-      <div class="dep-autor">
-        <div class="dep-nome">Nome da Cliente</div>
-        <div class="dep-neg">Segmento / Negócio</div>
+      <p class="dep-text">Eu to em choque. Recebendo vários pedidos de orçamentos, fechando clientes. Eu to bem feliz!! Obrigada por pegarem na minha mão e me conduzirem.</p>
+      <div class="dep-author">
+        <div class="dep-name">Thais</div>
+        <div class="dep-role-text">Mentorada Between</div>
       </div>
     </div>
     <div class="dep-card">
       <div class="dep-q">"</div>
-      <p class="dep-text">[Depoimento da cliente — resultado concreto, em primeira pessoa, específico]</p>
-      <div class="dep-autor">
-        <div class="dep-nome">Nome da Cliente</div>
-        <div class="dep-neg">Segmento / Negócio</div>
+      <p class="dep-text">Mentoras do meu coração! Queria só agradecer vocês de novo. Essa parceria saiu depois que tivemos a nossa mentoria. Tô muito feliz!!!</p>
+      <div class="dep-author">
+        <div class="dep-name">Mentorada Between</div>
+        <div class="dep-role-text">Processo de mentoria</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA FINAL — PINK -->
+<!-- CTA FINAL -->
 <section id="cta">
-  <div>
-    <p class="cta-label">Pronta para começar?</p>
-    <h2 class="cta-head">
-      Visibili-<br>dade não<br>é sorte.
-      <em>É método.</em>
-    </h2>
-    <div class="cta-btns">
-      <a href="#solucoes" class="cta-btn-main">Ver todas as soluções</a>
-      <a href="mailto:dani@danimelon.com" class="cta-btn-ghost">Falar com a Between</a>
-    </div>
-  </div>
-  <div class="cta-right">
-    <div class="cta-photo-pair">
-      <div class="polaroid tilt-l" style="width:100%;aspect-ratio:3/4;">
-        <img src="images/04B5501A-26B2-4074-AE76-07B2D47AD8A1.jpeg" alt="" />
-        <span class="polaroid-cap">Between</span>
-      </div>
-      <div class="polaroid tilt-r" style="width:100%;aspect-ratio:3/4;margin-top:32px;">
-        <img src="images/dani1.jpeg" alt="" />
-        <span class="polaroid-cap">Dani Mello</span>
+  <div class="cta-main">
+    <div>
+      <p class="cta-label">Pronta para começar?</p>
+      <h2 class="cta-head">
+        Sua marca<br>já tem<br><em>valor.</em>
+      </h2>
+      <p class="cta-body">Talvez só precise comunicar isso com mais estratégia, intenção e força comercial. Se o que aparece hoje ainda não traduz o valor do que você entrega, a Between pode construir essa direção com você.</p>
+      <div class="cta-btns">
+        <a href="mailto:betweenphygital@gmail.com" class="btn-cta">Fale com a Between</a>
+        <a href="#servicos" class="btn-cta-ghost">Entender qual serviço faz sentido</a>
       </div>
     </div>
-    <p class="cta-serif">
-      Escolha a solução que faz sentido pro seu momento agora. Não tem porta de entrada errada — tem o que você precisa hoje.
-    </p>
+    <div>
+      <div class="cta-photo-big">
+        <div class="frame" style="aspect-ratio:4/5;width:100%;">
+          <img src="images/04B5501A-26B2-4074-AE76-07B2D47AD8A1.jpeg" alt="Dani Mello + Fabiola Fuchs" />
+        </div>
+      </div>
+      <p class="cta-photo-caption">Dani Mello + Fabiola Fuchs — Between Phygital</p>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="foot-brand">
-    Ela <em>É</em> Vista
-    <span class="foot-sub">Powered by Between Phygital</span>
+    Between Phygital
+    <span class="foot-sub">Creative Agency</span>
   </div>
-  <p class="foot-copy">© 2026 Between Phygital.<br>Todos os direitos reservados.</p>
+  <p class="foot-copy">© 2026 Between Phygital Creative.<br>Todos os direitos reservados.</p>
   <div class="foot-links">
-    <a href="#">Instagram</a>
-    <a href="#">WhatsApp</a>
-    <a href="mailto:dani@danimelon.com">Contato</a>
+    <a href="https://www.instagram.com/between.phygital/" target="_blank">Instagram</a>
+    <a href="mailto:betweenphygital@gmail.com">Contato</a>
   </div>
 </footer>
 

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>In Frame — Workshop de Conteúdo — Between Phygital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@100;200;300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root { --red: #740404; --blue: #79aaef; --black: #1C1C1C; --gray: #7A7268; --white: #FFFFFF; --off: #F5F4F2; --line: rgba(28,28,28,.1); }
+    body { background: var(--white); color: var(--black); font-family: 'Inter', sans-serif; font-weight: 100; overflow-x: hidden; }
+    body::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: .025; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 180px; }
+    nav { position: fixed; inset: 0 0 auto 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; transition: background .3s; }
+    nav.solid { background: var(--white); border-bottom: 1px solid var(--line); }
+    .nav-logo { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+    .nav-back { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--black); text-decoration: none; opacity: .4; transition: opacity .2s; }
+    .nav-back:hover { opacity: 1; }
+    .nav-cta { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; border: 1px solid var(--black); color: var(--black); padding: 10px 24px; text-decoration: none; transition: all .2s; }
+    .nav-cta:hover { background: var(--black); color: var(--white); }
+    .section-label { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .38em; text-transform: uppercase; margin-bottom: 56px; display: flex; align-items: center; gap: 16px; color: var(--gray); }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+    .section-label-blue { color: var(--black); opacity: .5; }
+    .section-label-blue::after { background: rgba(28,28,28,.15) !important; }
+    .page-hero { min-height: 80vh; padding-top: 76px; background: var(--blue); display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid rgba(28,28,28,.12); }
+    .hero-left { padding: 80px 56px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(28,28,28,.12); }
+    .page-h1 { font-family: 'Barlow', sans-serif; font-weight: 900; font-size: clamp(72px, 11vw, 150px); text-transform: uppercase; line-height: .85; letter-spacing: -.025em; color: var(--black); }
+    .page-h1 em { font-style: italic; color: var(--red); }
+    .hero-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(18px, 2vw, 26px); line-height: 1.65; color: var(--black); max-width: 480px; }
+    .hero-right { padding: 80px 56px; display: flex; flex-direction: column; justify-content: center; gap: 0; }
+    .detail-row { padding: 28px 0; border-bottom: 1px solid rgba(28,28,28,.12); }
+    .detail-row:first-child { border-top: 1px solid rgba(28,28,28,.12); }
+    .detail-lbl { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .32em; text-transform: uppercase; color: var(--black); opacity: .5; margin-bottom: 8px; }
+    .detail-val { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(22px, 2.5vw, 34px); text-transform: uppercase; letter-spacing: .04em; color: var(--black); }
+    #problema { background: var(--white); padding: 100px 48px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; border-bottom: 1px solid var(--line); }
+    .prob-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(40px, 5.5vw, 80px); text-transform: uppercase; line-height: .88; letter-spacing: .04em; color: var(--black); }
+    .prob-title em { font-style: italic; color: var(--red); }
+    .prob-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 21px; line-height: 1.75; color: var(--gray); }
+    #conteudo { background: var(--white); padding: 100px 48px 80px; }
+    .cont-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+    .cont-card { padding: 48px 36px 60px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 16px; }
+    .cont-card:nth-child(3n) { border-right: none; }
+    .cont-num { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: var(--red); }
+    .cont-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(22px, 2.5vw, 34px); text-transform: uppercase; line-height: .9; letter-spacing: .04em; color: var(--black); }
+    .cont-title em { font-style: italic; }
+    .cont-desc { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 17px; line-height: 1.7; color: var(--gray); margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
+    #diferencial { background: var(--off); padding: 80px 48px; border-top: 1px solid var(--line); }
+    .dif-quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(28px, 3.8vw, 56px); line-height: 1.3; color: var(--black); max-width: 800px; }
+    .dif-sub { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--gray); margin-top: 24px; }
+    #cta-page { background: var(--white); border-top: 1px solid var(--line); padding: 120px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .cta-head { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(52px, 8vw, 110px); text-transform: uppercase; line-height: .88; letter-spacing: .04em; color: var(--black); margin-bottom: 48px; }
+    .cta-head em { font-style: italic; display: block; }
+    .cta-right { display: flex; flex-direction: column; gap: 28px; }
+    .cta-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.7; color: var(--gray); }
+    .btn-black { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 16px 36px; text-decoration: none; display: inline-block; transition: background .2s; align-self: flex-start; }
+    .btn-black:hover { background: var(--red); }
+    .cta-note { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .18em; text-transform: uppercase; color: var(--gray); }
+    footer { background: var(--white); border-top: 1px solid var(--line); padding: 48px; display: flex; justify-content: space-between; align-items: center; }
+    .foot-brand { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--black); }
+    .foot-sub { display: block; font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--gray); margin-top: 6px; }
+    .foot-back { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--gray); text-decoration: none; transition: color .2s; }
+    .foot-back:hover { color: var(--black); }
+    @media (max-width: 960px) {
+      nav { padding: 16px 20px; }
+      .page-hero, #problema { grid-template-columns: 1fr; min-height: auto; gap: 40px; }
+      .hero-left, .hero-right { padding: 60px 20px; border-right: none; }
+      .cont-grid { grid-template-columns: 1fr 1fr; }
+      .cont-card { border-right: none; }
+      #conteudo, #diferencial, #problema { padding: 60px 20px; }
+      #cta-page { grid-template-columns: 1fr; gap: 40px; padding: 80px 20px; }
+      footer { padding: 32px 20px; flex-direction: column; gap: 20px; align-items: flex-start; }
+    }
+    @media (max-width: 600px) { .cont-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <a href="../index.html" class="nav-logo">Between Phygital</a>
+  <a href="../index.html" class="nav-back">← Voltar</a>
+  <a href="#cta-page" class="nav-cta">Quero participar</a>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-left">
+    <div>
+      <p class="section-label section-label-blue">(04) Workshop Presencial</p>
+      <h1 class="page-h1">In<br><em>Frame.</em></h1>
+    </div>
+    <p class="hero-tagline">Workshop prático de criação de conteúdo com celular. Para empreendedoras que travam na hora de gravar, fotografar ou aparecer com naturalidade.</p>
+  </div>
+  <div class="hero-right">
+    <div class="detail-row">
+      <div class="detail-lbl">Formato</div>
+      <div class="detail-val">Presencial</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-lbl">Ferramenta</div>
+      <div class="detail-val">Celular + espaço próprio</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-lbl">Incluso</div>
+      <div class="detail-val">Acesso à Sócia.IA</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-lbl">Público</div>
+      <div class="detail-val">Empreendedoras e criadoras</div>
+    </div>
+  </div>
+</section>
+
+<div id="problema">
+  <div>
+    <h2 class="prob-title">O problema não<br>é o produto.<br>É a <em>presença.</em></h2>
+  </div>
+  <div>
+    <p class="prob-text">A luz não valoriza. A pose fica rígida. O vídeo parece artificial. O conteúdo não traduz a qualidade real do trabalho. No In Frame, você aprende na prática como criar com mais segurança, presença e intenção.</p>
+  </div>
+</div>
+
+<section id="conteudo">
+  <p class="section-label">(01) Conteúdo do workshop</p>
+  <div class="cont-grid">
+    <div class="cont-card">
+      <div class="cont-num">(01)</div>
+      <div class="cont-title">Luz e<br><em>Cenografia</em></div>
+      <p class="cont-desc">Como usar a luz natural e o espaço que você já tem para criar conteúdo que valoriza e representa a qualidade do seu trabalho.</p>
+    </div>
+    <div class="cont-card">
+      <div class="cont-num">(02)</div>
+      <div class="cont-title">Poses e<br><em>Presença</em></div>
+      <p class="cont-desc">Corpo desbloqueado. Como aparecer com naturalidade, intenção e confiança — sem parecer forçado ou ensaiado demais.</p>
+    </div>
+    <div class="cont-card">
+      <div class="cont-num">(03)</div>
+      <div class="cont-title">Foto e Vídeo<br>com <em>Celular</em></div>
+      <p class="cont-desc">Técnicas práticas de captação com celular. Ângulos, enquadramentos, movimento e ritmo para conteúdo que retém atenção.</p>
+    </div>
+    <div class="cont-card">
+      <div class="cont-num">(04)</div>
+      <div class="cont-title">Edição<br><em>Básica</em></div>
+      <p class="cont-desc">Edição no celular com foco em identidade visual: cor, corte, ritmo e legibilidade. Consistência sem depender de agência.</p>
+    </div>
+    <div class="cont-card">
+      <div class="cont-num">(05)</div>
+      <div class="cont-title">IA para<br><em>Roteiros</em></div>
+      <p class="cont-desc">Como usar ferramentas de IA para criar roteiros, legendas e ideias de conteúdo alinhadas com o seu posicionamento.</p>
+    </div>
+    <div class="cont-card">
+      <div class="cont-num">(06)</div>
+      <div class="cont-title">Acesso à<br><em>Sócia.IA</em></div>
+      <p class="cont-desc">Ao final do workshop, cada participante recebe acesso à Sócia.IA — para continuar produzindo com direção depois do evento.</p>
+    </div>
+  </div>
+</section>
+
+<div id="diferencial">
+  <p class="dif-quote">Não adianta ter uma entrega boa se a comunicação faz parecer comum.</p>
+  <p class="dif-sub">In Frame — workshop presencial Between Phygital</p>
+</div>
+
+<section id="cta-page">
+  <div>
+    <h2 class="cta-head">Pronta para<br>aparecer do<br><em>jeito certo?</em></h2>
+  </div>
+  <div class="cta-right">
+    <p class="cta-text">Solicite informações sobre datas, turmas e valores. O In Frame é presencial — as vagas são limitadas por turma.</p>
+    <a href="mailto:betweenphygital@gmail.com" class="btn-black">Quero participar →</a>
+    <p class="cta-note">Dani Mello — betweenphygital@gmail.com</p>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-brand">
+    Between Phygital
+    <span class="foot-sub">Creative Agency</span>
+  </div>
+  <a href="../index.html" class="foot-back">← Voltar para o site</a>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('solid', window.scrollY > 60); });
+</script>
+</body>
+</html>

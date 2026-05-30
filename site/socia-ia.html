@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sócia.IA — Between Phygital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@100;200;300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root { --red: #740404; --blue: #79aaef; --black: #1C1C1C; --gray: #7A7268; --white: #FFFFFF; --off: #F5F4F2; --line: rgba(28,28,28,.1); }
+    body { background: var(--white); color: var(--black); font-family: 'Inter', sans-serif; font-weight: 100; overflow-x: hidden; }
+    body::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: .025; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 180px; }
+    nav { position: fixed; inset: 0 0 auto 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; transition: background .3s; }
+    nav.solid { background: var(--white); border-bottom: 1px solid var(--line); }
+    .nav-logo { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+    .nav-back { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--black); text-decoration: none; opacity: .4; transition: opacity .2s; }
+    .nav-back:hover { opacity: 1; }
+    .nav-cta { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; border: 1px solid var(--black); color: var(--black); padding: 10px 24px; text-decoration: none; transition: all .2s; }
+    .nav-cta:hover { background: var(--black); color: var(--white); }
+    .section-label { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .38em; text-transform: uppercase; margin-bottom: 56px; display: flex; align-items: center; gap: 16px; color: var(--gray); }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+    .section-label-white { color: rgba(255,255,255,.5); }
+    .section-label-white::after { background: rgba(255,255,255,.2) !important; }
+    .page-hero { min-height: 80vh; padding-top: 76px; background: var(--black); display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .hero-left { padding: 80px 56px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(255,255,255,.08); }
+    .page-h1 { font-family: 'Barlow', sans-serif; font-weight: 900; font-size: clamp(72px, 11vw, 150px); text-transform: uppercase; line-height: .85; letter-spacing: -.025em; color: var(--white); }
+    .page-h1 em { font-style: italic; color: var(--red); }
+    .hero-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(18px, 2vw, 26px); line-height: 1.65; color: rgba(255,255,255,.65); max-width: 480px; }
+    .hero-right { padding: 80px 56px; display: flex; flex-direction: column; justify-content: center; gap: 0; }
+    .detail-row { padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .detail-row:first-child { border-top: 1px solid rgba(255,255,255,.08); }
+    .detail-lbl { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .32em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 8px; }
+    .detail-val { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(22px, 2.5vw, 34px); text-transform: uppercase; letter-spacing: .04em; color: var(--white); }
+    #o-que-faz { background: var(--white); padding: 100px 48px 80px; }
+    .ofaz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; border-top: 1px solid var(--line); padding-top: 60px; }
+    .ofaz-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(40px, 5.5vw, 80px); text-transform: uppercase; line-height: .88; letter-spacing: .04em; color: var(--black); }
+    .ofaz-title em { font-style: italic; color: var(--red); }
+    .ofaz-items { list-style: none; display: flex; flex-direction: column; }
+    .ofaz-items li { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 20px; line-height: 1.6; color: var(--black); display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .ofaz-items li::before { content: '→'; color: var(--red); flex-shrink: 0; font-style: normal; font-family: 'Inter'; font-weight: 200; font-size: 14px; margin-top: 3px; }
+    #diferenca { background: var(--red); padding: 100px 48px 80px; }
+    .dif-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(255,255,255,.2); }
+    .dif-card { padding: 56px 48px 72px; border-right: 1px solid rgba(255,255,255,.2); }
+    .dif-card:last-child { border-right: none; }
+    .dif-label { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .28em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 24px; }
+    .dif-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(36px, 4vw, 56px); text-transform: uppercase; line-height: .88; letter-spacing: .04em; color: var(--white); margin-bottom: 28px; }
+    .dif-title em { font-style: italic; }
+    .dif-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 19px; line-height: 1.7; color: rgba(255,255,255,.75); }
+    #cta-page { background: var(--white); border-top: 1px solid var(--line); padding: 120px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .cta-head { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(52px, 8vw, 110px); text-transform: uppercase; line-height: .88; letter-spacing: .04em; color: var(--black); margin-bottom: 48px; }
+    .cta-head em { font-style: italic; display: block; }
+    .cta-right { display: flex; flex-direction: column; gap: 28px; }
+    .cta-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.7; color: var(--gray); }
+    .btn-black { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 200; letter-spacing: .22em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 16px 36px; text-decoration: none; display: inline-block; transition: background .2s; align-self: flex-start; }
+    .btn-black:hover { background: var(--red); }
+    .cta-note { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .18em; text-transform: uppercase; color: var(--gray); }
+    footer { background: var(--white); border-top: 1px solid var(--line); padding: 48px; display: flex; justify-content: space-between; align-items: center; }
+    .foot-brand { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--black); }
+    .foot-sub { display: block; font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--gray); margin-top: 6px; }
+    .foot-back { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 100; letter-spacing: .22em; text-transform: uppercase; color: var(--gray); text-decoration: none; transition: color .2s; }
+    .foot-back:hover { color: var(--black); }
+    @media (max-width: 960px) {
+      nav { padding: 16px 20px; }
+      .page-hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left, .hero-right { padding: 60px 20px; border-right: none; }
+      .ofaz-grid, .dif-grid { grid-template-columns: 1fr; }
+      .dif-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,.2); }
+      #o-que-faz, #diferenca { padding: 60px 20px; }
+      #cta-page { grid-template-columns: 1fr; gap: 40px; padding: 80px 20px; }
+      footer { padding: 32px 20px; flex-direction: column; gap: 20px; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <a href="../index.html" class="nav-logo">Between Phygital</a>
+  <a href="../index.html" class="nav-back">← Voltar</a>
+  <a href="#cta-page" class="nav-cta">Quero acessar</a>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-left">
+    <div>
+      <p class="section-label" style="color:rgba(255,255,255,.35);">(05) Agente de IA</p>
+      <h1 class="page-h1">Sócia<em>.IA</em></h1>
+    </div>
+    <p class="hero-tagline">Nossa agente de IA treinada com a metodologia estratégica da Between. A estratégia nasce com a Between. A execução ganha ritmo com a Sócia.IA.</p>
+  </div>
+  <div class="hero-right">
+    <div class="detail-row">
+      <div class="detail-lbl">O que é</div>
+      <div class="detail-val">Agente de IA personalizada</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-lbl">Base</div>
+      <div class="detail-val">Metodologia Between</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-lbl">Função</div>
+      <div class="detail-val">Apoio de continuidade</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-lbl">Princípio</div>
+      <div class="detail-val">Sustenta a execução — não substitui a estratégia</div>
+    </div>
+  </div>
+</section>
+
+<section id="o-que-faz">
+  <p class="section-label">(01) O que a Sócia.IA faz</p>
+  <div class="ofaz-grid">
+    <div>
+      <h2 class="ofaz-title">Depois da<br>estratégia,<br>você não fica<br><em>sozinha.</em></h2>
+    </div>
+    <ul class="ofaz-items">
+      <li>Transforma posicionamento em conteúdos prontos para usar</li>
+      <li>Desdobra campanhas a partir da estratégia definida</li>
+      <li>Cria legendas, roteiros e ideias alinhadas com sua identidade</li>
+      <li>Organiza o perfil e mantém constância na comunicação</li>
+      <li>Responde com base na sua estratégia — não com respostas genéricas</li>
+      <li>Ajuda a manter direção sem depender de tentativas soltas</li>
+    </ul>
+  </div>
+</section>
+
+<section id="diferenca">
+  <p class="section-label section-label-white">(02) A diferença que faz</p>
+  <div class="dif-grid">
+    <div class="dif-card">
+      <p class="dif-label">A estratégia</p>
+      <h3 class="dif-title">Nasce com a<br><em>Between.</em></h3>
+      <p class="dif-text">Posicionamento, narrativa, diferenciais, pilares de conteúdo, tom de voz e direção construídos com método e repertório. Esse é o trabalho da Between.</p>
+    </div>
+    <div class="dif-card">
+      <p class="dif-label">A execução</p>
+      <h3 class="dif-title">Ganha ritmo com a<br><em>Sócia.IA.</em></h3>
+      <p class="dif-text">Depois que a direção está clara, a Sócia.IA entra como apoio de continuidade — para transformar a estratégia em conteúdo, ação e constância no dia a dia.</p>
+    </div>
+  </div>
+</section>
+
+<section id="cta-page">
+  <div>
+    <h2 class="cta-head">Não substitui<br>a estratégia.<br><em>Sustenta.</em></h2>
+  </div>
+  <div class="cta-right">
+    <p class="cta-text">A Sócia.IA é melhor aproveitada quando há uma estratégia clara por trás. Fale com a Between para entender qual é o caminho certo para o seu momento.</p>
+    <a href="mailto:betweenphygital@gmail.com" class="btn-black">Quero conhecer →</a>
+    <p class="cta-note">Dani Mello — betweenphygital@gmail.com</p>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-brand">
+    Between Phygital
+    <span class="foot-sub">Creative Agency</span>
+  </div>
+  <a href="../index.html" class="foot-back">← Voltar para o site</a>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('solid', window.scrollY > 60); });
+</script>
+</body>
+</html>
